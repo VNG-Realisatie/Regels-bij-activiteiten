@@ -1,4 +1,4 @@
-# Juridische-regels
+# Regels bij activiteiten
 ...
 
 ## Getting started
