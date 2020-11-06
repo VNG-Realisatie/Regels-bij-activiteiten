@@ -21,6 +21,10 @@ Het is dus vooralsnog nog niet opgenomen. Mocht er een reden zijn om dit toch op
 en 'code' van het objectType 'Bevoegd gezag' zijn als resp. 'documentIdentificatie', 'documentType', 'documentComponentKopnummer' en 
 'codeBevoegdGezag' platgeslagen in het entiteittype 'regeltekst'.
 
+E.e.a. leidt tot het volgende uitwisselingsgegevensmodel:
+
+![UGM](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/blob/main/specificatie/Koppeling%20PlanSW%20en%20TRSW.jpg)
+
 ## Ter overweging
 
 * De attributes ‘documentIdentificatie’, ‘documentOpschrift’ en ‘documentType’ die nu direct in de resource ‘regeltekst’ zijn opgenomen 
