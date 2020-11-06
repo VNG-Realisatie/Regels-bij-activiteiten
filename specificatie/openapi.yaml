@@ -452,6 +452,18 @@ paths:
             type: string
             format: date
         - in: query
+          name: codebevoegdgezag
+          description: "Een inhoudelijke toelichting op de toepassing van het informatie-element."
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: documentcomponentkopnummer
+          description: "Een inhoudelijke toelichting op de toepassing van het informatie-element."
+          required: false
+          schema:
+            type: string
+        - in: query
           name: documentidentificatie
           description: "Een inhoudelijke toelichting op de toepassing van het informatie-element.De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur."
           required: false
@@ -686,6 +698,7 @@ components:
         \ en/of functies en/of beperkingengebieden.</p></body><body><p>Een inhoudelijke\
         \ toelichting op de toepassing van het informatie-element.</p></body>"
       required:
+      - "idealisatie"
       - "identificatie"
       - "omschrijving"
       properties:
@@ -693,6 +706,14 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/Activiteitregelkwalificatie"
+        idealisatie:
+          allOf:
+          - $ref: "#/components/schemas/Idealisatie"
+          - title: "idealisatie"
+            description: "<body><p>Vastlegging van de manier de begrenzing van Locatie\
+              \ voor deze Juridische regel geïnterpreteerd moet worden en door het\
+              \ bevoegd gezag bedoeld is.</p></body><body><p>Een inhoudelijke toelichting\
+              \ op de toepassing van het informatie-element.</p></body>"
         identificatie:
           type: "string"
           title: "identificatie"
@@ -811,6 +832,8 @@ components:
         \ onlosmakelijk bij elkaar en hebben gezamenlijk één werkingsgebied.</p></body>"
       required:
       - "begindatum"
+      - "codeBevoegdGezag"
+      - "documentComponentKopnummer"
       - "documentIdentificatie"
       - "documentOpschrift"
       - "documentType"
@@ -824,6 +847,18 @@ components:
           title: "begindatum"
           description: ""
           format: "date"
+        codeBevoegdGezag:
+          type: "string"
+          title: "code"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minLength: 1
+        documentComponentKopnummer:
+          type: "string"
+          title: "nummer"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minLength: 1
         documentIdentificatie:
           type: "string"
           title: "identificatie"
@@ -922,7 +957,11 @@ components:
             \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Bij\
             \ een regel die een activiteit vastlegt geeft deze relatie aan om welke\
             \ activiteit het gaat. De bijbehorende locatie(s) waar het om gaat is/zijn\
-            \ bij de activiteit zelf te vinden.</p></body>"
+            \ bij de activiteit zelf te vinden.</p></body><body><p>Bij een regel die\
+            \ een activiteit vastlegt geeft deze relatie aan om welke activiteit het\
+            \ gaat. De bijbehorende locatie(s) waar het om gaat is/zijn bij de activiteit\
+            \ zelf te vinden.</p></body><body><p>Een inhoudelijke toelichting op de\
+            \ toepassing van het informatie-element.</p></body>"
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
@@ -934,7 +973,8 @@ components:
         gekwalificeerdelocaties:
           title: "kwalificeert"
           type: "array"
-          description: ""
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
@@ -978,14 +1018,18 @@ components:
       type: "object"
       properties:
         juridischeRegelsVoorIedereen:
-          title: "kent"
+          title: "betreft een activiteit"
           type: "array"
           description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
             \ relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)\
             \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Bij\
             \ een regel die een activiteit vastlegt geeft deze relatie aan om welke\
             \ activiteit het gaat. De bijbehorende locatie(s) waar het om gaat is/zijn\
-            \ bij de activiteit zelf te vinden.</p></body>"
+            \ bij de activiteit zelf te vinden.</p></body><body><p>Bij een regel die\
+            \ een activiteit vastlegt geeft deze relatie aan om welke activiteit het\
+            \ gaat. De bijbehorende locatie(s) waar het om gaat is/zijn bij de activiteit\
+            \ zelf te vinden.</p></body><body><p>Een inhoudelijke toelichting op de\
+            \ toepassing van het informatie-element.</p></body>"
           minItems: 1
           items:
             $ref: "#/components/schemas/JuridischeRegelVoorIedereenHal"
@@ -995,7 +1039,8 @@ components:
         gekwalificeerdelocaties:
           title: "kwalificeert"
           type: "array"
-          description: ""
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
           minItems: 1
           items:
             $ref: "#/components/schemas/LocatieHal"
@@ -1038,6 +1083,32 @@ components:
             \ uitgedrukt in een specifieke structuur.</p></body>"
           minLength: 1
     Activiteitregelkwalificatie:
+      type: "object"
+      description: "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden\
+        \ van een attribuutsoort, die buiten het model in een externe waardenlijst\
+        \ worden beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing\
+        \ van het informatie-element.</p></body>"
+      required:
+      - "code"
+      - "waarde"
+      properties:
+        code:
+          type: "string"
+          title: "code"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
+            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
+            \ uitgedrukt in een specifieke structuur.</p></body>"
+          minLength: 1
+        waarde:
+          type: "string"
+          title: "waarde"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
+            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
+            \ uitgedrukt in een specifieke structuur.</p></body>"
+          minLength: 1
+    Idealisatie:
       type: "object"
       description: "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden\
         \ van een attribuutsoort, die buiten het model in een externe waardenlijst\
