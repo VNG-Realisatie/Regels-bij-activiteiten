@@ -5,12 +5,12 @@ Bij het ontwerpen van de OAS specificatie op basis van het CIMOW hebben we de vo
 * De objecttypen 'Juridische regel' en 'Regel voor iedereen' zijn samengetrokken in de entiteittype 'juridischeRegelVoorIedereen'. 
 Dat betekent dat alle attributen en relaties van die objecttypen in het genoemde entiteittype terecht zijn gekomen.
 * Binnen de resource ‘juridischeRegelsvooriedereen’ misten in de specs het attribute ‘identificatie’. 
-Deze is toch opgenomen aangezien er vanuit gaande dat de resource opgevraagd moet kunnen worden.
+Deze is toch opgenomen er vanuit gaande dat de resource opgevraagd moet kunnen worden.
 * De gegevensgroep 'normeertEenActiviteit' is platgeslagen in het entiteittype 'juridischeRegelVoorIedereen'. 
 Concreet betekent dit dat het 'activiteitregelkwalificatie' als optioneel attribuut is opgenomen in 'juridischeRegelVoorIedereen'. 
 Het mag wel meer dan 1 keer voor komen. Daarnaast loopt de relatie 'kwalificeert' ook vanuit 'juridischeRegelVoorIedereen'. 
 De relatie 'betreft een activiteit' is omgedraaid, heet nu 'kent', en loopt nu vanuit 'activiteit' naar 'juridischeRegelVoorIedereen'.
-* De subtypes 'Ambtsgebied', 'Punt', 'Gebied' en 'Lijn' van het objectType 'Locatie' is platgeslagen in het entiteittype 'locatie'. 
+* De subtypes 'Ambtsgebied', 'Punt', 'Gebied' en 'Lijn' van het objectType 'Locatie' zijn platgeslagen in het entiteittype 'locatie'. 
 Concreet betekent dit dat de attributen 'Bron' en 'Geometrie' nu opgenomen zijn in 'locatie', resp. als 'geometrie' en 'geometrieBron'. 
 Daarnaast is aan dit entiteittype het attribuut 'type' opgenomen waarmee aangegeven kan worden om welk subtype het gaat.
 * Er was aangegeven dat men in de resource 'locatie' ook het attribuut ‘hoogte’ opgenomen wilde hebben. 
@@ -28,7 +28,7 @@ E.e.a. leidt tot het volgende uitwisselingsgegevensmodel:
 ## Ter overweging
 
 * De attributes ‘documentIdentificatie’, ‘documentOpschrift’ en ‘documentType’ die nu direct in de resource ‘regeltekst’ zijn opgenomen 
-kunnen zo gewenst natuurlijk ook opnemen in een gegevensgroep binnen ‘regeltekst’.
+kunnen zo gewenst natuurlijk ook opgenomen worden in een gegevensgroep binnen ‘regeltekst’.
 * Je zou er voor kunnen kiezen de resource ‘regeltekst’ plat te slaan binnen de resource ‘juridischeregelsvooriedereen’. 
 Er is dan geen resource ‘regeltekst’ meer. In dat geval zal het attribute ‘identificatie’ van regeltekst achterwege gelaten worden.
 
