@@ -8,7 +8,7 @@
 * [Technische specificaties van de **unresolved** versie](./specificatie) (Open API versie)
 * Specificaties van de actuele productie versie in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Juridische-regels/main/specificatie/openapi.yaml)
 
-* Ontwerpkeuzes staan in het document ... (nog in te voorzien)
+* Ontwerpkeuzes staan in de [ontwerpbeslissingen](./specificatie/Ontwerpbeslissingen.md)
 * Productvisie (nog in te voorzien)
 * Definition of Ready (nog in te voorzien)
 * Definition of Done (nog in te voorzien)
