@@ -1110,9 +1110,9 @@ components:
           allOf:
           - title: "is"
             type: "object"
-            description: "<body><p>Met ˮis (een)ˮ wordt een bepaalde activiteit\
+            description: "<body><p>Met is (een) wordt een bepaalde activiteit\
               \ rechtstreeks verbonden met een andere activiteit van hetzelfde type\
-              \ (van specifiek naar generiek). Toelichting: Met een activiteit van\
+              \ (van specifiek naar generiek). Toelichting Met een activiteit van\
               \ hetzelfde type wordt bedoeld dat andere regels (generieker) contextueel\
               \ wel of niet relevant kunnen zijn. Met contextueel relevant wordt bedoeld\
               \ dat als in de regel staat dat een (generieke) activiteit van dit type\
