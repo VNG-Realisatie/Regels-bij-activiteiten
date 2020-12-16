@@ -23,7 +23,7 @@ en 'code' van het objectType 'Bevoegd gezag' zijn als resp. 'documentIdentificat
 
 E.e.a. leidt tot het volgende uitwisselingsgegevensmodel:
 
-![UGM](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/blob/main/specificatie/Koppeling%20PlanSW%20en%20TRSW.jpg)
+![UGM](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/blob/main/specificatie/UGM%20Koppeling%20PlanSW%20en%20TRSW.jpg)
 
 ## Ter overweging
 
