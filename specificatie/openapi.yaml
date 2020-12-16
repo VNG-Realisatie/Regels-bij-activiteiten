@@ -8,10 +8,11 @@ info:
   title: Plan SW - Toepasbare regel SW
   description: ""
   version: "0.0.1"
-  x-imvertor-generator-version: "1.62.0"
+  x-imvertor-generator-version: "1.62.2"
   x-yamlCompiler-stylesheets-version: "20200903"
   contact:
     url: https://github.com/VNG-Realisatie/PSW-TRSW
+    email: robert.melskens@vng.nl
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
@@ -28,6 +29,7 @@ paths:
           schema:
             type: integer
             minimum: 1
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: query
           name: begindatum
           description: ""
@@ -36,12 +38,30 @@ paths:
             type: string
             format: date
         - in: query
+          name: bovenliggendeactiviteitidentificatie
+          description: ""
+          required: false
+          schema:
+            type: string
+        - in: query
           name: einddatum
           description: ""
           required: false
           schema:
             type: string
             format: date
+        - in: query
+          name: gerelateerdeactiviteitidentificatie
+          description: ""
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: juridischeregelvooriedereenidentificatie
+          description: ""
+          required: false
+          schema:
+            type: string
         - in: query
           name: laatstewijzigingsdatum
           description: ""
@@ -168,9 +188,40 @@ paths:
           schema:
             type: integer
             minimum: 1
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/parameters/expand"
+        - in: query
+          name: activiteitidentificatie
+          description: ""
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: identificatie
+          description: "<body><p>Dit attribute is</p></body><body><p>Dit attribute is</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: locatieidentificatie
+          description: ""
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: locatieidentificatie
+          description: ""
+          required: false
+          schema:
+            type: string
         - in: query
           name: omschrijving
-          description: "Één doorlopend stuk juridische tekst, van een artikel of een lid, die omschrijvingen van (een of meer) juridische regels bevat."
+          description: "<body><p>Één doorlopend stuk juridische tekst, van een artikel of een lid, die omschrijvingen van (een of meer) juridische regels bevat.</p></body>"
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: regeltekstidentificatie
+          description: ""
           required: false
           schema:
             type: string
@@ -287,6 +338,7 @@ paths:
           schema:
             type: integer
             minimum: 1
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: query
           name: begindatum
           description: ""
@@ -303,13 +355,13 @@ paths:
             format: date
         - in: query
           name: geometrie
-          description: "De geometrische bepaling van de lijn door middel van coördinaten."
+          description: "De geometrische bepaling van de lijn door middel van coördinaten. De geometrische bepaling van het gebied door middel van coördinaten. De geometrische bepaling van de punt door middel van coördinaten.Een inhoudelijke toelichting op de toepassing van het informatie-element."
           required: false
           schema:
             type: string
         - in: query
           name: geometriebron
-          description: "De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie."
+          description: "De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie. De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie. De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.Een inhoudelijke toelichting op de toepassing van het informatie-element."
           required: false
           schema:
             type: string
@@ -322,6 +374,12 @@ paths:
         - in: query
           name: noemer
           description: "Tekstuele beschrijving van een Locatie, zodat er als zodanig over deze locatie gesproken kan worden. De beschrijving kan een bepaalde naam zijn waaronder de Locatie bekend staat, maar (lang) niet elke Locatie heef een naam.Bijvoorbeeld het hele werkingsgebied van bevoegd gezag, zoals ‘Het Koninkrijk der Nederlanden’ of gemeente 'Amersfoort'. Bijvoorbeeld een natuurgebied zoals de 'Veluwe' of de rivier de 'Rijn' of het centrum van een woonplaats 'centrum Apeldoorn'."
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: omvattendelocatieidentificatie
+          description: ""
           required: false
           schema:
             type: string
@@ -444,6 +502,7 @@ paths:
           schema:
             type: integer
             minimum: 1
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: query
           name: begindatum
           description: ""
@@ -452,30 +511,6 @@ paths:
             type: string
             format: date
         - in: query
-          name: codebevoegdgezag
-          description: "Een inhoudelijke toelichting op de toepassing van het informatie-element."
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: documentcomponentkopnummer
-          description: "Een inhoudelijke toelichting op de toepassing van het informatie-element."
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: documentidentificatie
-          description: "Een inhoudelijke toelichting op de toepassing van het informatie-element.De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur."
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: documentopschrift
-          description: "Een inhoudelijke toelichting op de toepassing van het informatie-element.De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur."
-          required: false
-          schema:
-            type: string
-        - in: query
           name: einddatum
           description: ""
           required: false
@@ -483,12 +518,24 @@ paths:
             type: string
             format: date
         - in: query
+          name: gerelateerderegeltekstidentificatie
+          description: ""
+          required: false
+          schema:
+            type: string
+        - in: query
           name: laatstewijzigingsdatum
           description: ""
           required: false
           schema:
             type: string
             format: date
+        - in: query
+          name: locatieidentificatie
+          description: ""
+          required: false
+          schema:
+            type: string
         - in: query
           name: omschrijving
           description: "De letterlijke tekst waarmee de Regeltekst is omschreven, in een artikel of een lid. Een Regeltekst is altijd één doorlopend stuk juridische tekst, welke juridische regels bevat."
@@ -630,9 +677,11 @@ components:
         \ toegestaan zijn op deze locatie en onder welke voorwaarden.</p></body>"
       required:
       - "begindatum"
+      - "bovenliggendeActiviteitIdentificatie"
       - "einddatum"
       - "groep"
       - "identificatie"
+      - "juridischeRegelVoorIedereenIdentificatie"
       - "laatsteWijzigingsdatum"
       - "naam"
       properties:
@@ -641,11 +690,23 @@ components:
           title: "begindatum"
           description: ""
           format: "date"
+        bovenliggendeActiviteitIdentificatie:
+          type: "string"
+          title: "bovenliggendeActiviteitIdentificatie"
+          description: ""
+          minLength: 1
         einddatum:
           type: "string"
           title: "einddatum"
           description: ""
           format: "date"
+        gerelateerdeActiviteitIdentificatie:
+          type: "array"
+          title: "gerelateerdeActiviteitIdentificatie"
+          description: ""
+          minItems: 0
+          items:
+            type: "string"
         groep:
           allOf:
           - $ref: "#/components/schemas/Activiteitengroep"
@@ -655,21 +716,22 @@ components:
               \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen\
               \ het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
         identificatie:
-          type: "string"
-          title: "identificatie"
-          description: "<body><p>De unieke identificatie waaronder elk object van\
-            \ dit type bekend is.</p></body>"
-          minLength: 1
+          type: string
+        juridischeRegelVoorIedereenIdentificatie:
+          type: "array"
+          title: "juridischeRegelVoorIedereenIdentificatie"
+          description: ""
+          minItems: 1
+          items:
+            type: "string"
+            minLength: 1
         laatsteWijzigingsdatum:
           type: "string"
           title: "laatsteWijzigingsdatum"
           description: ""
           format: "date"
         naam:
-          type: "string"
-          title: "naam"
-          description: "<body><p>Een (korte) omschrijving van de activiteit.</p></body>"
-          minLength: 1
+          type: string
     JuridischeRegelVoorIedereenHalCollectie:
       type: "object"
       properties:
@@ -700,12 +762,10 @@ components:
       required:
       - "idealisatie"
       - "identificatie"
+      - "locatieIdentificatie"
       - "omschrijving"
+      - "regeltekstIdentificatie"
       properties:
-        activiteitregelkwalificatie:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/Activiteitregelkwalificatie"
         idealisatie:
           allOf:
           - $ref: "#/components/schemas/Idealisatie"
@@ -715,19 +775,19 @@ components:
               \ bevoegd gezag bedoeld is.</p></body><body><p>Een inhoudelijke toelichting\
               \ op de toepassing van het informatie-element.</p></body>"
         identificatie:
-          type: "string"
-          title: "identificatie"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het\
-            \ waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
+        locatieIdentificatie:
+          type: "array"
+          items:
+            type: string
+        normeertEenActiviteit:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ActiviteitLocatieaanduidingHal"
         omschrijving:
-          type: "string"
-          title: "omschrijving"
-          description: "<body><p>Één doorlopend stuk juridische tekst, van een artikel\
-            \ of een lid, die omschrijvingen van (een of meer) juridische regels bevat.</p></body>"
-          minLength: 1
+          type: string
+        regeltekstIdentificatie:
+          type: string
         thema:
           type: "array"
           items:
@@ -751,6 +811,8 @@ components:
         properties:
           _links:
             $ref: "#/components/schemas/Locatie_links"
+          _embedded:
+            $ref: "#/components/schemas/Locatie_embedded"
     Locatie:
       type: "object"
       description: "<body><p>Duiding van een geografische positie. Indien er naar\
@@ -758,7 +820,6 @@ components:
       required:
       - "begindatum"
       - "einddatum"
-      - "geometrieType"
       - "identificatie"
       - "type"
       properties:
@@ -773,37 +834,21 @@ components:
           description: ""
           format: "date"
         geometrie:
-          type: "string"
-          title: "geometrie"
-          description: "<body><p>De geometrische bepaling van de lijn door middel\
-            \ van coördinaten.</p></body>"
+          type: string
         geometrieBron:
-          type: "string"
-          title: "bron"
-          description: "<body><p>De bron die is gebruikt voor, dan wel de wijze van\
-            \ inwinning van de geometrie.</p></body>"
+          type: string
         geometrieType:
           $ref: "#/components/schemas/GeometrieType"
         hoogte:
           $ref: "#/components/schemas/WaardeEenheid"
         identificatie:
-          type: "string"
-          title: "identificatie"
-          description: "<body><p>De unieke identificatie waaronder elk object van\
-            \ dit type bekend is.</p></body><body><p>Een inhoudelijke toelichting\
-            \ op de toepassing van het informatie-element.</p></body><body><p>De verzameling\
-            \ van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil\
-            \ zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
         noemer:
-          type: "string"
-          title: "noemer"
-          description: "<body><p>Tekstuele beschrijving van een Locatie, zodat er\
-            \ als zodanig over deze locatie gesproken kan worden. De beschrijving\
-            \ kan een bepaalde naam zijn waaronder de Locatie bekend staat, maar (lang)\
-            \ niet elke Locatie heef een naam.</p></body><body><p>Bijvoorbeeld het\
-            \ hele werkingsgebied van bevoegd gezag, zoals ‘Het Koninkrijk der Nederlanden✊             of gemeente 'Amersfoort'. Bijvoorbeeld een natuurgebied zoals de 'Veluwe'\
-            \ of de rivier de 'Rijn' of het centrum van een woonplaats 'centrum Apeldoorn'.</p></body>"
+          type: string
+        omvattendeLocatieIdentificatie:
+          type: "array"
+          items:
+            type: string
         type:
           $ref: "#/components/schemas/LocatieType"
     RegeltekstHalCollectie:
@@ -825,6 +870,8 @@ components:
         properties:
           _links:
             $ref: "#/components/schemas/Regeltekst_links"
+          _embedded:
+            $ref: "#/components/schemas/Regeltekst_embedded"
     Regeltekst:
       type: "object"
       description: "<body><p>Een Regeltekst is de kleinste zelfstandige eenheid van\
@@ -832,14 +879,10 @@ components:
         \ onlosmakelijk bij elkaar en hebben gezamenlijk één werkingsgebied.</p></body>"
       required:
       - "begindatum"
-      - "codeBevoegdGezag"
-      - "documentComponentKopnummer"
-      - "documentIdentificatie"
-      - "documentOpschrift"
-      - "documentType"
       - "einddatum"
       - "identificatie"
       - "laatsteWijzigingsdatum"
+      - "locatieIdentificatie"
       - "omschrijving"
       properties:
         begindatum:
@@ -847,71 +890,34 @@ components:
           title: "begindatum"
           description: ""
           format: "date"
-        codeBevoegdGezag:
-          type: "string"
-          title: "code"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body>"
-          minLength: 1
-        documentComponentKopnummer:
-          type: "string"
-          title: "nummer"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body>"
-          minLength: 1
-        documentIdentificatie:
-          type: "string"
-          title: "identificatie"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het\
-            \ waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
-        documentOpschrift:
-          type: "string"
-          title: "opschrift"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het\
-            \ waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
-        documentType:
-          allOf:
-          - $ref: "#/components/schemas/Soortregeling"
-          - title: "documentType"
-            description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-              \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-              \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen\
-              \ het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
         einddatum:
           type: "string"
           title: "einddatum"
           description: ""
           format: "date"
+        gerelateerdeRegeltekstIdentificatie:
+          type: "array"
+          items:
+            type: string
         identificatie:
-          type: "string"
-          title: "identificatie"
-          description: "<body><p>De unieke identificatie waaronder elk object van\
-            \ dit type bekend is.</p></body>"
-          minLength: 1
+          type: string
         laatsteWijzigingsdatum:
           type: "string"
           title: "laatsteWijzigingsdatum"
           description: ""
           format: "date"
+        locatieIdentificatie:
+          type: "array"
+          items:
+            type: string
         omschrijving:
-          type: "string"
-          title: "omschrijving"
-          description: "<body><p>De letterlijke tekst waarmee de Regeltekst is omschreven,\
-            \ in een artikel of een lid. Een Regeltekst is altijd één doorlopend\
-            \ stuk juridische tekst, welke juridische regels bevat.</p></body>"
-          minLength: 1
+          type: string
     Activiteit_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        gerelateerdeactiviteiten:
+        gerelateerdeActiviteiten:
           title: "gerelateerd"
           type: "array"
           description: "<body><p>De regels die gelden voor de gerelateerde activiteit(en)\
@@ -931,7 +937,7 @@ components:
             \ toelichting op de toepassing van het informatie-element.</p></body>"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        bovenliggendeactiviteiten:
+        bovenliggendeActiviteiten:
           allOf:
           - title: "is"
             type: "object"
@@ -954,27 +960,28 @@ components:
           type: "array"
           description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
             \ relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)\
-            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Bij\
-            \ een regel die een activiteit vastlegt geeft deze relatie aan om welke\
-            \ activiteit het gaat. De bijbehorende locatie(s) waar het om gaat is/zijn\
-            \ bij de activiteit zelf te vinden.</p></body><body><p>Bij een regel die\
-            \ een activiteit vastlegt geeft deze relatie aan om welke activiteit het\
-            \ gaat. De bijbehorende locatie(s) waar het om gaat is/zijn bij de activiteit\
-            \ zelf te vinden.</p></body><body><p>Een inhoudelijke toelichting op de\
-            \ toepassing van het informatie-element.</p></body>"
+            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een\
+            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+    DocumentComponent_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     JuridischeRegelVoorIedereen_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        gekwalificeerdelocaties:
-          title: "kwalificeert"
+        gedefinieerdelocaties:
+          title: "definieert"
           type: "array"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body>"
+          description: "<body><p>De locatieaanduiding begrenst de juridische werking\
+            \ van de regel in juridische zin, te weten dat de regel alleen binnen\
+            \ dit werkingsgebied werkingskracht heeft.</p></body><body><p>Een inhoudelijke\
+            \ toelichting op de toepassing van het informatie-element.</p></body>"
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
@@ -986,7 +993,7 @@ components:
               \ van is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing\
               \ van het informatie-element.</p></body>"
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        gedefinieerdelocaties:
+        locaties:
           title: "definieert"
           type: "array"
           description: "<body><p>De locatieaanduiding begrenst de juridische werking\
@@ -1001,12 +1008,25 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+        locaties:
+          title: "omvat"
+          type: "array"
+          description: "<body><p>Een lijn van een lijnengroep.</p></body><body><p>Een\
+            \ punt van een puntengroep.</p></body><body><p>Een gebied van een gebiedengroep.</p></body><body><p>Deze\
+            \ relatie mag alleen lopen van een locatie van het type:</p><ul><li>puntengroep</li><li>lijnengroep</li><li>gebiedengroep</li></ul><p>in\
+            \ dat geval mag deze dan ook alleen lopen naar resp. een punt, een lijn\
+            \ en een gebied.</p></body><body><p>Een inhoudelijke toelichting op de\
+            \ toepassing van het informatie-element.</p></body><body><p>Een inhoudelijke\
+            \ toelichting op de toepassing van het informatie-element.</p></body><body><p>Een\
+            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          items:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     Regeltekst_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        regelteksten:
+        gerelateerderegelteksten:
           title: "gerelateerd"
           type: "array"
           description: "<body><p>Verwijzing dat aangeeft dat er een bijzondere relatie\
@@ -1014,38 +1034,59 @@ components:
             \ toelichting op de toepassing van het informatie-element.</p></body>"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+        locaties:
+          title: "heeftWerkingIn"
+          type: "array"
+          description: "<body><p>Het werkingsgebied c.q. de locatie begrenst de juridische\
+            \ werking van de regeltekst, in juridische zin, te weten dat deze regeltekst\
+            \ alleen binnen dit werkingsgebied juridische werkingskracht heeft. Het\
+            \ werkingsgebied van de regeltekst is altijd aanwezig. Deze is dekkend\
+            \ voor de locaties/gebieden die in de regeltekst zijn genoemd. Deze locaties/gebieden\
+            \ worden genoemd in regels die gaan over een activiteit, functie, omgevingsnorm,\
+            \ omgevingswaarde of beperkingengebied. Het werkingsgebied van de regeltekst\
+            \ is maximaal het grondgebied van het bevoegde gezag zelf.</p></body><body><p>Een\
+            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          minItems: 1
+          items:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     Activiteit_embedded:
       type: "object"
       properties:
+        bovenliggendeActiviteiten:
+          $ref: "#/components/schemas/ActiviteitHal"
         juridischeRegelsVoorIedereen:
           title: "betreft een activiteit"
           type: "array"
           description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
             \ relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)\
-            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Bij\
-            \ een regel die een activiteit vastlegt geeft deze relatie aan om welke\
-            \ activiteit het gaat. De bijbehorende locatie(s) waar het om gaat is/zijn\
-            \ bij de activiteit zelf te vinden.</p></body><body><p>Bij een regel die\
-            \ een activiteit vastlegt geeft deze relatie aan om welke activiteit het\
-            \ gaat. De bijbehorende locatie(s) waar het om gaat is/zijn bij de activiteit\
-            \ zelf te vinden.</p></body><body><p>Een inhoudelijke toelichting op de\
-            \ toepassing van het informatie-element.</p></body>"
+            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een\
+            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           minItems: 1
           items:
             $ref: "#/components/schemas/JuridischeRegelVoorIedereenHal"
+        gerelateerdeActiviteiten:
+          title: "gerelateerd"
+          type: "array"
+          description: "<body><p>De regels die gelden voor de gerelateerde activiteit(en)\
+            \ zijn contextueel relevant voor deze activiteit. Toelichting: Met contextueel\
+            \ relevant wordt bedoeld dat de regels die gelden voor de gerelateerde\
+            \ activiteit, binnen die gegeven context ook gelden voor deze activiteit.
+            \_Bijvoorbeeld omdat de ene activiteit altijd samen met de andere activiteit(en)\
+            \ worden uitgevoerd en de regels van beide daarmee allebei tegelijk aan\
+            \ de orde zijn. Als de beschreven context waarin de regels behorende bij\
+            \ de gerelateerde activiteit gelden niet aan de orde is, dan gelden de\
+            \ regels van de gerelateerde activiteit niet. Of de context aan de orde\
+            \ is, is niet opgenomen als informatie. Deze relatie geeft daarom, informatiekundig\
+            \ gezien, aan dat elke regel die geldt voor de gerelateerde activiteit\
+            \ relevant kan zijn voor het uitvoeren van deze activiteit. Gerelateerde\
+            \ activiteiten kunnen van hetzelfde type zijn, bijvoorbeeld twee milieubelastende\
+            \ activiteiten, maar dat hoeft niet.</p></body><body><p>Een inhoudelijke\
+            \ toelichting op de toepassing van het informatie-element.</p></body>"
+          items:
+            $ref: "#/components/schemas/ActiviteitHal"
     JuridischeRegelVoorIedereen_embedded:
       type: "object"
       properties:
-        gekwalificeerdelocaties:
-          title: "kwalificeert"
-          type: "array"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body>"
-          minItems: 1
-          items:
-            $ref: "#/components/schemas/LocatieHal"
-        regelteksten:
-          $ref: "#/components/schemas/RegeltekstHal"
         gedefinieerdelocaties:
           title: "definieert"
           type: "array"
@@ -1056,6 +1097,112 @@ components:
           minItems: 1
           items:
             $ref: "#/components/schemas/LocatieHal"
+        regelteksten:
+          $ref: "#/components/schemas/RegeltekstHal"
+    Locatie_embedded:
+      type: "object"
+      properties:
+        locaties:
+          title: "omvat"
+          type: "array"
+          description: "<body><p>Een lijn van een lijnengroep.</p></body><body><p>Een\
+            \ punt van een puntengroep.</p></body><body><p>Een gebied van een gebiedengroep.</p></body><body><p>Deze\
+            \ relatie mag alleen lopen van een locatie van het type:</p><ul><li>puntengroep</li><li>lijnengroep</li><li>gebiedengroep</li></ul><p>in\
+            \ dat geval mag deze dan ook alleen lopen naar resp. een punt, een lijn\
+            \ en een gebied.</p></body><body><p>Deze relatie mag alleen lopen van\
+            \ een locatie van het type:</p><ul><li>puntengroep</li><li>lijnengroep</li><li>gebiedengroep</li></ul><p>in\
+            \ dat geval mag deze dan ook alleen lopen naar resp. een punt, een lijn\
+            \ en een gebied.</p></body><body><p>Een inhoudelijke toelichting op de\
+            \ toepassing van het informatie-element.</p></body><body><p>Een inhoudelijke\
+            \ toelichting op de toepassing van het informatie-element.</p></body><body><p>Een\
+            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          items:
+            $ref: "#/components/schemas/LocatieHal"
+    Regeltekst_embedded:
+      type: "object"
+      properties:
+        gerelateerderegelteksten:
+          title: "gerelateerd"
+          type: "array"
+          description: "<body><p>Verwijzing dat aangeeft dat er een bijzondere relatie\
+            \ bestaat tussen twee Regelteksten.</p></body><body><p>Een inhoudelijke\
+            \ toelichting op de toepassing van het informatie-element.</p></body>"
+          items:
+            $ref: "#/components/schemas/RegeltekstHal"
+        locaties:
+          title: "heeft werking in"
+          type: "array"
+          description: "<body><p>Het werkingsgebied c.q. de locatie begrenst de juridische\
+            \ werking van de regeltekst, in juridische zin, te weten dat deze regeltekst\
+            \ alleen binnen dit werkingsgebied juridische werkingskracht heeft. Het\
+            \ werkingsgebied van de regeltekst is altijd aanwezig. Deze is dekkend\
+            \ voor de locaties/gebieden die in de regeltekst zijn genoemd. Deze locaties/gebieden\
+            \ worden genoemd in regels die gaan over een activiteit, functie, omgevingsnorm,\
+            \ omgevingswaarde of beperkingengebied. Het werkingsgebied van de regeltekst\
+            \ is maximaal het grondgebied van het bevoegde gezag zelf.</p></body><body><p>Een\
+            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/LocatieHal"
+
+    ActiviteitLocatieaanduidingHal:
+      allOf:
+      - $ref: "#/components/schemas/ActiviteitLocatieaanduiding"
+      - type: "object"
+        properties:
+          _links:
+            $ref: "#/components/schemas/ActiviteitLocatieaanduiding_links"
+          _embedded:
+            $ref: "#/components/schemas/ActiviteitLocatieaanduiding_embedded"
+    ActiviteitLocatieaanduiding_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+        activiteiten:
+          title: "betreftEenActiviteit"
+          type: "object"
+          description: ""
+          items:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+        locaties:
+          allOf:
+          - title: "kwalificeert"
+            type: "array"
+            description: ""
+          - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+    ActiviteitLocatieaanduiding_embedded:
+      type: "object"
+      properties:
+        activiteiten:
+          $ref: "#/components/schemas/ActiviteitHal"
+        locaties:
+          $ref: "#/components/schemas/LocatieHal"
+
+    ActiviteitLocatieaanduiding:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      required:
+      - "activiteitIdentificatie"
+      - "activiteitregelkwalificatie"
+      - "identificatie"
+      - "locatieIdentificatie"
+      properties:
+        activiteitIdentificatie:
+          type: string
+        activiteitregelkwalificatie:
+          allOf:
+          - $ref: "#/components/schemas/Activiteitregelkwalificatie"
+          - title: "activiteitregelkwalificatie"
+            description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+              \ het informatie-element.</p></body>"
+        identificatie:
+          type: string
+        locatieIdentificatie:
+          type: "array"
+          items:
+            type: string
     Activiteitengroep:
       type: "object"
       description: "<body><p>Een uitbreidbare lijst met een opsomming van de mogelijke\
@@ -1067,21 +1214,9 @@ components:
       - "waarde"
       properties:
         code:
-          type: "string"
-          title: "code"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
-            \ uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
         waarde:
-          type: "string"
-          title: "waarde"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
-            \ uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
     Activiteitregelkwalificatie:
       type: "object"
       description: "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden\
@@ -1093,21 +1228,9 @@ components:
       - "waarde"
       properties:
         code:
-          type: "string"
-          title: "code"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
-            \ uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
         waarde:
-          type: "string"
-          title: "waarde"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
-            \ uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
     Idealisatie:
       type: "object"
       description: "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden\
@@ -1119,21 +1242,9 @@ components:
       - "waarde"
       properties:
         code:
-          type: "string"
-          title: "code"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
-            \ uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
         waarde:
-          type: "string"
-          title: "waarde"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
-            \ uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
     Soortregeling:
       type: "object"
       description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
@@ -1143,21 +1254,9 @@ components:
       - "waarde"
       properties:
         code:
-          type: "string"
-          title: "code"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
-            \ uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
         waarde:
-          type: "string"
-          title: "waarde"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
-            \ uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
     Thema:
       type: "object"
       description: "<body><p>Een limitatieve lijst met een opsomming van de mogelijke\
@@ -1169,21 +1268,9 @@ components:
       - "waarde"
       properties:
         code:
-          type: "string"
-          title: "code"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
-            \ uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
         waarde:
-          type: "string"
-          title: "waarde"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van deze attribuutsoort kunnen hebben oftewel het waardenbereik,\
-            \ uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
     WaardeEenheid:
       type: "object"
       description: "<body><p>Een specifieke datatype voor het vastleggen van waarden\
@@ -1193,29 +1280,22 @@ components:
       - "waarde"
       properties:
         eenheid:
-          type: "string"
-          title: "eenheid"
-          description: "<body><p>De grootheid waarin een numerieke waarde wordt uitgedrukt.</p></body><body><p>De\
-            \ verzameling van waarden die gegevens van deze attribuutsoort kunnen\
-            \ hebben, oftewel het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
         waarde:
-          type: "string"
-          title: "waarde"
-          description: "<body><p>Een numerieke waarde.</p></body><body><p>De verzameling\
-            \ van waarden die gegevens van deze attribuutsoort kunnen hebben, oftewel\
-            \ het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          type: string
     GeometrieType:
       type: "string"
-      description: "<body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body>"
+      description: "<body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body><body><ul><li>`MultiSurface`\
+        \ - GM_MultiSurface</li><li>`Surface` - GM_Surface</li><li>`MultiLineString`\
+        \ - GM_MultiLineString</li><li>`LineString` - GM_LineString</li><li>`MultiPoint`\
+        \ - GM_MultiPoint</li><li>`Point` - GM_Point</li></ul></body>"
       enum:
-      - "GM_MultiSurface"
-      - "GM_Surface"
-      - "GM_MultiLineString"
-      - "GM_LineString"
-      - "GM_MultiPoint"
-      - "GM_Point"
+      - "MultiSurface"
+      - "Surface"
+      - "MultiLineString"
+      - "LineString"
+      - "MultiPoint"
+      - "Point"
     LocatieType:
       type: "string"
       description: "<body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body>"
