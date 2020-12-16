@@ -57,6 +57,12 @@ paths:
           schema:
             type: string
         - in: query
+          name: inclusiefvervallen
+          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
+          required: false
+          schema:
+            type: boolean
+        - in: query
           name: juridischeregelvooriedereenidentificatie
           description: ""
           required: false
@@ -71,10 +77,17 @@ paths:
             format: date
         - in: query
           name: naam
-          description: "Een (korte) omschrijving van de activiteit."
+          description: "<body><p>Een (korte) omschrijving van de activiteit.</p></body>"
           required: false
           schema:
             type: string
+        - in: query
+          name: vanafdatum
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -126,12 +139,26 @@ paths:
       operationId: Getactiviteit
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
-          description: "De unieke identificatie waaronder elk object van dit type bekend is."
+          description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body>"
           required: true
           schema:
             type: string
+        - in: query
+          name: inclusiefvervallen
+          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: vanafdatum
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -196,11 +223,31 @@ paths:
           schema:
             type: string
         - in: query
+          name: begindatum
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: einddatum
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
           name: identificatie
           description: "<body><p>Dit attribute is</p></body><body><p>Dit attribute is</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
             type: string
+        - in: query
+          name: inclusiefvervallen
+          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
+          required: false
+          schema:
+            type: boolean
         - in: query
           name: locatieidentificatie
           description: ""
@@ -225,6 +272,13 @@ paths:
           required: false
           schema:
             type: string
+        - in: query
+          name: vanafdatum
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -276,12 +330,26 @@ paths:
       operationId: GetjuridischeRegelVoorIedereen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
-          description: "Een inhoudelijke toelichting op de toepassing van het informatie-element.De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur."
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           required: true
           schema:
             type: string
+        - in: query
+          name: inclusiefvervallen
+          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: vanafdatum
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -338,7 +406,6 @@ paths:
           schema:
             type: integer
             minimum: 1
-        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: query
           name: begindatum
           description: ""
@@ -355,13 +422,13 @@ paths:
             format: date
         - in: query
           name: geometrie
-          description: "De geometrische bepaling van de lijn door middel van coördinaten. De geometrische bepaling van het gebied door middel van coördinaten. De geometrische bepaling van de punt door middel van coördinaten.Een inhoudelijke toelichting op de toepassing van het informatie-element."
+          description: "<body><p>De geometrische bepaling van de lijn door middel van coördinaten.</p></body><body><p>De geometrische bepaling van het gebied door middel van coördinaten.</p></body><body><p>De geometrische bepaling van de punt door middel van coÃ¶rdinaten.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
             type: string
         - in: query
           name: geometriebron
-          description: "De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie. De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie. De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.Een inhoudelijke toelichting op de toepassing van het informatie-element."
+          description: "<body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
             type: string
@@ -372,8 +439,14 @@ paths:
           schema:
             $ref: "#/components/schemas/GeometrieType"
         - in: query
+          name: inclusiefvervallen
+          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
+          required: false
+          schema:
+            type: boolean
+        - in: query
           name: noemer
-          description: "Tekstuele beschrijving van een Locatie, zodat er als zodanig over deze locatie gesproken kan worden. De beschrijving kan een bepaalde naam zijn waaronder de Locatie bekend staat, maar (lang) niet elke Locatie heef een naam.Bijvoorbeeld het hele werkingsgebied van bevoegd gezag, zoals ‘Het Koninkrijk der Nederlanden’ of gemeente 'Amersfoort'. Bijvoorbeeld een natuurgebied zoals de 'Veluwe' of de rivier de 'Rijn' of het centrum van een woonplaats 'centrum Apeldoorn'."
+          description: "<body><p>Tekstuele beschrijving van een Locatie, zodat er als zodanig over deze locatie gesproken kan worden. De beschrijving kan een bepaalde naam zijn waaronder de Locatie bekend staat, maar (lang) niet elke Locatie heef een naam.</p></body><body><p>Bijvoorbeeld het hele werkingsgebied van bevoegd gezag, zoals ‘Het Koninkrijk der Nederlanden’ of gemeente 'Amersfoort'. Bijvoorbeeld een natuurgebied zoals de 'Veluwe' of de rivier de 'Rijn' of het centrum van een woonplaats 'centrum Apeldoorn'.</p></body>"
           required: false
           schema:
             type: string
@@ -389,6 +462,13 @@ paths:
           required: false
           schema:
             $ref: "#/components/schemas/LocatieType"
+        - in: query
+          name: vanafdatum
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -442,10 +522,23 @@ paths:
       parameters: 
         - in: path
           name: identificatie
-          description: "De unieke identificatie waaronder elk object van dit type bekend is.Een inhoudelijke toelichting op de toepassing van het informatie-element.De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur."
+          description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           required: true
           schema:
             type: string
+        - in: query
+          name: inclusiefvervallen
+          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: vanafdatum
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -511,6 +604,24 @@ paths:
             type: string
             format: date
         - in: query
+          name: codebevoegdgezag
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: documentidentificatie
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: documentopschrift
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+          required: false
+          schema:
+            type: string
+        - in: query
           name: einddatum
           description: ""
           required: false
@@ -524,6 +635,12 @@ paths:
           schema:
             type: string
         - in: query
+          name: inclusiefvervallen
+          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
+          required: false
+          schema:
+            type: boolean
+        - in: query
           name: laatstewijzigingsdatum
           description: ""
           required: false
@@ -531,17 +648,42 @@ paths:
             type: string
             format: date
         - in: query
+          name: label
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          required: false
+          schema:
+            type: string
+        - in: query
           name: locatieidentificatie
           description: ""
           required: false
           schema:
             type: string
         - in: query
-          name: omschrijving
-          description: "De letterlijke tekst waarmee de Regeltekst is omschreven, in een artikel of een lid. Een Regeltekst is altijd één doorlopend stuk juridische tekst, welke juridische regels bevat."
+          name: nummer
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
             type: string
+        - in: query
+          name: omschrijving
+          description: "<body><p>De letterlijke tekst waarmee de Regeltekst is omschreven, in een artikel of een lid. Een Regeltekst is altijd Ã©Ã©n doorlopend stuk juridische tekst, welke juridische regels bevat.</p></body>"
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: opschrift
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: vanafdatum
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -593,12 +735,26 @@ paths:
       operationId: Getregeltekst
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
-          description: "De unieke identificatie waaronder elk object van dit type bekend is."
+          description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body>"
           required: true
           schema:
             type: string
+        - in: query
+          name: inclusiefvervallen
+          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: vanafdatum
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -760,12 +916,24 @@ components:
         \ en/of functies en/of beperkingengebieden.</p></body><body><p>Een inhoudelijke\
         \ toelichting op de toepassing van het informatie-element.</p></body>"
       required:
+      - "begindatum"
+      - "einddatum"
       - "idealisatie"
       - "identificatie"
       - "locatieIdentificatie"
       - "omschrijving"
       - "regeltekstIdentificatie"
       properties:
+        begindatum:
+          type: "string"
+          title: "begindatum"
+          description: ""
+          format: "date"
+        einddatum:
+          type: "string"
+          title: "einddatum"
+          description: ""
+          format: "date"
         idealisatie:
           allOf:
           - $ref: "#/components/schemas/Idealisatie"
@@ -783,7 +951,7 @@ components:
         normeertEenActiviteit:
           type: "array"
           items:
-            $ref: "#/components/schemas/ActiviteitLocatieaanduidingHal"
+            $ref: "#/components/schemas/ActiviteitLocatieaanduiding"
         omschrijving:
           type: string
         regeltekstIdentificatie:
@@ -811,8 +979,6 @@ components:
         properties:
           _links:
             $ref: "#/components/schemas/Locatie_links"
-          _embedded:
-            $ref: "#/components/schemas/Locatie_embedded"
     Locatie:
       type: "object"
       description: "<body><p>Duiding van een geografische positie. Indien er naar\
@@ -879,6 +1045,7 @@ components:
         \ onlosmakelijk bij elkaar en hebben gezamenlijk één werkingsgebied.</p></body>"
       required:
       - "begindatum"
+      - "documentComponent"
       - "einddatum"
       - "identificatie"
       - "laatsteWijzigingsdatum"
@@ -890,6 +1057,8 @@ components:
           title: "begindatum"
           description: ""
           format: "date"
+        documentComponent:
+          $ref: "#/components/schemas/DocumentComponent"
         einddatum:
           type: "string"
           title: "einddatum"
@@ -923,7 +1092,7 @@ components:
           description: "<body><p>De regels die gelden voor de gerelateerde activiteit(en)\
             \ zijn contextueel relevant voor deze activiteit. Toelichting: Met contextueel\
             \ relevant wordt bedoeld dat de regels die gelden voor de gerelateerde\
-            \ activiteit, binnen die gegeven context ook gelden voor deze activiteit.
+            \ activiteit, binnen die gegeven context ook gelden voor deze activiteit.\
             \_Bijvoorbeeld omdat de ene activiteit altijd samen met de andere activiteit(en)\
             \ worden uitgevoerd en de regels van beide daarmee allebei tegelijk aan\
             \ de orde zijn. Als de beschreven context waarin de regels behorende bij\
@@ -941,7 +1110,7 @@ components:
           allOf:
           - title: "is"
             type: "object"
-            description: "<body><p>Met “is (een)‿ wordt een bepaalde activiteit\
+            description: "<body><p>Met "is (een)" wordt een bepaalde activiteit\
               \ rechtstreeks verbonden met een andere activiteit van hetzelfde type\
               \ (van specifiek naar generiek). Toelichting: Met een activiteit van\
               \ hetzelfde type wordt bedoeld dat andere regels (generieker) contextueel\
@@ -965,11 +1134,6 @@ components:
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-    DocumentComponent_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     JuridischeRegelVoorIedereen_links:
       type: "object"
       properties:
@@ -993,7 +1157,15 @@ components:
               \ van is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing\
               \ van het informatie-element.</p></body>"
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        locaties:
+        gekwalificeerdeLocaties:
+          title: "kwalificeert"
+          type: "array"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minItems: 1
+          items:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+        gedefinieerdeLocaties:
           title: "definieert"
           type: "array"
           description: "<body><p>De locatieaanduiding begrenst de juridische werking\
@@ -1052,8 +1224,6 @@ components:
     Activiteit_embedded:
       type: "object"
       properties:
-        bovenliggendeActiviteiten:
-          $ref: "#/components/schemas/ActiviteitHal"
         juridischeRegelsVoorIedereen:
           title: "betreft een activiteit"
           type: "array"
@@ -1064,26 +1234,6 @@ components:
           minItems: 1
           items:
             $ref: "#/components/schemas/JuridischeRegelVoorIedereenHal"
-        gerelateerdeActiviteiten:
-          title: "gerelateerd"
-          type: "array"
-          description: "<body><p>De regels die gelden voor de gerelateerde activiteit(en)\
-            \ zijn contextueel relevant voor deze activiteit. Toelichting: Met contextueel\
-            \ relevant wordt bedoeld dat de regels die gelden voor de gerelateerde\
-            \ activiteit, binnen die gegeven context ook gelden voor deze activiteit.
-            \_Bijvoorbeeld omdat de ene activiteit altijd samen met de andere activiteit(en)\
-            \ worden uitgevoerd en de regels van beide daarmee allebei tegelijk aan\
-            \ de orde zijn. Als de beschreven context waarin de regels behorende bij\
-            \ de gerelateerde activiteit gelden niet aan de orde is, dan gelden de\
-            \ regels van de gerelateerde activiteit niet. Of de context aan de orde\
-            \ is, is niet opgenomen als informatie. Deze relatie geeft daarom, informatiekundig\
-            \ gezien, aan dat elke regel die geldt voor de gerelateerde activiteit\
-            \ relevant kan zijn voor het uitvoeren van deze activiteit. Gerelateerde\
-            \ activiteiten kunnen van hetzelfde type zijn, bijvoorbeeld twee milieubelastende\
-            \ activiteiten, maar dat hoeft niet.</p></body><body><p>Een inhoudelijke\
-            \ toelichting op de toepassing van het informatie-element.</p></body>"
-          items:
-            $ref: "#/components/schemas/ActiviteitHal"
     JuridischeRegelVoorIedereen_embedded:
       type: "object"
       properties:
@@ -1099,36 +1249,9 @@ components:
             $ref: "#/components/schemas/LocatieHal"
         regelteksten:
           $ref: "#/components/schemas/RegeltekstHal"
-    Locatie_embedded:
-      type: "object"
-      properties:
-        locaties:
-          title: "omvat"
-          type: "array"
-          description: "<body><p>Een lijn van een lijnengroep.</p></body><body><p>Een\
-            \ punt van een puntengroep.</p></body><body><p>Een gebied van een gebiedengroep.</p></body><body><p>Deze\
-            \ relatie mag alleen lopen van een locatie van het type:</p><ul><li>puntengroep</li><li>lijnengroep</li><li>gebiedengroep</li></ul><p>in\
-            \ dat geval mag deze dan ook alleen lopen naar resp. een punt, een lijn\
-            \ en een gebied.</p></body><body><p>Deze relatie mag alleen lopen van\
-            \ een locatie van het type:</p><ul><li>puntengroep</li><li>lijnengroep</li><li>gebiedengroep</li></ul><p>in\
-            \ dat geval mag deze dan ook alleen lopen naar resp. een punt, een lijn\
-            \ en een gebied.</p></body><body><p>Een inhoudelijke toelichting op de\
-            \ toepassing van het informatie-element.</p></body><body><p>Een inhoudelijke\
-            \ toelichting op de toepassing van het informatie-element.</p></body><body><p>Een\
-            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          items:
-            $ref: "#/components/schemas/LocatieHal"
     Regeltekst_embedded:
       type: "object"
       properties:
-        gerelateerderegelteksten:
-          title: "gerelateerd"
-          type: "array"
-          description: "<body><p>Verwijzing dat aangeeft dat er een bijzondere relatie\
-            \ bestaat tussen twee Regelteksten.</p></body><body><p>Een inhoudelijke\
-            \ toelichting op de toepassing van het informatie-element.</p></body>"
-          items:
-            $ref: "#/components/schemas/RegeltekstHal"
         locaties:
           title: "heeft werking in"
           type: "array"
@@ -1144,41 +1267,6 @@ components:
           minItems: 1
           items:
             $ref: "#/components/schemas/LocatieHal"
-
-    ActiviteitLocatieaanduidingHal:
-      allOf:
-      - $ref: "#/components/schemas/ActiviteitLocatieaanduiding"
-      - type: "object"
-        properties:
-          _links:
-            $ref: "#/components/schemas/ActiviteitLocatieaanduiding_links"
-          _embedded:
-            $ref: "#/components/schemas/ActiviteitLocatieaanduiding_embedded"
-    ActiviteitLocatieaanduiding_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        activiteiten:
-          title: "betreftEenActiviteit"
-          type: "object"
-          description: ""
-          items:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        locaties:
-          allOf:
-          - title: "kwalificeert"
-            type: "array"
-            description: ""
-          - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-    ActiviteitLocatieaanduiding_embedded:
-      type: "object"
-      properties:
-        activiteiten:
-          $ref: "#/components/schemas/ActiviteitHal"
-        locaties:
-          $ref: "#/components/schemas/LocatieHal"
-
     ActiviteitLocatieaanduiding:
       type: "object"
       description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
@@ -1231,6 +1319,32 @@ components:
           type: string
         waarde:
           type: string
+    DocumentComponent:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      required:
+      - "codeBevoegdGezag"
+      - "documentIdentificatie"
+      - "documentOpschrift"
+      - "documentType"
+      properties:
+        codeBevoegdGezag:
+          type: string
+        documentIdentificatie:
+          type: string
+        documentOpschrift:
+          type: string
+        documentType:
+          allOf:
+          - $ref: "#/components/schemas/Soortregeling"
+          - title: "documentType"
+            description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+              \ het informatie-element.</p></body><body><p>De verzameling van waarden\
+              \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen\
+              \ het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+        kop:
+          $ref: "#/components/schemas/Kop"
     Idealisatie:
       type: "object"
       description: "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden\
@@ -1244,6 +1358,17 @@ components:
         code:
           type: string
         waarde:
+          type: string
+    Kop:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      properties:
+        label:
+          type: string
+        nummer:
+          type: string
+        opschrift:
           type: string
     Soortregeling:
       type: "object"
