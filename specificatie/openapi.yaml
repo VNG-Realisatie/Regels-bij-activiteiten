@@ -1124,7 +1124,7 @@ components:
               \ regels, mogelijk wel vanuit andere regels.</p></body><body><p>Een\
               \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        juridischeRegelsVoorIedereen:
+        bijbehorendeJuridischeRegelsVoorIedereen:
           title: "kent"
           type: "array"
           description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
@@ -1139,7 +1139,7 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        gedefinieerdelocaties:
+        gedefinieerdeLocaties:
           title: "definieert"
           type: "array"
           description: "<body><p>De locatieaanduiding begrenst de juridische werking\
@@ -1149,7 +1149,7 @@ components:
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        regelteksten:
+        omvattendeRegelteksten:
           allOf:
           - title: "isOpgenomenIn"
             type: "object"
@@ -1165,22 +1165,21 @@ components:
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        gedefinieerdeLocaties:
-          title: "definieert"
-          type: "array"
-          description: "<body><p>De locatieaanduiding begrenst de juridische werking\
-            \ van de regel in juridische zin, te weten dat de regel alleen binnen\
-            \ dit werkingsgebied werkingskracht heeft.</p></body><body><p>Een inhoudelijke\
-            \ toelichting op de toepassing van het informatie-element.</p></body>"
-          minItems: 1
-          items:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+        betreffendeActiviteiten:
+          allOf:
+          - title: "betreftEenActiviteit"
+            type: "object"
+            description: "<body><p>Bij een regel die een activiteit vastlegt geeft\
+              \ deze relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)\
+              \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een\
+              \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     Locatie_links:
       type: "object"
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        locaties:
+        omvattendeLocaties:
           title: "omvat"
           type: "array"
           description: "<body><p>Een lijn van een lijnengroep.</p></body><body><p>Een\
@@ -1198,7 +1197,7 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        gerelateerderegelteksten:
+        gerelateerdeRegelteksten:
           title: "gerelateerd"
           type: "array"
           description: "<body><p>Verwijzing dat aangeeft dat er een bijzondere relatie\
@@ -1206,7 +1205,7 @@ components:
             \ toelichting op de toepassing van het informatie-element.</p></body>"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        locaties:
+        betreffendeLocaties:
           title: "heeftWerkingIn"
           type: "array"
           description: "<body><p>Het werkingsgebied c.q. de locatie begrenst de juridische\
@@ -1224,7 +1223,7 @@ components:
     Activiteit_embedded:
       type: "object"
       properties:
-        juridischeRegelsVoorIedereen:
+        bijbehorendeJuridischeRegelsVoorIedereen:
           title: "betreft een activiteit"
           type: "array"
           description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
@@ -1237,7 +1236,7 @@ components:
     JuridischeRegelVoorIedereen_embedded:
       type: "object"
       properties:
-        gedefinieerdelocaties:
+        gedefinieerdeLocaties:
           title: "definieert"
           type: "array"
           description: "<body><p>De locatieaanduiding begrenst de juridische werking\
@@ -1247,12 +1246,12 @@ components:
           minItems: 1
           items:
             $ref: "#/components/schemas/LocatieHal"
-        regelteksten:
+        omvattendeRegelteksten:
           $ref: "#/components/schemas/RegeltekstHal"
     Regeltekst_embedded:
       type: "object"
       properties:
-        locaties:
+        betreffendeLocaties:
           title: "heeft werking in"
           type: "array"
           description: "<body><p>Het werkingsgebied c.q. de locatie begrenst de juridische\
