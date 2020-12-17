@@ -646,19 +646,19 @@ paths:
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
-            $ref: "#/components/schemas/Xs:string"
+            type: string
         - in: query
           name: kopnummer
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
-            $ref: "#/components/schemas/Xs:string"
+            type: string
         - in: query
           name: kopopschrift
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
-            $ref: "#/components/schemas/Xs:string"
+            type: string
         - in: query
           name: laatstewijzigingsdatum
           description: ""
