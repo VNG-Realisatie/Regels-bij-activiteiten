@@ -48,3 +48,6 @@ Tijdens het ontwerpproces riepen een aantal zaken de volgende vragen op:
 * Er wordt aangegeven dat men het attribute ‘origineel coördinatensysteem’ in de resource ‘locatie’ opgenomen wil hebben. Op dit moment is dat 
 nog niet opgenomen omdat het de praktijk is om dit als 'acceptCRS' en ‘contentCRS’ in de header van het berichten op te nemen. De vraag is echter of er 
 redenen zijn waarom je dit juist in de content zou willen opnemen?
+* Hier en daar zijn door platslaan attributes elders terecht gekomen waardoor er een noodzaak was de namen te wijzigen. Ook is in de OAS3 specificatie 
+bij relaties tussen resources niet de namen van die relaties gebruikt maar van de daaraan gekoppelde resources, echter bij meerdere relaties naar dezelfde andere 
+resource zijn de namen gedifferentieerd. Verzoek is om de gekozen naamgeving kritisch tegen het daglicht te houden.
