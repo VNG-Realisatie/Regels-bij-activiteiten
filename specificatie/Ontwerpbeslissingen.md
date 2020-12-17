@@ -1,5 +1,10 @@
 # Ontwerpbeslissingen
 
+Het uitwisselingsgegevensmodel is ontworpen op basis van het onderstaande CIMOW:
+
+![CIM](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/blob/main/specificatie/CIM%20Koppeling%20PlanSW%20en%20TRSW.jpg)
+
+
 Bij het ontwerpen van de OAS specificatie op basis van het CIMOW hebben we de volgende besluiten t.o.v. dat CIMOW en de ons aangeleverde specificaties ('Notitie specificatie juridische regels-API 20200312.docx') genomen:
 
 * Aan de entiteittypes 'activiteit', 'juridischeRegelVoorIedereen', 'locatie' en 'regeltekst' zijn de volgende attributes t.b.v. historie toegevoegd:
