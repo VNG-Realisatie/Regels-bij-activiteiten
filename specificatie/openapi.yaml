@@ -611,32 +611,14 @@ paths:
           schema:
             type: string
         - in: query
-          name: codebevoegdgezag
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
           name: documentidentificatie
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
             type: string
         - in: query
-          name: documentidentificatie
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
           name: documentopschrift
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: documentopschrift
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           required: false
           schema:
             type: string
@@ -685,32 +667,14 @@ paths:
             type: string
             format: date
         - in: query
-          name: label
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
           name: locatieidentificaties
           description: ""
           required: false
           schema:
             type: string
         - in: query
-          name: nummer
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
           name: omschrijving
           description: "<body><p>De letterlijke tekst waarmee de Regeltekst is omschreven, in een artikel of een lid. Een Regeltekst is altijd één doorlopend stuk juridische tekst, welke juridische regels bevat.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: opschrift
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
             type: string
