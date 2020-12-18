@@ -1,6 +1,6 @@
 # Ontwerpbeslissingen
 
-Het uitwisselingsgegevensmodel is ontworpen op basis van het onderstaande CIMOW:
+Het uitwisselingsgegevensmodel is ontworpen op basis van het onderstaande gedeelte van het CIMOW (versie 1.0.4):
 
 ![CIM](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/blob/main/specificatie/CIM%20Koppeling%20PlanSW%20en%20TRSW.jpg)
 
