@@ -21,7 +21,7 @@
 * [API strategie en URI strategie](https://aandeslagmetdeomgevingswet.nl/digitaal-stelsel/documenten/documenten/api-uri-strategie/)
 
 ## Contactpersonen:
-* Product Owner: ...
+* Product Owner a.i.: Arjan Kloosterboer arjan.kloosterboer@vng.nl
 * Berichtontwerpers: Robert Melskens robert.melskens@vng.nl, Johan Boer johan.boer@vng.nl
 
 ## Licentie
