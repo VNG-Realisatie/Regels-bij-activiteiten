@@ -1,43 +1,6 @@
 {
 	"components": {
 		"schemas": {
-			"ActiviteitHalCollectie": {
-				"type": "object",
-				"properties": {
-					"_links": {
-						"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalPaginationLinks"
-					},
-					"_embedded": {
-						"type": "object",
-						"properties": {
-							"activiteiten": {
-								"type": "array",
-								"items": {
-									"$ref": "#/components/schemas/ActiviteitHal"
-								}
-							}
-						}
-					}
-				}
-			},
-			"ActiviteitHal": {
-				"allOf": [
-					{
-						"$ref": "#/components/schemas/Activiteit"
-					},
-					{
-						"type": "object",
-						"properties": {
-							"_links": {
-								"$ref": "#/components/schemas/Activiteit_links"
-							},
-							"_embedded": {
-								"$ref": "#/components/schemas/Activiteit_embedded"
-							}
-						}
-					}
-				]
-			},
 			"Activiteit": {
 				"type": "object",
 				"description": "<body><p>Een activiteit is ieder menselijk handelen waarbij, of ieder menselijk nalaten waardoor een verandering of effect in de fysieke leefomgeving wordt of kan worden bewerkstelligd.</p></body><body><p>Er wordt niet een activiteit bedoeld die een initiatiefnemer voorgenomen is om uit te voeren, maar het type activiteit waarover regels opgesteld zijn. De regel geeft aan dat activiteiten van een bepaald type activiteit wel of niet zijn toegestaan zijn op deze locatie en onder welke voorwaarden.</p></body>",
@@ -91,7 +54,7 @@
 						]
 					},
 					"identificatie": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"juridischeRegelVoorIedereenIdentificaties": {
 						"type": "array",
@@ -110,46 +73,9 @@
 						"format": "date"
 					},
 					"naam": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					}
 				}
-			},
-			"JuridischeRegelVoorIedereenHalCollectie": {
-				"type": "object",
-				"properties": {
-					"_links": {
-						"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalPaginationLinks"
-					},
-					"_embedded": {
-						"type": "object",
-						"properties": {
-							"juridischeregelsvooriedereen": {
-								"type": "array",
-								"items": {
-									"$ref": "#/components/schemas/JuridischeRegelVoorIedereenHal"
-								}
-							}
-						}
-					}
-				}
-			},
-			"JuridischeRegelVoorIedereenHal": {
-				"allOf": [
-					{
-						"$ref": "#/components/schemas/JuridischeRegelVoorIedereen"
-					},
-					{
-						"type": "object",
-						"properties": {
-							"_links": {
-								"$ref": "#/components/schemas/JuridischeRegelVoorIedereen_links"
-							},
-							"_embedded": {
-								"$ref": "#/components/schemas/JuridischeRegelVoorIedereen_embedded"
-							}
-						}
-					}
-				]
 			},
 			"JuridischeRegelVoorIedereen": {
 				"type": "object",
@@ -188,12 +114,12 @@
 						]
 					},
 					"identificatie": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"locatieIdentificaties": {
 						"type": "array",
 						"items": {
-							"type": "string"
+							"$ref": "#/components/schemas/Xs:string"
 						}
 					},
 					"normeertActiviteiten": {
@@ -203,10 +129,10 @@
 						}
 					},
 					"omschrijving": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"regeltekstIdentificatie": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"themas": {
 						"type": "array",
@@ -215,40 +141,6 @@
 						}
 					}
 				}
-			},
-			"LocatieHalCollectie": {
-				"type": "object",
-				"properties": {
-					"_links": {
-						"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalPaginationLinks"
-					},
-					"_embedded": {
-						"type": "object",
-						"properties": {
-							"locaties": {
-								"type": "array",
-								"items": {
-									"$ref": "#/components/schemas/LocatieHal"
-								}
-							}
-						}
-					}
-				}
-			},
-			"LocatieHal": {
-				"allOf": [
-					{
-						"$ref": "#/components/schemas/Locatie"
-					},
-					{
-						"type": "object",
-						"properties": {
-							"_links": {
-								"$ref": "#/components/schemas/Locatie_links"
-							}
-						}
-					}
-				]
 			},
 			"Locatie": {
 				"type": "object",
@@ -273,10 +165,10 @@
 						"format": "date"
 					},
 					"geometrie": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"geometrieBron": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"geometrieType": {
 						"$ref": "#/components/schemas/GeometrieType"
@@ -285,58 +177,21 @@
 						"$ref": "#/components/schemas/WaardeEenheid"
 					},
 					"identificatie": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"noemer": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"omvattendeLocatieIdentificaties": {
 						"type": "array",
 						"items": {
-							"type": "string"
+							"$ref": "#/components/schemas/Xs:string"
 						}
 					},
 					"type": {
 						"$ref": "#/components/schemas/LocatieType"
 					}
 				}
-			},
-			"RegeltekstHalCollectie": {
-				"type": "object",
-				"properties": {
-					"_links": {
-						"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalPaginationLinks"
-					},
-					"_embedded": {
-						"type": "object",
-						"properties": {
-							"regelteksten": {
-								"type": "array",
-								"items": {
-									"$ref": "#/components/schemas/RegeltekstHal"
-								}
-							}
-						}
-					}
-				}
-			},
-			"RegeltekstHal": {
-				"allOf": [
-					{
-						"$ref": "#/components/schemas/Regeltekst"
-					},
-					{
-						"type": "object",
-						"properties": {
-							"_links": {
-								"$ref": "#/components/schemas/Regeltekst_links"
-							},
-							"_embedded": {
-								"$ref": "#/components/schemas/Regeltekst_embedded"
-							}
-						}
-					}
-				]
 			},
 			"Regeltekst": {
 				"type": "object",
@@ -369,11 +224,11 @@
 					"gerelateerdeRegeltekstIdentificaties": {
 						"type": "array",
 						"items": {
-							"type": "string"
+							"$ref": "#/components/schemas/Xs:string"
 						}
 					},
 					"identificatie": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"laatsteWijzigingsdatum": {
 						"type": "string",
@@ -384,223 +239,11 @@
 					"locatieIdentificaties": {
 						"type": "array",
 						"items": {
-							"type": "string"
+							"$ref": "#/components/schemas/Xs:string"
 						}
 					},
 					"omschrijving": {
-						"type": "string"
-					}
-				}
-			},
-			"Activiteit_links": {
-				"type": "object",
-				"properties": {
-					"self": {
-						"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-					},
-					"gerelateerdeActiviteiten": {
-						"title": "gerelateerd",
-						"type": "array",
-						"description": "<body><p>De regels die gelden voor de gerelateerde activiteit(en) zijn contextueel relevant voor deze activiteit. Toelichting: Met contextueel relevant wordt bedoeld dat de regels die gelden voor de gerelateerde activiteit, binnen die gegeven context ook gelden voor deze activiteit. Bijvoorbeeld omdat de ene activiteit altijd samen met de andere activiteit(en) worden uitgevoerd en de regels van beide daarmee allebei tegelijk aan de orde zijn. Als de beschreven context waarin de regels behorende bij de gerelateerde activiteit gelden niet aan de orde is, dan gelden de regels van de gerelateerde activiteit niet. Of de context aan de orde is, is niet opgenomen als informatie. Deze relatie geeft daarom, informatiekundig gezien, aan dat elke regel die geldt voor de gerelateerde activiteit relevant kan zijn voor het uitvoeren van deze activiteit. Gerelateerde activiteiten kunnen van hetzelfde type zijn, bijvoorbeeld twee milieubelastende activiteiten, maar dat hoeft niet.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"items": {
-							"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-						}
-					},
-					"bovenliggendeActiviteit": {
-						"allOf": [
-							{
-								"title": "is",
-								"type": "object",
-								"description": "<body><p>Met “is (een)” wordt een bepaalde activiteit rechtstreeks verbonden met een andere activiteit van hetzelfde type (van specifiek naar generiek). Toelichting: Met een activiteit van hetzelfde type wordt bedoeld dat andere regels (generieker) contextueel wel of niet relevant kunnen zijn. Met contextueel relevant wordt bedoeld dat als in de regel staat dat een (generieke) activiteit van dit type een vergunningplicht geldt, onder bepaalde condities, dat deze condities worden vergeleken met de specifieke situatie van de (specifieke) activiteit die de initiatiefnemer voornemens is om te ontplooien. Als deze hieronder vallen, dan geldt voor de voorgenomen (specifieke) activiteit een vergunningplicht. In andere gevallen niet, althans niet vanuit deze regels, mogelijk wel vanuit andere regels.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-							},
-							{
-								"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-							}
-						]
-					},
-					"bijbehorendeJuridischeRegelsVoorIedereen": {
-						"title": "kent",
-						"type": "array",
-						"description": "<body><p>Bij een regel die een activiteit vastlegt geeft deze relatie aan om welke activiteit het gaat. De bijbehorende locatie(s) waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minItems": 1,
-						"items": {
-							"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-						}
-					},
-					"bijbehorendeJuridischeRegelsVoorIedereen": {
-						"title": "kent",
-						"type": "array",
-						"description": "<body><p>Bij een regel die een activiteit vastlegt geeft deze relatie aan om welke activiteit het gaat. De bijbehorende locatie(s) waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minItems": 1,
-						"items": {
-							"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-						}
-					}
-				}
-			},
-			"JuridischeRegelVoorIedereen_links": {
-				"type": "object",
-				"properties": {
-					"self": {
-						"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-					},
-					"gedefinieerdeLocaties": {
-						"title": "definieert",
-						"type": "array",
-						"description": "<body><p>De locatieaanduiding begrenst de juridische werking van de regel in juridische zin, te weten dat de regel alleen binnen dit werkingsgebied werkingskracht heeft.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minItems": 1,
-						"items": {
-							"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-						}
-					},
-					"omvattendeRegeltekst": {
-						"allOf": [
-							{
-								"title": "isOpgenomenIn",
-								"type": "object",
-								"description": "<body><p>Artikel of lid is waar de Juridische regel onderdeel van is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-							},
-							{
-								"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-							}
-						]
-					},
-					"gekwalificeerdeLocaties": {
-						"title": "kwalificeert",
-						"type": "array",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minItems": 1,
-						"items": {
-							"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-						}
-					},
-					"betreffendeActiviteit": {
-						"allOf": [
-							{
-								"title": "betreftEenActiviteit",
-								"type": "object",
-								"description": "<body><p>Bij een regel die een activiteit vastlegt geeft deze relatie aan om welke activiteit het gaat. De bijbehorende locatie(s) waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-							},
-							{
-								"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-							}
-						]
-					},
-					"omvattendeRegeltekst": {
-						"allOf": [
-							{
-								"title": "isOpgenomenIn",
-								"type": "object",
-								"description": "<body><p>Artikel of lid is waar de Juridische regel onderdeel van is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-							},
-							{
-								"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-							}
-						]
-					},
-					"gedefinieerdeLocaties": {
-						"title": "definieert",
-						"type": "array",
-						"description": "<body><p>De locatieaanduiding begrenst de juridische werking van de regel in juridische zin, te weten dat de regel alleen binnen dit werkingsgebied werkingskracht heeft.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minItems": 1,
-						"items": {
-							"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-						}
-					}
-				}
-			},
-			"Locatie_links": {
-				"type": "object",
-				"properties": {
-					"self": {
-						"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-					},
-					"omvattendeLocaties": {
-						"title": "omvat",
-						"type": "array",
-						"description": "<body><p>Een lijn van een lijnengroep.</p></body><body><p>Een punt van een puntengroep.</p></body><body><p>Een gebied van een gebiedengroep.</p></body><body><p>Deze relatie mag alleen lopen van een locatie van het type:</p><ul><li>puntengroep</li><li>lijnengroep</li><li>gebiedengroep</li></ul><p>in dat geval mag deze dan ook alleen lopen naar resp. een punt, een lijn en een gebied.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"items": {
-							"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-						}
-					}
-				}
-			},
-			"Regeltekst_links": {
-				"type": "object",
-				"properties": {
-					"self": {
-						"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-					},
-					"gerelateerdeRegelteksten": {
-						"title": "gerelateerd",
-						"type": "array",
-						"description": "<body><p>Verwijzing dat aangeeft dat er een bijzondere relatie bestaat tussen twee Regelteksten.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"items": {
-							"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-						}
-					},
-					"betreffendeLocaties": {
-						"title": "heeftWerkingIn",
-						"type": "array",
-						"description": "<body><p>Het werkingsgebied c.q. de locatie begrenst de juridische werking van de regeltekst, in juridische zin, te weten dat deze regeltekst alleen binnen dit werkingsgebied juridische werkingskracht heeft. Het werkingsgebied van de regeltekst is altijd aanwezig. Deze is dekkend voor de locaties/gebieden die in de regeltekst zijn genoemd. Deze locaties/gebieden worden genoemd in regels die gaan over een activiteit, functie, omgevingsnorm, omgevingswaarde of beperkingengebied. Het werkingsgebied van de regeltekst is maximaal het grondgebied van het bevoegde gezag zelf.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minItems": 1,
-						"items": {
-							"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-						}
-					},
-					"betreffendeLocaties": {
-						"title": "heeftWerkingIn",
-						"type": "array",
-						"description": "<body><p>Het werkingsgebied c.q. de locatie begrenst de juridische werking van de regeltekst, in juridische zin, te weten dat deze regeltekst alleen binnen dit werkingsgebied juridische werkingskracht heeft. Het werkingsgebied van de regeltekst is altijd aanwezig. Deze is dekkend voor de locaties/gebieden die in de regeltekst zijn genoemd. Deze locaties/gebieden worden genoemd in regels die gaan over een activiteit, functie, omgevingsnorm, omgevingswaarde of beperkingengebied. Het werkingsgebied van de regeltekst is maximaal het grondgebied van het bevoegde gezag zelf.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minItems": 1,
-						"items": {
-							"$ref": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.0.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-						}
-					}
-				}
-			},
-			"Activiteit_embedded": {
-				"type": "object",
-				"properties": {
-					"bijbehorendeJuridischeRegelsVoorIedereen": {
-						"title": "betreft een activiteit",
-						"type": "array",
-						"description": "<body><p>Bij een regel die een activiteit vastlegt geeft deze relatie aan om welke activiteit het gaat. De bijbehorende locatie(s) waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minItems": 1,
-						"items": {
-							"$ref": "#/components/schemas/JuridischeRegelVoorIedereenHal"
-						}
-					}
-				}
-			},
-			"JuridischeRegelVoorIedereen_embedded": {
-				"type": "object",
-				"properties": {
-					"gedefinieerdeLocaties": {
-						"title": "definieert",
-						"type": "array",
-						"description": "<body><p>De locatieaanduiding begrenst de juridische werking van de regel in juridische zin, te weten dat de regel alleen binnen dit werkingsgebied werkingskracht heeft.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minItems": 1,
-						"items": {
-							"$ref": "#/components/schemas/LocatieHal"
-						}
-					},
-					"omvattendeRegeltekst": {
-						"$ref": "#/components/schemas/RegeltekstHal"
-					}
-				}
-			},
-			"Regeltekst_embedded": {
-				"type": "object",
-				"properties": {
-					"betreffendeLocaties": {
-						"title": "heeft werking in",
-						"type": "array",
-						"description": "<body><p>Het werkingsgebied c.q. de locatie begrenst de juridische werking van de regeltekst, in juridische zin, te weten dat deze regeltekst alleen binnen dit werkingsgebied juridische werkingskracht heeft. Het werkingsgebied van de regeltekst is altijd aanwezig. Deze is dekkend voor de locaties/gebieden die in de regeltekst zijn genoemd. Deze locaties/gebieden worden genoemd in regels die gaan over een activiteit, functie, omgevingsnorm, omgevingswaarde of beperkingengebied. Het werkingsgebied van de regeltekst is maximaal het grondgebied van het bevoegde gezag zelf.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minItems": 1,
-						"items": {
-							"$ref": "#/components/schemas/LocatieHal"
-						}
+						"$ref": "#/components/schemas/Xs:string"
 					}
 				}
 			},
@@ -626,16 +269,16 @@
 						]
 					},
 					"betreffendeActiviteitIdentificatie": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"gekwalificeerdeLocatieIdentificaties": {
 						"type": "array",
 						"items": {
-							"type": "string"
+							"$ref": "#/components/schemas/Xs:string"
 						}
 					},
 					"identificatie": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					}
 				}
 			},
@@ -648,10 +291,10 @@
 				],
 				"properties": {
 					"code": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"waarde": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					}
 				}
 			},
@@ -664,10 +307,10 @@
 				],
 				"properties": {
 					"code": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"waarde": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					}
 				}
 			},
@@ -682,13 +325,13 @@
 				],
 				"properties": {
 					"codeBevoegdGezag": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"documentIdentificatie": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"documentOpschrift": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"documentType": {
 						"allOf": [
@@ -715,10 +358,10 @@
 				],
 				"properties": {
 					"code": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"waarde": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					}
 				}
 			},
@@ -727,13 +370,13 @@
 				"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
 				"properties": {
 					"label": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"nummer": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"opschrift": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					}
 				}
 			},
@@ -746,10 +389,10 @@
 				],
 				"properties": {
 					"code": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"waarde": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					}
 				}
 			},
@@ -762,10 +405,10 @@
 				],
 				"properties": {
 					"code": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"waarde": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					}
 				}
 			},
@@ -778,10 +421,10 @@
 				],
 				"properties": {
 					"eenheid": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					},
 					"waarde": {
-						"type": "string"
+						"$ref": "#/components/schemas/Xs:string"
 					}
 				}
 			},
