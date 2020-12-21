@@ -5,7 +5,7 @@ Het uitwisselingsgegevensmodel is ontworpen op basis van het onderstaande gedeel
 ![CIM](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/blob/main/specificatie/CIM%20Koppeling%20PlanSW%20en%20TRSW.jpg)
 
 
-Bij het ontwerpen van de OAS specificatie op basis van het CIMOW hebben we de volgende besluiten t.o.v. dat CIMOW en de ons aangeleverde specificaties ('Notitie specificatie juridische regels-API 20200312.docx') genomen:
+Bij het ontwerpen van de OAS specificatie op basis van het CIMOW hebben we de volgende besluiten t.o.v. dat CIMOW en de ons aangeleverde specificaties (meerdere notities, zie [deze compilatie](./Voorstel JR-TR-koppelvlak - compilatie 20201002.pdf)) genomen:
 
 * Aan de entiteittypes 'activiteit', 'juridischeRegelVoorIedereen', 'locatie' en 'regeltekst' zijn de volgende attributes t.b.v. historie toegevoegd:
    - begindatum
@@ -17,7 +17,7 @@ elke relatie die daaraan gekoppeld is een 'identificatie' attribute toegevoegd t
 * De naam van alle attributes die meer dan 1 keer voor kunnen komen zijn meervoudig gemaakt.
 * De objecttypen 'Juridische regel' en 'Regel voor iedereen' zijn samengetrokken in het entiteittype 'juridischeRegelVoorIedereen'. 
 Dat betekent dat alle attributen en relaties van die objecttypen in het genoemde entiteittype terecht zijn gekomen.
-* Binnen de resource ‘juridischeRegelsvooriedereen’ misten in de specs het attribute ‘identificatie’. 
+* Binnen de resource ‘juridischeRegelVoorIedereen’ misten in de specs het attribute ‘identificatie’. 
 Deze is toch opgenomen er vanuit gaande dat de resource opgevraagd moet kunnen worden.
 * Omdat de resource 'juridischeRegelVoorIedereen' vanuit de resource 'activiteit' op te vragen moet zijn is de 'kent' relatie gelegd. 
 Deze komt minimaal 1 keer voor maar mag vaker voorkomen.
