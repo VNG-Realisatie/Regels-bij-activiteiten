@@ -12,7 +12,7 @@ Naast het gebruik als API is ook voorzien in het gebruik van de specificaties om
 * [Technische specificaties](./specificatie/openapi.json) (JSON Schema versie)
 * [Technische specificaties](./specificatie/openapi_draft04.json) (JSON Schema draft 04 versie)
 
-* Ontwerpkeuzes staan in de [ontwerpbeslissingen](./specificatie/Ontwerpbeslissingen.md)
+* Ontwerpkeuzes staan in de [ontwerpbeslissingen](./docs/ontwerpbeslissingen.md)
 * Productvisie (nog in te voorzien)
 * Definition of Ready (nog in te voorzien)
 * Definition of Done (nog in te voorzien)
