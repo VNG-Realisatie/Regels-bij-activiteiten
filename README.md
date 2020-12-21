@@ -16,7 +16,8 @@ Naast het gebruik als API is ook voorzien in het gebruik van de specificaties om
 * Productvisie (nog in te voorzien)
 * Definition of Ready (nog in te voorzien)
 * Definition of Done (nog in te voorzien)
-* Hoe u kunt bijdragen (nog in te voorzien)
+* Hoe u kunt bijdragen (nog in te voorzien)  
+  Voor nu: opmerkingen, vragen, verbetervoorstellen e.d. graag als [issues](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/issues) in deze repository.
 * Omgangsvormen (nog in te voorzien)
 
 ## Bronnen
