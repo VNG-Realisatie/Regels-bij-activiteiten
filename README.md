@@ -1,5 +1,7 @@
 # Regels bij activiteiten
-...
+Deze API maakt het mogelijk om gegevens op te vragen, bij een applicatie die invulling geeft aan de Omgevingswetbeleidcomponent, over (Omgevingswet-)activiteiten en/of (bijbehorende) juridische regels, regelteksten en locaties. Die gegevens maken deel uit van de vastlegging van omgevingsdocumenten, zoals een omgevingsplan, met genoemde applicatie, ook wel aangeduid als plansoftware. Het betreft regels en annotaties zoals die op het moment van opvragen opgesteld zijn; er kan dus sprake zijn van nog niet vastgestelde of gepubliceerde gegevens. Het betreft dan bijvoorbeeld een beoogde wijziging van een omgevingsplan.  
+Beoogd gebruik is vooral het inzicht krijgen in activiteiten en bijbehorende regels en locaties door een applicatie die invulling geeft aan de Toepasbare regelscomponent, t.b.v. het kunnen opstellen en aanpassen van toepasbare regels.  
+Naast het gebruik als API is ook voorzien in het gebruik van de specificaties om bestandsuitwisseling van genoemde gegevens mogelijk te maken tussen plansoftware en toepasbare regelssoftware. 
 
 ## Getting started
 ...
