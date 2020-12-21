@@ -17,12 +17,10 @@ elke relatie die daaraan gekoppeld is een 'identificatie' attribute toegevoegd t
 * De naam van alle attributes die meer dan 1 keer voor kunnen komen zijn meervoudig gemaakt.
 * De objecttypen 'Juridische regel' en 'Regel voor iedereen' zijn samengetrokken in het entiteittype 'juridischeRegelVoorIedereen'.
 Dat betekent dat alle attributen en relaties van die objecttypen in het genoemde entiteittype terecht zijn gekomen.
-* Binnen de resource ‘juridischeRegelVoorIedereen’ misten in de specs het attribute ‘identificatie’.
-Deze is toch opgenomen er vanuit gaande dat de resource opgevraagd moet kunnen worden.
 * Omdat de resource 'juridischeRegelVoorIedereen' vanuit de resource 'activiteit' op te vragen moet zijn is de 'kent' relatie gelegd.
 Deze komt minimaal 1 keer voor maar mag vaker voorkomen.
-* De subtypes 'Ambtsgebied', 'Punt', 'Gebied' en 'Lijn' van het objectType 'Locatie' zijn platgeslagen in het entiteittype 'locatie'.
-Concreet betekent dit dat de attributen 'Bron', 'Geometrie', 'Hoogte' nu opgenomen zijn in 'locatie', resp. als 'geometrie', 'geometrieBron' en 'hoogte'.
+* De subtypes 'Ambtsgebied', 'Punt', 'Puntengroep', 'Gebied', 'Gebiedengroep', 'Lijn' en 'Lijnengroep' van het objectType 'Locatie' zijn platgeslagen in het entiteittype 'locatie'.
+Concreet betekent dit dat de attributen 'Bron', 'Geometrie' en 'Hoogte' nu opgenomen zijn in 'locatie', resp. als 'geometrie', 'geometrieBron' en 'hoogte'.
 Allen zijn optioneel zodat ook een puntengroep, gebiedengroep en lijnengroep gedefinieerd kunnen worden.
 * Aan het entiteittype 'locatie' is ook het verplichte attribuut 'type' opgenomen waarmee aangegeven kan worden om welk subtype het gaat.
 * Aan het entiteittype 'locatie' is het attribuut 'geometrieType' opgenomen waarmee aangegeven kan worden welk gml type het betreft (bijv. 'GM_Surface').
