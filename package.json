@@ -24,15 +24,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/melsk-r/Regels-bij-activiteiten.git"
+    "url": "git+https://github.com/VNG-Realisatie/Regels-bij-activiteiten.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/melsk-r/Regels-bij-activiteiten/issues"
+    "url": "https://github.com/VNG-Realisatie/Regels-bij-activiteiten/issues"
   },
-  "homepage": "https://github.com/melsk-r/Regels-bij-activiteiten#readme",
+  "homepage": "https://github.com/VNG-Realisatie/Regels-bij-activiteiten#readme",
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.1.21",
     "@stoplight/spectral": "^5.8.0",
