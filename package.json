@@ -5,6 +5,7 @@
   "main": "index.js",
   "directories": {
     "doc": "docs"
+    "test": "test"
   },
   "scripts": {
     "oas:generate-client": "openapi-generator-cli generate -i ./specificatie/genereervariant/openapi.yaml --global-property=modelTests=false,apiTests=false,modelDocs=false,apiDocs=false",
