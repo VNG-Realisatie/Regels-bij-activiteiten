@@ -6,7 +6,7 @@ servers:
     url: https://www.voorbeeldgemeente.nl/api/plan_sw___toepasbare_regel_sw/v0
 info:
   title: Plan SW - Toepasbare regel SW
-  description: ""
+  description: "Nog in te voorzien"
   version: "0.0.1"
   x-imvertor-generator-version: "1.62.2"
   x-yamlCompiler-stylesheets-version: "20200903"
@@ -16,6 +16,11 @@ info:
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
+tags:
+- name: Activiteiten
+- name: JuridischeRegelsVoorIedereen
+- name: Locaties
+- name: Regelteksten
 paths:
   /activiteiten:
     get:
@@ -263,7 +268,7 @@ paths:
             type: string
         - in: query
           name: omschrijving
-          description: "<body><p>��n doorlopend stuk juridische tekst, van een artikel of een lid, die omschrijvingen van (een of meer) juridische regels bevat.</p></body>"
+          description: "<body><p>Één doorlopend stuk juridische tekst, van een artikel of een lid, die omschrijvingen van (een of meer) juridische regels bevat.</p></body>"
           required: false
           schema:
             type: string
@@ -423,7 +428,7 @@ paths:
             format: date
         - in: query
           name: geometrie
-          description: "<body><p>De geometrische bepaling van de lijn door middel van co�rdinaten.</p></body><body><p>De geometrische bepaling van het gebied door middel van co�rdinaten.</p></body><body><p>De geometrische bepaling van de punt door middel van coördinaten.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          description: "<body><p>De geometrische bepaling van de lijn door middel van coördinaten.</p></body><body><p>De geometrische bepaling van het gebied door middel van coördinaten.</p></body><body><p>De geometrische bepaling van de punt door middel van coÃ¶rdinaten.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
             type: string
@@ -447,7 +452,7 @@ paths:
             type: boolean
         - in: query
           name: noemer
-          description: "<body><p>Tekstuele beschrijving van een Locatie, zodat er als zodanig over deze locatie gesproken kan worden. De beschrijving kan een bepaalde naam zijn waaronder de Locatie bekend staat, maar (lang) niet elke Locatie heef een naam.</p></body><body><p>Bijvoorbeeld het hele werkingsgebied van bevoegd gezag, zoals �Het Koninkrijk der Nederlanden� of gemeente 'Amersfoort'. Bijvoorbeeld een natuurgebied zoals de 'Veluwe' of de rivier de 'Rijn' of het centrum van een woonplaats 'centrum Apeldoorn'.</p></body>"
+          description: "<body><p>Tekstuele beschrijving van een Locatie, zodat er als zodanig over deze locatie gesproken kan worden. De beschrijving kan een bepaalde naam zijn waaronder de Locatie bekend staat, maar (lang) niet elke Locatie heef een naam.</p></body><body><p>Bijvoorbeeld het hele werkingsgebied van bevoegd gezag, zoals Het Koninkrijk der Nederlanden of gemeente 'Amersfoort'. Bijvoorbeeld een natuurgebied zoals de 'Veluwe' of de rivier de 'Rijn' of het centrum van een woonplaats 'centrum Apeldoorn'.</p></body>"
           required: false
           schema:
             type: string
@@ -674,7 +679,7 @@ paths:
             type: string
         - in: query
           name: omschrijving
-          description: "<body><p>De letterlijke tekst waarmee de Regeltekst is omschreven, in een artikel of een lid. Een Regeltekst is altijd één doorlopend stuk juridische tekst, welke juridische regels bevat.</p></body>"
+          description: "<body><p>De letterlijke tekst waarmee de Regeltekst is omschreven, in een artikel of een lid. Een Regeltekst is altijd Ã©Ã©n doorlopend stuk juridische tekst, welke juridische regels bevat.</p></body>"
           required: false
           schema:
             type: string
@@ -940,7 +945,7 @@ components:
           - $ref: "#/components/schemas/Idealisatie"
           - title: "idealisatie"
             description: "<body><p>Vastlegging van de manier de begrenzing van Locatie\
-              \ voor deze Juridische regel ge�nterpreteerd moet worden en door het\
+              \ voor deze Juridische regel geïnterpreteerd moet worden en door het\
               \ bevoegd gezag bedoeld is.</p></body><body><p>Een inhoudelijke toelichting\
               \ op de toepassing van het informatie-element.</p></body>"
         identificatie:
@@ -1043,7 +1048,7 @@ components:
       type: "object"
       description: "<body><p>Een Regeltekst is de kleinste zelfstandige eenheid van\
         \ (een of meer) bij elkaar behorende juridische regels. Deze regels horen\
-        \ onlosmakelijk bij elkaar en hebben gezamenlijk ��n werkingsgebied.</p></body>"
+        \ onlosmakelijk bij elkaar en hebben gezamenlijk één werkingsgebied.</p></body>"
       required:
       - "begindatum"
       - "documentComponent"
