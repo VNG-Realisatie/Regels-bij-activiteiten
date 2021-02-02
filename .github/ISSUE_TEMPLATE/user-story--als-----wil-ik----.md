@@ -2,7 +2,7 @@
 name: 'User story: Als ... wil ik ...'
 about: 'Beschrijving van een feature/user story. '
 title: ''
-labels: ''
+labels: 'user story'
 assignees: ''
 
 ---

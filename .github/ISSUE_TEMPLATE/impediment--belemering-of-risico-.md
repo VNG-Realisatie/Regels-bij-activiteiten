@@ -2,7 +2,7 @@
 name: Impediment (belemering of risico)
 about: 'Breng een belemmering of risico onder de aandacht. '
 title: ''
-labels: ''
+labels: 'impediment '
 assignees: ''
 
 ---
