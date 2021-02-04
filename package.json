@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/VNG-Realisatie/Regels-bij-activiteiten#readme",
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.1.21",
+    "@openapitools/openapi-generator-cli": "^2.1.22",
     "@stoplight/spectral": "^5.8.0",
     "husky": "^4.3.8",
     "mkdirp": "^1.0.4",
