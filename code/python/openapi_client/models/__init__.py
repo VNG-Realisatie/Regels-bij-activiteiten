@@ -1,0 +1,57 @@
+# flake8: noqa
+
+# import all models into this package
+# if you have many models here with many references from one model to another this may
+# raise a RecursionError
+# to avoid this, import only the models that you directly need like:
+# from from openapi_client.model.pet import Pet
+# or import this package, but before doing it, use:
+# import sys
+# sys.setrecursionlimit(n)
+
+from openapi_client.model.activiteit import Activiteit
+from openapi_client.model.activiteit_embedded import ActiviteitEmbedded
+from openapi_client.model.activiteit_hal import ActiviteitHal
+from openapi_client.model.activiteit_hal_all_of import ActiviteitHalAllOf
+from openapi_client.model.activiteit_hal_collectie import ActiviteitHalCollectie
+from openapi_client.model.activiteit_hal_collectie_embedded import ActiviteitHalCollectieEmbedded
+from openapi_client.model.activiteit_links import ActiviteitLinks
+from openapi_client.model.activiteit_locatieaanduiding import ActiviteitLocatieaanduiding
+from openapi_client.model.activiteitengroep import Activiteitengroep
+from openapi_client.model.activiteitregelkwalificatie import Activiteitregelkwalificatie
+from openapi_client.model.bad_request_foutbericht import BadRequestFoutbericht
+from openapi_client.model.bad_request_foutbericht_all_of import BadRequestFoutberichtAllOf
+from openapi_client.model.document_component import DocumentComponent
+from openapi_client.model.foutbericht import Foutbericht
+from openapi_client.model.geometrie_type import GeometrieType
+from openapi_client.model.hal_collection_links import HalCollectionLinks
+from openapi_client.model.hal_link import HalLink
+from openapi_client.model.hal_pagination_links import HalPaginationLinks
+from openapi_client.model.hal_pagination_links_all_of import HalPaginationLinksAllOf
+from openapi_client.model.idealisatie import Idealisatie
+from openapi_client.model.invalid_params import InvalidParams
+from openapi_client.model.juridische_regel_voor_iedereen import JuridischeRegelVoorIedereen
+from openapi_client.model.juridische_regel_voor_iedereen_embedded import JuridischeRegelVoorIedereenEmbedded
+from openapi_client.model.juridische_regel_voor_iedereen_hal import JuridischeRegelVoorIedereenHal
+from openapi_client.model.juridische_regel_voor_iedereen_hal_all_of import JuridischeRegelVoorIedereenHalAllOf
+from openapi_client.model.juridische_regel_voor_iedereen_hal_collectie import JuridischeRegelVoorIedereenHalCollectie
+from openapi_client.model.juridische_regel_voor_iedereen_hal_collectie_embedded import JuridischeRegelVoorIedereenHalCollectieEmbedded
+from openapi_client.model.juridische_regel_voor_iedereen_links import JuridischeRegelVoorIedereenLinks
+from openapi_client.model.kop import Kop
+from openapi_client.model.locatie import Locatie
+from openapi_client.model.locatie_hal import LocatieHal
+from openapi_client.model.locatie_hal_all_of import LocatieHalAllOf
+from openapi_client.model.locatie_hal_collectie import LocatieHalCollectie
+from openapi_client.model.locatie_hal_collectie_embedded import LocatieHalCollectieEmbedded
+from openapi_client.model.locatie_links import LocatieLinks
+from openapi_client.model.locatie_type import LocatieType
+from openapi_client.model.regeltekst import Regeltekst
+from openapi_client.model.regeltekst_embedded import RegeltekstEmbedded
+from openapi_client.model.regeltekst_hal import RegeltekstHal
+from openapi_client.model.regeltekst_hal_all_of import RegeltekstHalAllOf
+from openapi_client.model.regeltekst_hal_collectie import RegeltekstHalCollectie
+from openapi_client.model.regeltekst_hal_collectie_embedded import RegeltekstHalCollectieEmbedded
+from openapi_client.model.regeltekst_links import RegeltekstLinks
+from openapi_client.model.soortregeling import Soortregeling
+from openapi_client.model.thema import Thema
+from openapi_client.model.waarde_eenheid import WaardeEenheid

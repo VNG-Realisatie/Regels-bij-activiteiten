@@ -1,0 +1,3197 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: robert.melskens@vng.nl
+    url: https://github.com/VNG-Realisatie/PSW-TRSW
+  description: Nog in te voorzien
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+  title: Plan SW - Toepasbare regel SW
+  version: 0.0.1
+  x-imvertor-generator-version: 1.62.2
+  x-yamlCompiler-stylesheets-version: "20200903"
+servers:
+- description: SwaggerHub API Auto Mocking
+  url: https://virtserver.swaggerhub.com/VNGRealisatie/api/plan_sw___toepasbare_regel_sw/v0
+- description: Referentie-implementatie
+  url: https://www.voorbeeldgemeente.nl/api/plan_sw___toepasbare_regel_sw/v0
+tags:
+- name: Activiteiten
+- name: JuridischeRegelsVoorIedereen
+- name: Locaties
+- name: Regelteksten
+paths:
+  /activiteiten:
+    get:
+      description: <body><p>Het bericht dat de JSON/REST API voor het ophalen van
+        een collectie amendementen retourneert.</p></body>
+      operationId: Getactiviteiten
+      parameters:
+      - description: Een pagina binnen de gepagineerde resultatenset.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          minimum: 1
+          type: integer
+        style: form
+      - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
+          moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
+          enkele properties geef je in de expand parameter kommagescheiden op. Properties
+          die je wil ontvangen geef je op met de resource-naam gevolgd door de property
+          naam, met daartussen een punt. In de definitie van het antwoord kun je bij
+          _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
+          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: begindatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: bovenliggendeactiviteitidentificatie
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: einddatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: gerelateerdeactiviteitidentificaties
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
+          een evt. waarde van dit attribute worden genegeerd.</p></body>
+        explode: true
+        in: query
+        name: inclusiefvervallen
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: juridischeregelvooriedereenidentificaties
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: laatstewijzigingsdatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: <body><p>Een (korte) omschrijving van de activiteit.</p></body>
+        explode: true
+        in: query
+        name: naam
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: vanafdatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ActiviteitHalCollectie'
+          description: Zoekactie geslaagd
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Pagination-Page:
+              $ref: '#/components/headers/X_Pagination_Page'
+            X-Pagination-Limit:
+              $ref: '#/components/headers/X_Pagination_Limit'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
+                title: Ten minste één parameter moet worden opgegeven.
+                status: 400
+                detail: The request could not be understood by the server due to malformed
+                  syntax. The client SHOULD NOT repeat the request without modification.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: paramsRequired
+                invalidParams:
+                - type: https://www.vng.nl/realisatie/api/validaties/integer
+                  name: verblijfplaats__huisnummer
+                  code: integer
+                  reason: Waarde is geen geldige integer.
+              schema:
+                $ref: '#/components/schemas/BadRequestFoutbericht'
+          description: Bad Request
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "401":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+                title: Niet correct geauthenticeerd.
+                status: 401
+                detail: The request requires user authentication. The response MUST
+                  include a WWW-Authenticate header field (section 14.47) containing
+                  a challenge applicable to the requested resource.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: authentication
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "403":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
+                title: U bent niet geautoriseerd voor deze operatie.
+                status: 403
+                detail: The server understood the request, but is refusing to fulfill
+                  it.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: autorisation
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "409":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10
+                title: Conflict
+                status: 409
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: conflict
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Conflict
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "410":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.11
+                title: Gone
+                status: 410
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: gone
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Gone
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "415":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16
+                title: Unsupported Media Type
+                status: 415
+                detail: The server is refusing the request because the entity of the
+                  request is in a format not supported by the requested resource for
+                  the requested method.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: unsupported
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "429":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+                title: Too many request
+                status: 429
+                detail: The user has sent too many requests in a given amount of time
+                  (rate limiting).
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: tooManyRequests
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+                title: Interne server fout.
+                status: 500
+                detail: The server encountered an unexpected condition which prevented
+                  it from fulfilling the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: serverError
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "501":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
+                title: Not Implemented
+                status: 501
+                detail: The server does not support the functionality required to
+                  fulfill the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notImplemented
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Implemented
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "503":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
+                title: Bronservice {bron} is tijdelijk niet beschikbaar.
+                status: 503
+                detail: The service is currently unable to handle the request due
+                  to a temporary overloading or maintenance of the server.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notAvailable
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Er is een onverwachte fout opgetreden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+      tags:
+      - Activiteiten
+      x-accepts: application/hal+json,application/problem+json
+  /activiteiten/{identificatie}:
+    get:
+      description: <body><p>Het bericht dat de JSON/REST API voor het ophalen van
+        gegevens van een amendement retourneert.</p></body>
+      operationId: Getactiviteit
+      parameters:
+      - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
+          moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
+          enkele properties geef je in de expand parameter kommagescheiden op. Properties
+          die je wil ontvangen geef je op met de resource-naam gevolgd door de property
+          naam, met daartussen een punt. In de definitie van het antwoord kun je bij
+          _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
+          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>De unieke identificatie waaronder elk object van dit
+          type bekend is.</p></body>
+        explode: false
+        in: path
+        name: identificatie
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
+          een evt. waarde van dit attribute worden genegeerd.</p></body>
+        explode: true
+        in: query
+        name: inclusiefvervallen
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: vanafdatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ActiviteitHal'
+          description: Zoekactie geslaagd
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
+                title: Ten minste één parameter moet worden opgegeven.
+                status: 400
+                detail: The request could not be understood by the server due to malformed
+                  syntax. The client SHOULD NOT repeat the request without modification.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: paramsRequired
+                invalidParams:
+                - type: https://www.vng.nl/realisatie/api/validaties/integer
+                  name: verblijfplaats__huisnummer
+                  code: integer
+                  reason: Waarde is geen geldige integer.
+              schema:
+                $ref: '#/components/schemas/BadRequestFoutbericht'
+          description: Bad Request
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "401":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+                title: Niet correct geauthenticeerd.
+                status: 401
+                detail: The request requires user authentication. The response MUST
+                  include a WWW-Authenticate header field (section 14.47) containing
+                  a challenge applicable to the requested resource.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: authentication
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "403":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
+                title: U bent niet geautoriseerd voor deze operatie.
+                status: 403
+                detail: The server understood the request, but is refusing to fulfill
+                  it.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: autorisation
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "409":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10
+                title: Conflict
+                status: 409
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: conflict
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Conflict
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "410":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.11
+                title: Gone
+                status: 410
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: gone
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Gone
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "415":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16
+                title: Unsupported Media Type
+                status: 415
+                detail: The server is refusing the request because the entity of the
+                  request is in a format not supported by the requested resource for
+                  the requested method.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: unsupported
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "429":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+                title: Too many request
+                status: 429
+                detail: The user has sent too many requests in a given amount of time
+                  (rate limiting).
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: tooManyRequests
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+                title: Interne server fout.
+                status: 500
+                detail: The server encountered an unexpected condition which prevented
+                  it from fulfilling the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: serverError
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "501":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
+                title: Not Implemented
+                status: 501
+                detail: The server does not support the functionality required to
+                  fulfill the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notImplemented
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Implemented
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "503":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
+                title: Bronservice {bron} is tijdelijk niet beschikbaar.
+                status: 503
+                detail: The service is currently unable to handle the request due
+                  to a temporary overloading or maintenance of the server.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notAvailable
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Er is een onverwachte fout opgetreden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+      tags:
+      - Activiteiten
+      x-accepts: application/hal+json,application/problem+json
+  /juridischeregelsvooriedereen:
+    get:
+      description: <body><p>Het bericht dat de JSON/REST API voor het ophalen van
+        een collectie amendementen retourneert.</p></body>
+      operationId: GetjuridischeRegelsVoorIedereen
+      parameters:
+      - description: Een pagina binnen de gepagineerde resultatenset.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          minimum: 1
+          type: integer
+        style: form
+      - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
+          moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
+          enkele properties geef je in de expand parameter kommagescheiden op. Properties
+          die je wil ontvangen geef je op met de resource-naam gevolgd door de property
+          naam, met daartussen een punt. In de definitie van het antwoord kun je bij
+          _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
+          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: begindatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: betreffendegenormeerdeactiviteitidentificaties
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: einddatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: gekwalificeerdegenormeerdeactiviteitlocatieidentificaties
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: genormeerdeactiviteitidentificaties
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
+          een evt. waarde van dit attribute worden genegeerd.</p></body>
+        explode: true
+        in: query
+        name: inclusiefvervallen
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: locatieidentificaties
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>Één doorlopend stuk juridische tekst, van een artikel
+          of een lid, die omschrijvingen van (een of meer) juridische regels bevat.</p></body>
+        explode: true
+        in: query
+        name: omschrijving
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: regeltekstidentificatie
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: vanafdatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/JuridischeRegelVoorIedereenHalCollectie'
+          description: Zoekactie geslaagd
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Pagination-Page:
+              $ref: '#/components/headers/X_Pagination_Page'
+            X-Pagination-Limit:
+              $ref: '#/components/headers/X_Pagination_Limit'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
+                title: Ten minste één parameter moet worden opgegeven.
+                status: 400
+                detail: The request could not be understood by the server due to malformed
+                  syntax. The client SHOULD NOT repeat the request without modification.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: paramsRequired
+                invalidParams:
+                - type: https://www.vng.nl/realisatie/api/validaties/integer
+                  name: verblijfplaats__huisnummer
+                  code: integer
+                  reason: Waarde is geen geldige integer.
+              schema:
+                $ref: '#/components/schemas/BadRequestFoutbericht'
+          description: Bad Request
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "401":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+                title: Niet correct geauthenticeerd.
+                status: 401
+                detail: The request requires user authentication. The response MUST
+                  include a WWW-Authenticate header field (section 14.47) containing
+                  a challenge applicable to the requested resource.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: authentication
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "403":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
+                title: U bent niet geautoriseerd voor deze operatie.
+                status: 403
+                detail: The server understood the request, but is refusing to fulfill
+                  it.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: autorisation
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "409":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10
+                title: Conflict
+                status: 409
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: conflict
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Conflict
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "410":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.11
+                title: Gone
+                status: 410
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: gone
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Gone
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "415":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16
+                title: Unsupported Media Type
+                status: 415
+                detail: The server is refusing the request because the entity of the
+                  request is in a format not supported by the requested resource for
+                  the requested method.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: unsupported
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "429":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+                title: Too many request
+                status: 429
+                detail: The user has sent too many requests in a given amount of time
+                  (rate limiting).
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: tooManyRequests
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+                title: Interne server fout.
+                status: 500
+                detail: The server encountered an unexpected condition which prevented
+                  it from fulfilling the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: serverError
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "501":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
+                title: Not Implemented
+                status: 501
+                detail: The server does not support the functionality required to
+                  fulfill the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notImplemented
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Implemented
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "503":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
+                title: Bronservice {bron} is tijdelijk niet beschikbaar.
+                status: 503
+                detail: The service is currently unable to handle the request due
+                  to a temporary overloading or maintenance of the server.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notAvailable
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Er is een onverwachte fout opgetreden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+      tags:
+      - JuridischeRegelsVoorIedereen
+      x-accepts: application/hal+json,application/problem+json
+  /juridischeregelsvooriedereen/{identificatie}:
+    get:
+      description: <body><p>Het bericht dat de JSON/REST API voor het ophalen van
+        gegevens van een amendement retourneert.</p></body>
+      operationId: GetjuridischeRegelVoorIedereen
+      parameters:
+      - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
+          moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
+          enkele properties geef je in de expand parameter kommagescheiden op. Properties
+          die je wil ontvangen geef je op met de resource-naam gevolgd door de property
+          naam, met daartussen een punt. In de definitie van het antwoord kun je bij
+          _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
+          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+          informatie-element.</p></body><body><p>De verzameling van waarden die gegevens
+          van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik,
+          uitgedrukt in een specifieke structuur.</p></body>
+        explode: false
+        in: path
+        name: identificatie
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
+          een evt. waarde van dit attribute worden genegeerd.</p></body>
+        explode: true
+        in: query
+        name: inclusiefvervallen
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: vanafdatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/JuridischeRegelVoorIedereenHal'
+          description: Zoekactie geslaagd
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
+                title: Ten minste één parameter moet worden opgegeven.
+                status: 400
+                detail: The request could not be understood by the server due to malformed
+                  syntax. The client SHOULD NOT repeat the request without modification.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: paramsRequired
+                invalidParams:
+                - type: https://www.vng.nl/realisatie/api/validaties/integer
+                  name: verblijfplaats__huisnummer
+                  code: integer
+                  reason: Waarde is geen geldige integer.
+              schema:
+                $ref: '#/components/schemas/BadRequestFoutbericht'
+          description: Bad Request
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "401":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+                title: Niet correct geauthenticeerd.
+                status: 401
+                detail: The request requires user authentication. The response MUST
+                  include a WWW-Authenticate header field (section 14.47) containing
+                  a challenge applicable to the requested resource.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: authentication
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "403":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
+                title: U bent niet geautoriseerd voor deze operatie.
+                status: 403
+                detail: The server understood the request, but is refusing to fulfill
+                  it.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: autorisation
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "409":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10
+                title: Conflict
+                status: 409
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: conflict
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Conflict
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "410":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.11
+                title: Gone
+                status: 410
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: gone
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Gone
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "415":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16
+                title: Unsupported Media Type
+                status: 415
+                detail: The server is refusing the request because the entity of the
+                  request is in a format not supported by the requested resource for
+                  the requested method.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: unsupported
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "429":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+                title: Too many request
+                status: 429
+                detail: The user has sent too many requests in a given amount of time
+                  (rate limiting).
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: tooManyRequests
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+                title: Interne server fout.
+                status: 500
+                detail: The server encountered an unexpected condition which prevented
+                  it from fulfilling the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: serverError
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "501":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
+                title: Not Implemented
+                status: 501
+                detail: The server does not support the functionality required to
+                  fulfill the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notImplemented
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Implemented
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "503":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
+                title: Bronservice {bron} is tijdelijk niet beschikbaar.
+                status: 503
+                detail: The service is currently unable to handle the request due
+                  to a temporary overloading or maintenance of the server.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notAvailable
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Er is een onverwachte fout opgetreden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+      tags:
+      - JuridischeRegelsVoorIedereen
+      x-accepts: application/hal+json,application/problem+json
+  /locaties:
+    get:
+      description: <body><p>Het bericht dat de JSON/REST API voor het ophalen van
+        een collectie amendementen retourneert.</p></body>
+      operationId: Getlocaties
+      parameters:
+      - description: Een pagina binnen de gepagineerde resultatenset.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          minimum: 1
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: begindatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: einddatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: <body><p>De geometrische bepaling van de lijn door middel van
+          coördinaten.</p></body><body><p>De geometrische bepaling van het gebied
+          door middel van coördinaten.</p></body><body><p>De geometrische bepaling
+          van de punt door middel van coÃ¶rdinaten.</p></body><body><p>Een inhoudelijke
+          toelichting op de toepassing van het informatie-element.</p></body>
+        explode: true
+        in: query
+        name: geometrie
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning
+          van de geometrie.</p></body><body><p>De bron die is gebruikt voor, dan wel
+          de wijze van inwinning van de geometrie.</p></body><body><p>De bron die
+          is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>Een
+          inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
+        explode: true
+        in: query
+        name: geometriebron
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: geometrietype
+        required: false
+        schema:
+          $ref: '#/components/schemas/GeometrieType'
+        style: form
+      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
+          een evt. waarde van dit attribute worden genegeerd.</p></body>
+        explode: true
+        in: query
+        name: inclusiefvervallen
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: <body><p>Tekstuele beschrijving van een Locatie, zodat er als
+          zodanig over deze locatie gesproken kan worden. De beschrijving kan een
+          bepaalde naam zijn waaronder de Locatie bekend staat, maar (lang) niet elke
+          Locatie heef een naam.</p></body><body><p>Bijvoorbeeld het hele werkingsgebied
+          van bevoegd gezag, zoals 'Het Koninkrijk der Nederlanden' of gemeente 'Amersfoort'.
+          Bijvoorbeeld een natuurgebied zoals de 'Veluwe' of de rivier de 'Rijn' of
+          het centrum van een woonplaats 'centrum Apeldoorn'.</p></body>
+        explode: true
+        in: query
+        name: noemer
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: omvattendelocatieidentificaties
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          $ref: '#/components/schemas/LocatieType'
+        style: form
+      - explode: true
+        in: query
+        name: vanafdatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/LocatieHalCollectie'
+          description: Zoekactie geslaagd
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Pagination-Page:
+              $ref: '#/components/headers/X_Pagination_Page'
+            X-Pagination-Limit:
+              $ref: '#/components/headers/X_Pagination_Limit'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
+                title: Ten minste één parameter moet worden opgegeven.
+                status: 400
+                detail: The request could not be understood by the server due to malformed
+                  syntax. The client SHOULD NOT repeat the request without modification.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: paramsRequired
+                invalidParams:
+                - type: https://www.vng.nl/realisatie/api/validaties/integer
+                  name: verblijfplaats__huisnummer
+                  code: integer
+                  reason: Waarde is geen geldige integer.
+              schema:
+                $ref: '#/components/schemas/BadRequestFoutbericht'
+          description: Bad Request
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "401":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+                title: Niet correct geauthenticeerd.
+                status: 401
+                detail: The request requires user authentication. The response MUST
+                  include a WWW-Authenticate header field (section 14.47) containing
+                  a challenge applicable to the requested resource.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: authentication
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "403":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
+                title: U bent niet geautoriseerd voor deze operatie.
+                status: 403
+                detail: The server understood the request, but is refusing to fulfill
+                  it.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: autorisation
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "409":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10
+                title: Conflict
+                status: 409
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: conflict
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Conflict
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "410":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.11
+                title: Gone
+                status: 410
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: gone
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Gone
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "415":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16
+                title: Unsupported Media Type
+                status: 415
+                detail: The server is refusing the request because the entity of the
+                  request is in a format not supported by the requested resource for
+                  the requested method.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: unsupported
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "429":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+                title: Too many request
+                status: 429
+                detail: The user has sent too many requests in a given amount of time
+                  (rate limiting).
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: tooManyRequests
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+                title: Interne server fout.
+                status: 500
+                detail: The server encountered an unexpected condition which prevented
+                  it from fulfilling the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: serverError
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "501":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
+                title: Not Implemented
+                status: 501
+                detail: The server does not support the functionality required to
+                  fulfill the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notImplemented
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Implemented
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "503":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
+                title: Bronservice {bron} is tijdelijk niet beschikbaar.
+                status: 503
+                detail: The service is currently unable to handle the request due
+                  to a temporary overloading or maintenance of the server.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notAvailable
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Er is een onverwachte fout opgetreden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+      tags:
+      - Locaties
+      x-accepts: application/hal+json,application/problem+json
+  /locaties/{identificatie}:
+    get:
+      description: <body><p>Het bericht dat de JSON/REST API voor het ophalen van
+        gegevens van een amendement retourneert.</p></body>
+      operationId: Getlocatie
+      parameters:
+      - description: <body><p>De unieke identificatie waaronder elk object van dit
+          type bekend is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing
+          van het informatie-element.</p></body><body><p>De verzameling van waarden
+          die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik,
+          uitgedrukt in een specifieke structuur.</p></body>
+        explode: false
+        in: path
+        name: identificatie
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
+          een evt. waarde van dit attribute worden genegeerd.</p></body>
+        explode: true
+        in: query
+        name: inclusiefvervallen
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: vanafdatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/LocatieHal'
+          description: Zoekactie geslaagd
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
+                title: Ten minste één parameter moet worden opgegeven.
+                status: 400
+                detail: The request could not be understood by the server due to malformed
+                  syntax. The client SHOULD NOT repeat the request without modification.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: paramsRequired
+                invalidParams:
+                - type: https://www.vng.nl/realisatie/api/validaties/integer
+                  name: verblijfplaats__huisnummer
+                  code: integer
+                  reason: Waarde is geen geldige integer.
+              schema:
+                $ref: '#/components/schemas/BadRequestFoutbericht'
+          description: Bad Request
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "401":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+                title: Niet correct geauthenticeerd.
+                status: 401
+                detail: The request requires user authentication. The response MUST
+                  include a WWW-Authenticate header field (section 14.47) containing
+                  a challenge applicable to the requested resource.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: authentication
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "403":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
+                title: U bent niet geautoriseerd voor deze operatie.
+                status: 403
+                detail: The server understood the request, but is refusing to fulfill
+                  it.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: autorisation
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "409":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10
+                title: Conflict
+                status: 409
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: conflict
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Conflict
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "410":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.11
+                title: Gone
+                status: 410
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: gone
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Gone
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "415":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16
+                title: Unsupported Media Type
+                status: 415
+                detail: The server is refusing the request because the entity of the
+                  request is in a format not supported by the requested resource for
+                  the requested method.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: unsupported
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "429":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+                title: Too many request
+                status: 429
+                detail: The user has sent too many requests in a given amount of time
+                  (rate limiting).
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: tooManyRequests
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+                title: Interne server fout.
+                status: 500
+                detail: The server encountered an unexpected condition which prevented
+                  it from fulfilling the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: serverError
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "501":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
+                title: Not Implemented
+                status: 501
+                detail: The server does not support the functionality required to
+                  fulfill the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notImplemented
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Implemented
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "503":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
+                title: Bronservice {bron} is tijdelijk niet beschikbaar.
+                status: 503
+                detail: The service is currently unable to handle the request due
+                  to a temporary overloading or maintenance of the server.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notAvailable
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Er is een onverwachte fout opgetreden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+      tags:
+      - Locaties
+      x-accepts: application/hal+json,application/problem+json
+  /regelteksten:
+    get:
+      description: <body><p>Het bericht dat de JSON/REST API voor het ophalen van
+        een collectie amendementen retourneert.</p></body>
+      operationId: Getregelteksten
+      parameters:
+      - description: Een pagina binnen de gepagineerde resultatenset.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          minimum: 1
+          type: integer
+        style: form
+      - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
+          moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
+          enkele properties geef je in de expand parameter kommagescheiden op. Properties
+          die je wil ontvangen geef je op met de resource-naam gevolgd door de property
+          naam, met daartussen een punt. In de definitie van het antwoord kun je bij
+          _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
+          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: begindatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+          informatie-element.</p></body>
+        explode: true
+        in: query
+        name: codebevoegdgezag
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+          informatie-element.</p></body>
+        explode: true
+        in: query
+        name: documentidentificatie
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+          informatie-element.</p></body>
+        explode: true
+        in: query
+        name: documentopschrift
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: einddatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: gerelateerderegeltekstidentificaties
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
+          een evt. waarde van dit attribute worden genegeerd.</p></body>
+        explode: true
+        in: query
+        name: inclusiefvervallen
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+          informatie-element.</p></body>
+        explode: true
+        in: query
+        name: koplabel
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+          informatie-element.</p></body>
+        explode: true
+        in: query
+        name: kopnummer
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+          informatie-element.</p></body>
+        explode: true
+        in: query
+        name: kopopschrift
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: laatstewijzigingsdatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: locatieidentificaties
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>De letterlijke tekst waarmee de Regeltekst is omschreven,
+          in een artikel of een lid. Een Regeltekst is altijd Ã©Ã©n doorlopend stuk
+          juridische tekst, welke juridische regels bevat.</p></body>
+        explode: true
+        in: query
+        name: omschrijving
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: vanafdatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/RegeltekstHalCollectie'
+          description: Zoekactie geslaagd
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Pagination-Page:
+              $ref: '#/components/headers/X_Pagination_Page'
+            X-Pagination-Limit:
+              $ref: '#/components/headers/X_Pagination_Limit'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
+                title: Ten minste één parameter moet worden opgegeven.
+                status: 400
+                detail: The request could not be understood by the server due to malformed
+                  syntax. The client SHOULD NOT repeat the request without modification.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: paramsRequired
+                invalidParams:
+                - type: https://www.vng.nl/realisatie/api/validaties/integer
+                  name: verblijfplaats__huisnummer
+                  code: integer
+                  reason: Waarde is geen geldige integer.
+              schema:
+                $ref: '#/components/schemas/BadRequestFoutbericht'
+          description: Bad Request
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "401":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+                title: Niet correct geauthenticeerd.
+                status: 401
+                detail: The request requires user authentication. The response MUST
+                  include a WWW-Authenticate header field (section 14.47) containing
+                  a challenge applicable to the requested resource.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: authentication
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "403":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
+                title: U bent niet geautoriseerd voor deze operatie.
+                status: 403
+                detail: The server understood the request, but is refusing to fulfill
+                  it.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: autorisation
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "409":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10
+                title: Conflict
+                status: 409
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: conflict
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Conflict
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "410":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.11
+                title: Gone
+                status: 410
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: gone
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Gone
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "415":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16
+                title: Unsupported Media Type
+                status: 415
+                detail: The server is refusing the request because the entity of the
+                  request is in a format not supported by the requested resource for
+                  the requested method.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: unsupported
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "429":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+                title: Too many request
+                status: 429
+                detail: The user has sent too many requests in a given amount of time
+                  (rate limiting).
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: tooManyRequests
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+                title: Interne server fout.
+                status: 500
+                detail: The server encountered an unexpected condition which prevented
+                  it from fulfilling the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: serverError
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "501":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
+                title: Not Implemented
+                status: 501
+                detail: The server does not support the functionality required to
+                  fulfill the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notImplemented
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Implemented
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "503":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
+                title: Bronservice {bron} is tijdelijk niet beschikbaar.
+                status: 503
+                detail: The service is currently unable to handle the request due
+                  to a temporary overloading or maintenance of the server.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notAvailable
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Er is een onverwachte fout opgetreden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+      tags:
+      - Regelteksten
+      x-accepts: application/hal+json,application/problem+json
+  /regelteksten/{identificatie}:
+    get:
+      description: <body><p>Het bericht dat de JSON/REST API voor het ophalen van
+        gegevens van een amendement retourneert.</p></body>
+      operationId: Getregeltekst
+      parameters:
+      - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
+          moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
+          enkele properties geef je in de expand parameter kommagescheiden op. Properties
+          die je wil ontvangen geef je op met de resource-naam gevolgd door de property
+          naam, met daartussen een punt. In de definitie van het antwoord kun je bij
+          _embedded zien welke gerelateerde resources meegeleverd kunnen worden. Zie
+          [functionele specificaties](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/expand.feature).
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: <body><p>De unieke identificatie waaronder elk object van dit
+          type bekend is.</p></body>
+        explode: false
+        in: path
+        name: identificatie
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
+          een evt. waarde van dit attribute worden genegeerd.</p></body>
+        explode: true
+        in: query
+        name: inclusiefvervallen
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: vanafdatum
+        required: false
+        schema:
+          format: date
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/RegeltekstHal'
+          description: Zoekactie geslaagd
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+            warning:
+              $ref: '#/components/headers/warning'
+            X-Rate-Limit-Limit:
+              $ref: '#/components/headers/X_Rate_Limit_Limit'
+            X-Rate-Limit-Remaining:
+              $ref: '#/components/headers/X_Rate_Limit_Remaining'
+            X-Rate-Limit-Reset:
+              $ref: '#/components/headers/X_Rate_Limit_Reset'
+        "400":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.1
+                title: Ten minste één parameter moet worden opgegeven.
+                status: 400
+                detail: The request could not be understood by the server due to malformed
+                  syntax. The client SHOULD NOT repeat the request without modification.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: paramsRequired
+                invalidParams:
+                - type: https://www.vng.nl/realisatie/api/validaties/integer
+                  name: verblijfplaats__huisnummer
+                  code: integer
+                  reason: Waarde is geen geldige integer.
+              schema:
+                $ref: '#/components/schemas/BadRequestFoutbericht'
+          description: Bad Request
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "401":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.2
+                title: Niet correct geauthenticeerd.
+                status: 401
+                detail: The request requires user authentication. The response MUST
+                  include a WWW-Authenticate header field (section 14.47) containing
+                  a challenge applicable to the requested resource.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: authentication
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unauthorized
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "403":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.4
+                title: U bent niet geautoriseerd voor deze operatie.
+                status: 403
+                detail: The server understood the request, but is refusing to fulfill
+                  it.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: autorisation
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Forbidden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "404":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.5
+                title: Opgevraagde resource bestaat niet.
+                status: 404
+                detail: The server has not found anything matching the Request-URI.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notFound
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Found
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "409":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.10
+                title: Conflict
+                status: 409
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: conflict
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Conflict
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "410":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.11
+                title: Gone
+                status: 410
+                detail: The request could not be completed due to a conflict with
+                  the current state of the resource
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: gone
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Gone
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "415":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.16
+                title: Unsupported Media Type
+                status: 415
+                detail: The server is refusing the request because the entity of the
+                  request is in a format not supported by the requested resource for
+                  the requested method.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: unsupported
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Unsupported Media Type
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "429":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+                title: Too many request
+                status: 429
+                detail: The user has sent too many requests in a given amount of time
+                  (rate limiting).
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: tooManyRequests
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Too Many Requests
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "500":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.1
+                title: Interne server fout.
+                status: 500
+                detail: The server encountered an unexpected condition which prevented
+                  it from fulfilling the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: serverError
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Internal Server Error
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "501":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.2
+                title: Not Implemented
+                status: 501
+                detail: The server does not support the functionality required to
+                  fulfill the request.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notImplemented
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Not Implemented
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        "503":
+          content:
+            application/problem+json:
+              example:
+                type: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
+                title: Bronservice {bron} is tijdelijk niet beschikbaar.
+                status: 503
+                detail: The service is currently unable to handle the request due
+                  to a temporary overloading or maintenance of the server.
+                instance: https://datapunt.voorbeeldgemeente.nl/api/v1/resourcenaam?parameter=waarde
+                code: notAvailable
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Service Unavailable
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+        default:
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Foutbericht'
+          description: Er is een onverwachte fout opgetreden
+          headers:
+            api-version:
+              $ref: '#/components/headers/api_version'
+      tags:
+      - Regelteksten
+      x-accepts: application/hal+json,application/problem+json
+components:
+  headers:
+    api_version:
+      explode: false
+      schema:
+        description: Geeft een specifieke API-versie aan in de context van een specifieke
+          aanroep.
+        example: 1.0.0
+        type: string
+      style: simple
+    warning:
+      explode: false
+      schema:
+        description: zie RFC 7234. In het geval een major versie wordt uitgefaseerd,
+          gebruiken we warn-code 299 ("Miscellaneous Persistent Warning") en het API
+          end-point (inclusief versienummer) als de warn-agent van de warning, gevolgd
+          door de warn-text met de human-readable waarschuwing
+        example: '299 https://service.../api/.../v1 "Deze versie van de API is verouderd
+          en zal uit dienst worden genomen op 2018-02-01. Raadpleeg voor meer informatie
+          hier de documentatie: https://omgevingswet.../api/.../v1".'
+        type: string
+      style: simple
+    X_Pagination_Page:
+      explode: false
+      schema:
+        description: Huidige pagina.
+        example: 3
+        type: integer
+      style: simple
+    X_Pagination_Limit:
+      explode: false
+      schema:
+        description: Aantal resultaten per pagina.
+        example: 20
+        type: integer
+      style: simple
+    X_Rate_Limit_Limit:
+      explode: false
+      schema:
+        type: integer
+      style: simple
+    X_Rate_Limit_Remaining:
+      explode: false
+      schema:
+        type: integer
+      style: simple
+    X_Rate_Limit_Reset:
+      explode: false
+      schema:
+        type: integer
+      style: simple
+  schemas:
+    ActiviteitHalCollectie:
+      properties:
+        _links:
+          $ref: '#/components/schemas/HalPaginationLinks'
+        _embedded:
+          $ref: '#/components/schemas/ActiviteitHalCollectie__embedded'
+      type: object
+    ActiviteitHal:
+      allOf:
+      - $ref: '#/components/schemas/Activiteit'
+      - $ref: '#/components/schemas/ActiviteitHal_allOf'
+    JuridischeRegelVoorIedereenHalCollectie:
+      properties:
+        _links:
+          $ref: '#/components/schemas/HalPaginationLinks'
+        _embedded:
+          $ref: '#/components/schemas/JuridischeRegelVoorIedereenHalCollectie__embedded'
+      type: object
+    JuridischeRegelVoorIedereenHal:
+      allOf:
+      - $ref: '#/components/schemas/JuridischeRegelVoorIedereen'
+      - $ref: '#/components/schemas/JuridischeRegelVoorIedereenHal_allOf'
+    LocatieHalCollectie:
+      properties:
+        _links:
+          $ref: '#/components/schemas/HalPaginationLinks'
+        _embedded:
+          $ref: '#/components/schemas/LocatieHalCollectie__embedded'
+      type: object
+    LocatieHal:
+      allOf:
+      - $ref: '#/components/schemas/Locatie'
+      - $ref: '#/components/schemas/LocatieHal_allOf'
+    RegeltekstHalCollectie:
+      properties:
+        _links:
+          $ref: '#/components/schemas/HalPaginationLinks'
+        _embedded:
+          $ref: '#/components/schemas/RegeltekstHalCollectie__embedded'
+      type: object
+    RegeltekstHal:
+      allOf:
+      - $ref: '#/components/schemas/Regeltekst'
+      - $ref: '#/components/schemas/RegeltekstHal_allOf'
+    Activiteit_links:
+      properties:
+        self:
+          $ref: '#/components/schemas/HalLink'
+        gerelateerdeActiviteiten:
+          description: '<body><p>De regels die gelden voor de gerelateerde activiteit(en)
+            zijn contextueel relevant voor deze activiteit. Toelichting: Met contextueel
+            relevant wordt bedoeld dat de regels die gelden voor de gerelateerde activiteit,
+            binnen die gegeven context ook gelden voor deze activiteit. Bijvoorbeeld
+            omdat de ene activiteit altijd samen met de andere activiteit(en) worden
+            uitgevoerd en de regels van beide daarmee allebei tegelijk aan de orde
+            zijn. Als de beschreven context waarin de regels behorende bij de gerelateerde
+            activiteit gelden niet aan de orde is, dan gelden de regels van de gerelateerde
+            activiteit niet. Of de context aan de orde is, is niet opgenomen als informatie.
+            Deze relatie geeft daarom, informatiekundig gezien, aan dat elke regel
+            die geldt voor de gerelateerde activiteit relevant kan zijn voor het uitvoeren
+            van deze activiteit. Gerelateerde activiteiten kunnen van hetzelfde type
+            zijn, bijvoorbeeld twee milieubelastende activiteiten, maar dat hoeft
+            niet.</p></body><body><p>Een inhoudelijke toelichting op de toepassing
+            van het informatie-element.</p></body>'
+          items:
+            $ref: '#/components/schemas/HalLink'
+          title: gerelateerd
+          type: array
+        bovenliggendeActiviteit:
+          allOf:
+          - description: '<body><p>Met is (een) wordt een bepaalde activiteit rechtstreeks
+              verbonden met een andere activiteit van hetzelfde type (van specifiek
+              naar generiek). Toelichting: Met een activiteit van hetzelfde type wordt
+              bedoeld dat andere regels (generieker) contextueel wel of niet relevant
+              kunnen zijn. Met contextueel relevant wordt bedoeld dat als in de regel
+              staat dat een (generieke) activiteit van dit type een vergunningplicht
+              geldt, onder bepaalde condities, dat deze condities worden vergeleken
+              met de specifieke situatie van de (specifieke) activiteit die de initiatiefnemer
+              voornemens is om te ontplooien. Als deze hieronder vallen, dan geldt
+              voor de voorgenomen (specifieke) activiteit een vergunningplicht. In
+              andere gevallen niet, althans niet vanuit deze regels, mogelijk wel
+              vanuit andere regels.</p></body><body><p>Een inhoudelijke toelichting
+              op de toepassing van het informatie-element.</p></body>'
+            title: is
+            type: object
+          - $ref: '#/components/schemas/HalLink'
+        bijbehorendeJuridischeRegelsVoorIedereen:
+          description: <body><p>Bij een regel die een activiteit vastlegt geeft deze
+            relatie aan om welke activiteit het gaat. De bijbehorende locatie(s) waar
+            het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een
+            inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
+          items:
+            $ref: '#/components/schemas/HalLink'
+          minItems: 1
+          title: kent
+          type: array
+      type: object
+    JuridischeRegelVoorIedereen_links:
+      properties:
+        self:
+          $ref: '#/components/schemas/HalLink'
+        gedefinieerdeLocaties:
+          description: <body><p>De locatieaanduiding begrenst de juridische werking
+            van de regel in juridische zin, te weten dat de regel alleen binnen dit
+            werkingsgebied werkingskracht heeft.</p></body><body><p>Een inhoudelijke
+            toelichting op de toepassing van het informatie-element.</p></body>
+          items:
+            $ref: '#/components/schemas/HalLink'
+          minItems: 1
+          title: definieert
+          type: array
+        omvattendeRegeltekst:
+          allOf:
+          - description: <body><p>Artikel of lid is waar de Juridische regel onderdeel
+              van is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing
+              van het informatie-element.</p></body>
+            title: isOpgenomenIn
+            type: object
+          - $ref: '#/components/schemas/HalLink'
+        gekwalificeerdeLocaties:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          items:
+            $ref: '#/components/schemas/HalLink'
+          minItems: 1
+          title: kwalificeert
+          type: array
+        betreffendeActiviteit:
+          allOf:
+          - description: <body><p>Bij een regel die een activiteit vastlegt geeft
+              deze relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)
+              waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een
+              inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
+            title: betreftEenActiviteit
+            type: object
+          - $ref: '#/components/schemas/HalLink'
+      type: object
+    Locatie_links:
+      properties:
+        self:
+          $ref: '#/components/schemas/HalLink'
+        omvattendeLocaties:
+          description: <body><p>Een lijn van een lijnengroep.</p></body><body><p>Een
+            punt van een puntengroep.</p></body><body><p>Een gebied van een gebiedengroep.</p></body><body><p>Deze
+            relatie mag alleen lopen van een locatie van het type:</p><ul><li>puntengroep</li><li>lijnengroep</li><li>gebiedengroep</li></ul><p>in
+            dat geval mag deze dan ook alleen lopen naar resp. een punt, een lijn
+            en een gebied.</p></body><body><p>Een inhoudelijke toelichting op de toepassing
+            van het informatie-element.</p></body><body><p>Een inhoudelijke toelichting
+            op de toepassing van het informatie-element.</p></body><body><p>Een inhoudelijke
+            toelichting op de toepassing van het informatie-element.</p></body>
+          items:
+            $ref: '#/components/schemas/HalLink'
+          title: omvat
+          type: array
+      type: object
+    Regeltekst_links:
+      properties:
+        self:
+          $ref: '#/components/schemas/HalLink'
+        gerelateerdeRegelteksten:
+          description: <body><p>Verwijzing dat aangeeft dat er een bijzondere relatie
+            bestaat tussen twee Regelteksten.</p></body><body><p>Een inhoudelijke
+            toelichting op de toepassing van het informatie-element.</p></body>
+          items:
+            $ref: '#/components/schemas/HalLink'
+          title: gerelateerd
+          type: array
+        betreffendeLocaties:
+          description: <body><p>Het werkingsgebied c.q. de locatie begrenst de juridische
+            werking van de regeltekst, in juridische zin, te weten dat deze regeltekst
+            alleen binnen dit werkingsgebied juridische werkingskracht heeft. Het
+            werkingsgebied van de regeltekst is altijd aanwezig. Deze is dekkend voor
+            de locaties/gebieden die in de regeltekst zijn genoemd. Deze locaties/gebieden
+            worden genoemd in regels die gaan over een activiteit, functie, omgevingsnorm,
+            omgevingswaarde of beperkingengebied. Het werkingsgebied van de regeltekst
+            is maximaal het grondgebied van het bevoegde gezag zelf.</p></body><body><p>Een
+            inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
+          items:
+            $ref: '#/components/schemas/HalLink'
+          minItems: 1
+          title: heeftWerkingIn
+          type: array
+      type: object
+    Activiteit_embedded:
+      properties:
+        bijbehorendeJuridischeRegelsVoorIedereen:
+          description: <body><p>Bij een regel die een activiteit vastlegt geeft deze
+            relatie aan om welke activiteit het gaat. De bijbehorende locatie(s) waar
+            het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een
+            inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
+          items:
+            $ref: '#/components/schemas/JuridischeRegelVoorIedereenHal'
+          minItems: 1
+          title: betreft een activiteit
+          type: array
+      type: object
+    JuridischeRegelVoorIedereen_embedded:
+      properties:
+        gedefinieerdeLocaties:
+          description: <body><p>De locatieaanduiding begrenst de juridische werking
+            van de regel in juridische zin, te weten dat de regel alleen binnen dit
+            werkingsgebied werkingskracht heeft.</p></body><body><p>Een inhoudelijke
+            toelichting op de toepassing van het informatie-element.</p></body>
+          items:
+            $ref: '#/components/schemas/LocatieHal'
+          minItems: 1
+          title: definieert
+          type: array
+        omvattendeRegeltekst:
+          $ref: '#/components/schemas/RegeltekstHal'
+      type: object
+    Regeltekst_embedded:
+      properties:
+        betreffendeLocaties:
+          description: <body><p>Het werkingsgebied c.q. de locatie begrenst de juridische
+            werking van de regeltekst, in juridische zin, te weten dat deze regeltekst
+            alleen binnen dit werkingsgebied juridische werkingskracht heeft. Het
+            werkingsgebied van de regeltekst is altijd aanwezig. Deze is dekkend voor
+            de locaties/gebieden die in de regeltekst zijn genoemd. Deze locaties/gebieden
+            worden genoemd in regels die gaan over een activiteit, functie, omgevingsnorm,
+            omgevingswaarde of beperkingengebied. Het werkingsgebied van de regeltekst
+            is maximaal het grondgebied van het bevoegde gezag zelf.</p></body><body><p>Een
+            inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
+          items:
+            $ref: '#/components/schemas/LocatieHal'
+          minItems: 1
+          title: heeft werking in
+          type: array
+      type: object
+    BadRequestFoutbericht:
+      allOf:
+      - $ref: '#/components/schemas/Foutbericht'
+      - $ref: '#/components/schemas/BadRequestFoutbericht_allOf'
+    Foutbericht:
+      description: Terugmelding bij een fout. JSON representatie in lijn met [RFC7807](https://tools.ietf.org/html/rfc7807).
+      properties:
+        type:
+          description: Link naar meer informatie over deze fout
+          format: uri
+          type: string
+        title:
+          description: Beschrijving van de fout
+          type: string
+        status:
+          description: Http status code
+          type: integer
+        detail:
+          description: Details over de fout
+          type: string
+        instance:
+          description: Uri van de aanroep die de fout heeft veroorzaakt
+          format: uri
+          type: string
+        code:
+          description: Systeemcode die het type fout aangeeft
+          minLength: 1
+          type: string
+      type: object
+    InvalidParams:
+      description: Details over fouten in opgegeven parameters
+      properties:
+        type:
+          example: https://www.vng.nl/realisatie/api/{major-versie}/validaties/integer
+          format: uri
+          type: string
+        name:
+          description: Naam van de parameter
+          example: verblijfplaats__huisnummer
+          type: string
+        code:
+          description: Systeemcode die het type fout aangeeft
+          example: integer
+          minLength: 1
+          type: string
+        reason:
+          description: Beschrijving van de fout op de parameterwaarde
+          example: Waarde is geen geldige integer.
+          type: string
+      type: object
+    GeometrieType:
+      description: <body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body><body><ul><li>`MultiSurface`
+        - GM_MultiSurface</li><li>`Surface` - GM_Surface</li><li>`MultiLineString`
+        - GM_MultiLineString</li><li>`LineString` - GM_LineString</li><li>`MultiPoint`
+        - GM_MultiPoint</li><li>`Point` - GM_Point</li></ul></body>
+      enum:
+      - MultiSurface
+      - Surface
+      - MultiLineString
+      - LineString
+      - MultiPoint
+      - Point
+      type: string
+    LocatieType:
+      description: <body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body>
+      enum:
+      - punt
+      - ambtsgebied
+      - puntengroep
+      - gebied
+      - gebiedengroep
+      - lijn
+      - lijnengroep
+      type: string
+    HalPaginationLinks:
+      allOf:
+      - $ref: '#/components/schemas/HalCollectionLinks'
+      - $ref: '#/components/schemas/HalPaginationLinks_allOf'
+      description: |
+        HalPaginationLinks bevat de link properties die nodig zijn om te kunnen navigeren in een collectie:
+
+        - first: uri voor het opvragen van de eerste pagina van deze collectie
+        - previous: uri voor het opvragen van de vorige pagina van deze collectie
+        - next: uri voor het opvragen van de volgende pagina van deze collectie
+      example:
+        self:
+          href: /resourcenaam?page=4
+        first:
+          href: /resourcenaam?page=1
+          title: Eerste pagina
+        previous:
+          href: /resourcenaam?page=3
+          title: Vorige pagina
+        next:
+          href: /resourcenaam?page=5
+          title: Volgende pagina
+    HalCollectionLinks:
+      description: |
+        HalCollectionLinks bevat de self link die elke HAL Resource minimaal moet hebben in zijn _links property
+      properties:
+        self:
+          $ref: '#/components/schemas/HalLink'
+      type: object
+    HalLink:
+      description: De Link Object zoals gespecificeerd in https://tools.ietf.org/html/draft-kelly-json-hal-08#section-5;
+        Deze link kan als templated link worden aangeboden. [URI-templating is hier
+        beschreven](https://github.com/VNG-Realisatie/Haal-Centraal-common/blob/v1.2.0/features/uri-templating.feature).
+      properties:
+        href:
+          example: https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}
+          type: string
+        templated:
+          type: boolean
+        title:
+          description: Voor mens leesbaar label bij de link
+          type: string
+      required:
+      - href
+      type: object
+    Href:
+      example: https://datapunt.voorbeeldgemeente.nl/api/v{major-versie}/resourcename/{resource-identificatie}
+      type: string
+    Activiteit:
+      description: <body><p>Een activiteit is ieder menselijk handelen waarbij, of
+        ieder menselijk nalaten waardoor een verandering of effect in de fysieke leefomgeving
+        wordt of kan worden bewerkstelligd.</p></body><body><p>Er wordt niet een activiteit
+        bedoeld die een initiatiefnemer voorgenomen is om uit te voeren, maar het
+        type activiteit waarover regels opgesteld zijn. De regel geeft aan dat activiteiten
+        van een bepaald type activiteit wel of niet zijn toegestaan zijn op deze locatie
+        en onder welke voorwaarden.</p></body>
+      properties:
+        begindatum:
+          format: date
+          title: begindatum
+          type: string
+        bovenliggendeActiviteitIdentificatie:
+          minLength: 1
+          title: bovenliggendeActiviteitIdentificatie
+          type: string
+        einddatum:
+          format: date
+          title: einddatum
+          type: string
+        gerelateerdeActiviteitIdentificaties:
+          items:
+            type: string
+          minItems: 0
+          title: gerelateerdeActiviteitIdentificaties
+          type: array
+        groep:
+          allOf:
+          - $ref: '#/components/schemas/Activiteitengroep'
+          - description: <body><p>Een inhoudelijke toelichting op de toepassing van
+              het informatie-element.</p></body><body><p>De verzameling van waarden
+              die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het
+              waardenbereik, uitgedrukt in een specifieke structuur.</p></body>
+            title: groep
+        identificatie:
+          type: string
+        juridischeRegelVoorIedereenIdentificaties:
+          items:
+            minLength: 1
+            type: string
+          minItems: 1
+          title: juridischeRegelVoorIedereenIdentificaties
+          type: array
+        laatsteWijzigingsdatum:
+          format: date
+          title: laatsteWijzigingsdatum
+          type: string
+        naam:
+          type: string
+      required:
+      - begindatum
+      - bovenliggendeActiviteitIdentificatie
+      - einddatum
+      - groep
+      - identificatie
+      - juridischeRegelVoorIedereenIdentificaties
+      - laatsteWijzigingsdatum
+      - naam
+      type: object
+    Activiteitengroep:
+      description: <body><p>Een uitbreidbare lijst met een opsomming van de mogelijke
+        domeinwaarden van een attribuutsoort, die buiten het model in een externe
+        waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting
+        op de toepassing van het informatie-element.</p></body>
+      properties:
+        code:
+          type: string
+        waarde:
+          type: string
+      required:
+      - code
+      - waarde
+      type: object
+    JuridischeRegelVoorIedereen:
+      description: <body><p>De beschrijving van een regel met juridische werkingskracht.
+        Een regel betreft binnen de Omgevingswet veelal activiteiten, en/of normen
+        en/of functies en/of beperkingengebieden.</p></body><body><p>Een inhoudelijke
+        toelichting op de toepassing van het informatie-element.</p></body>
+      properties:
+        begindatum:
+          format: date
+          title: begindatum
+          type: string
+        einddatum:
+          format: date
+          title: einddatum
+          type: string
+        idealisatie:
+          allOf:
+          - $ref: '#/components/schemas/Idealisatie'
+          - description: <body><p>Vastlegging van de manier de begrenzing van Locatie
+              voor deze Juridische regel geïnterpreteerd moet worden en door het bevoegd
+              gezag bedoeld is.</p></body><body><p>Een inhoudelijke toelichting op
+              de toepassing van het informatie-element.</p></body>
+            title: idealisatie
+        identificatie:
+          type: string
+        locatieIdentificaties:
+          items:
+            type: string
+          type: array
+        normeertActiviteiten:
+          items:
+            $ref: '#/components/schemas/ActiviteitLocatieaanduiding'
+          type: array
+        omschrijving:
+          type: string
+        regeltekstIdentificatie:
+          type: string
+        themas:
+          items:
+            $ref: '#/components/schemas/Thema'
+          type: array
+      required:
+      - begindatum
+      - einddatum
+      - idealisatie
+      - identificatie
+      - locatieIdentificaties
+      - omschrijving
+      - regeltekstIdentificatie
+      type: object
+    Idealisatie:
+      description: <body><p>Een lijst met een opsomming van de mogelijke domeinwaarden
+        van een attribuutsoort, die buiten het model in een externe waardenlijst worden
+        beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing
+        van het informatie-element.</p></body>
+      properties:
+        code:
+          type: string
+        waarde:
+          type: string
+      required:
+      - code
+      - waarde
+      type: object
+    ActiviteitLocatieaanduiding:
+      description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+        informatie-element.</p></body>
+      properties:
+        activiteitregelkwalificatie:
+          allOf:
+          - $ref: '#/components/schemas/Activiteitregelkwalificatie'
+          - description: <body><p>Een inhoudelijke toelichting op de toepassing van
+              het informatie-element.</p></body>
+            title: activiteitregelkwalificatie
+        betreffendeActiviteitIdentificatie:
+          type: string
+        gekwalificeerdeLocatieIdentificaties:
+          items:
+            type: string
+          type: array
+        identificatie:
+          type: string
+      required:
+      - activiteitregelkwalificatie
+      - betreffendeActiviteitIdentificatie
+      - gekwalificeerdeLocatieIdentificaties
+      - identificatie
+      type: object
+    Activiteitregelkwalificatie:
+      description: <body><p>Een lijst met een opsomming van de mogelijke domeinwaarden
+        van een attribuutsoort, die buiten het model in een externe waardenlijst worden
+        beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing
+        van het informatie-element.</p></body>
+      properties:
+        code:
+          type: string
+        waarde:
+          type: string
+      required:
+      - code
+      - waarde
+      type: object
+    Thema:
+      description: <body><p>Een limitatieve lijst met een opsomming van de mogelijke
+        domeinwaarden van een attribuutsoort, die buiten het model in een externe
+        waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting
+        op de toepassing van het informatie-element.</p></body>
+      properties:
+        code:
+          type: string
+        waarde:
+          type: string
+      required:
+      - code
+      - waarde
+      type: object
+    Locatie:
+      description: <body><p>Duiding van een geografische positie. Indien er naar een
+        locatie verwezen wordt vanuit een BevoegdGezag dan betreft dit een ambtsgebied.</p></body>
+      properties:
+        begindatum:
+          format: date
+          title: begindatum
+          type: string
+        einddatum:
+          format: date
+          title: einddatum
+          type: string
+        geometrie:
+          type: string
+        geometrieBron:
+          type: string
+        geometrieType:
+          $ref: '#/components/schemas/GeometrieType'
+        hoogte:
+          $ref: '#/components/schemas/WaardeEenheid'
+        identificatie:
+          type: string
+        noemer:
+          type: string
+        omvattendeLocatieIdentificaties:
+          items:
+            type: string
+          type: array
+        type:
+          $ref: '#/components/schemas/LocatieType'
+      required:
+      - begindatum
+      - einddatum
+      - identificatie
+      - type
+      type: object
+    WaardeEenheid:
+      description: <body><p>Een specifieke datatype voor het vastleggen van waarden
+        met een eenheid, zoals 5 meter, 30 decibel en andere.</p></body>
+      properties:
+        eenheid:
+          type: string
+        waarde:
+          type: string
+      required:
+      - eenheid
+      - waarde
+      type: object
+    Regeltekst:
+      description: <body><p>Een Regeltekst is de kleinste zelfstandige eenheid van
+        (een of meer) bij elkaar behorende juridische regels. Deze regels horen onlosmakelijk
+        bij elkaar en hebben gezamenlijk een werkingsgebied.</p></body>
+      properties:
+        begindatum:
+          format: date
+          title: begindatum
+          type: string
+        documentComponent:
+          $ref: '#/components/schemas/DocumentComponent'
+        einddatum:
+          format: date
+          title: einddatum
+          type: string
+        gerelateerdeRegeltekstIdentificaties:
+          items:
+            type: string
+          type: array
+        identificatie:
+          type: string
+        laatsteWijzigingsdatum:
+          format: date
+          title: laatsteWijzigingsdatum
+          type: string
+        locatieIdentificaties:
+          items:
+            type: string
+          type: array
+        omschrijving:
+          type: string
+      required:
+      - begindatum
+      - documentComponent
+      - einddatum
+      - identificatie
+      - laatsteWijzigingsdatum
+      - locatieIdentificaties
+      - omschrijving
+      type: object
+    DocumentComponent:
+      description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+        informatie-element.</p></body>
+      properties:
+        codeBevoegdGezag:
+          type: string
+        documentIdentificatie:
+          type: string
+        documentOpschrift:
+          type: string
+        documentType:
+          allOf:
+          - $ref: '#/components/schemas/Soortregeling'
+          - description: <body><p>Een inhoudelijke toelichting op de toepassing van
+              het informatie-element.</p></body><body><p>De verzameling van waarden
+              die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het
+              waardenbereik, uitgedrukt in een specifieke structuur.</p></body>
+            title: documentType
+        kop:
+          $ref: '#/components/schemas/Kop'
+      required:
+      - codeBevoegdGezag
+      - documentIdentificatie
+      - documentOpschrift
+      - documentType
+      type: object
+    Soortregeling:
+      description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+        informatie-element.</p></body>
+      properties:
+        code:
+          type: string
+        waarde:
+          type: string
+      required:
+      - code
+      - waarde
+      type: object
+    Kop:
+      description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+        informatie-element.</p></body>
+      properties:
+        label:
+          type: string
+        nummer:
+          type: string
+        opschrift:
+          type: string
+      type: object
+    ActiviteitHalCollectie__embedded:
+      properties:
+        activiteiten:
+          items:
+            $ref: '#/components/schemas/ActiviteitHal'
+          type: array
+      type: object
+    JuridischeRegelVoorIedereenHalCollectie__embedded:
+      properties:
+        juridischeregelsvooriedereen:
+          items:
+            $ref: '#/components/schemas/JuridischeRegelVoorIedereenHal'
+          type: array
+      type: object
+    LocatieHalCollectie__embedded:
+      properties:
+        locaties:
+          items:
+            $ref: '#/components/schemas/LocatieHal'
+          type: array
+      type: object
+    RegeltekstHalCollectie__embedded:
+      properties:
+        regelteksten:
+          items:
+            $ref: '#/components/schemas/RegeltekstHal'
+          type: array
+      type: object
+    ActiviteitHal_allOf:
+      properties:
+        _links:
+          $ref: '#/components/schemas/Activiteit_links'
+        _embedded:
+          $ref: '#/components/schemas/Activiteit_embedded'
+      type: object
+    JuridischeRegelVoorIedereenHal_allOf:
+      properties:
+        _links:
+          $ref: '#/components/schemas/JuridischeRegelVoorIedereen_links'
+        _embedded:
+          $ref: '#/components/schemas/JuridischeRegelVoorIedereen_embedded'
+      type: object
+    LocatieHal_allOf:
+      properties:
+        _links:
+          $ref: '#/components/schemas/Locatie_links'
+      type: object
+    RegeltekstHal_allOf:
+      properties:
+        _links:
+          $ref: '#/components/schemas/Regeltekst_links'
+        _embedded:
+          $ref: '#/components/schemas/Regeltekst_embedded'
+      type: object
+    BadRequestFoutbericht_allOf:
+      properties:
+        invalidParams:
+          description: Foutmelding per fout in een parameter. Alle gevonden fouten
+            worden één keer teruggemeld.
+          items:
+            $ref: '#/components/schemas/InvalidParams'
+          type: array
+      type: object
+    HalPaginationLinks_allOf:
+      properties:
+        first:
+          $ref: '#/components/schemas/HalLink'
+        previous:
+          $ref: '#/components/schemas/HalLink'
+        next:
+          $ref: '#/components/schemas/HalLink'
+      type: object
+
