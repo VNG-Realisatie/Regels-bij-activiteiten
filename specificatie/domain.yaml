@@ -1,0 +1,389 @@
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/plan_sw___toepasbare_regel_sw/v0
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/plan_sw___toepasbare_regel_sw/v0
+info:
+  title: Plan SW - Toepasbare regel SW
+  description: "Nog in te voorzien"
+  version: "0.0.1"
+  x-imvertor-generator-version: "1.62.2"
+  x-yamlCompiler-stylesheets-version: "20200903"
+  contact:
+    url: https://github.com/VNG-Realisatie/PSW-TRSW
+    email: robert.melskens@vng.nl
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+tags:
+- name: Activiteiten
+- name: JuridischeRegelsVoorIedereen
+- name: Locaties
+- name: Regelteksten
+paths: {}
+components:
+  schemas:
+    Activiteit:
+      type: "object"
+      description: "<body><p>Een activiteit is ieder menselijk handelen waarbij, of\
+        \ ieder menselijk nalaten waardoor een verandering of effect in de fysieke\
+        \ leefomgeving wordt of kan worden bewerkstelligd.</p></body><body><p>Er wordt\
+        \ niet een activiteit bedoeld die een initiatiefnemer voorgenomen is om uit\
+        \ te voeren, maar het type activiteit waarover regels opgesteld zijn. De regel\
+        \ geeft aan dat activiteiten van een bepaald type activiteit wel of niet zijn\
+        \ toegestaan zijn op deze locatie en onder welke voorwaarden.</p></body>"
+      required:
+      - "begindatum"
+      - "bovenliggendeActiviteitIdentificatie"
+      - "einddatum"
+      - "groep"
+      - "identificatie"
+      - "juridischeRegelVoorIedereenIdentificaties"
+      - "laatsteWijzigingsdatum"
+      - "naam"
+      properties:
+        begindatum:
+          type: "string"
+          title: "begindatum"
+          description: ""
+          format: "date"
+        bovenliggendeActiviteitIdentificatie:
+          type: "string"
+          title: "bovenliggendeActiviteitIdentificatie"
+          description: ""
+          minLength: 1
+        einddatum:
+          type: "string"
+          title: "einddatum"
+          description: ""
+          format: "date"
+        gerelateerdeActiviteitIdentificaties:
+          type: "array"
+          title: "gerelateerdeActiviteitIdentificaties"
+          description: ""
+          minItems: 0
+          items:
+            type: "string"
+        groep:
+          allOf:
+          - $ref: "#/components/schemas/Activiteitengroep"
+          - title: "groep"
+            description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+              \ het informatie-element.</p></body><body><p>De verzameling van waarden\
+              \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen\
+              \ het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+        identificatie:
+          type: string
+        juridischeRegelVoorIedereenIdentificaties:
+          type: "array"
+          title: "juridischeRegelVoorIedereenIdentificaties"
+          description: ""
+          minItems: 1
+          items:
+            type: "string"
+            minLength: 1
+        laatsteWijzigingsdatum:
+          type: "string"
+          title: "laatsteWijzigingsdatum"
+          description: ""
+          format: "date"
+        naam:
+          type: string
+    JuridischeRegelVoorIedereen:
+      type: "object"
+      description: "<body><p>De beschrijving van een regel met juridische werkingskracht.\
+        \ Een regel betreft binnen de Omgevingswet veelal activiteiten, en/of normen\
+        \ en/of functies en/of beperkingengebieden.</p></body><body><p>Een inhoudelijke\
+        \ toelichting op de toepassing van het informatie-element.</p></body>"
+      required:
+      - "begindatum"
+      - "einddatum"
+      - "idealisatie"
+      - "identificatie"
+      - "locatieIdentificaties"
+      - "omschrijving"
+      - "regeltekstIdentificatie"
+      properties:
+        begindatum:
+          type: "string"
+          title: "begindatum"
+          description: ""
+          format: "date"
+        einddatum:
+          type: "string"
+          title: "einddatum"
+          description: ""
+          format: "date"
+        idealisatie:
+          allOf:
+          - $ref: "#/components/schemas/Idealisatie"
+          - title: "idealisatie"
+            description: "<body><p>Vastlegging van de manier de begrenzing van Locatie\
+              \ voor deze Juridische regel geïnterpreteerd moet worden en door het\
+              \ bevoegd gezag bedoeld is.</p></body><body><p>Een inhoudelijke toelichting\
+              \ op de toepassing van het informatie-element.</p></body>"
+        identificatie:
+          type: string
+        locatieIdentificaties:
+          type: "array"
+          items:
+            type: string
+        normeertActiviteiten:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/ActiviteitLocatieaanduiding"
+        omschrijving:
+          type: string
+        regeltekstIdentificatie:
+          type: string
+        themas:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Thema"
+    Locatie:
+      type: "object"
+      description: "<body><p>Duiding van een geografische positie. Indien er naar\
+        \ een locatie verwezen wordt vanuit een BevoegdGezag dan betreft dit een ambtsgebied.</p></body>"
+      required:
+      - "begindatum"
+      - "einddatum"
+      - "identificatie"
+      - "type"
+      properties:
+        begindatum:
+          type: "string"
+          title: "begindatum"
+          description: ""
+          format: "date"
+        einddatum:
+          type: "string"
+          title: "einddatum"
+          description: ""
+          format: "date"
+        geometrie:
+          type: string
+        geometrieBron:
+          type: string
+        geometrieType:
+          $ref: "#/components/schemas/GeometrieType"
+        hoogte:
+          $ref: "#/components/schemas/WaardeEenheid"
+        identificatie:
+          type: string
+        noemer:
+          type: string
+        omvattendeLocatieIdentificaties:
+          type: "array"
+          items:
+            type: string
+        type:
+          $ref: "#/components/schemas/LocatieType"
+    Regeltekst:
+      type: "object"
+      description: "<body><p>Een Regeltekst is de kleinste zelfstandige eenheid van\
+        \ (een of meer) bij elkaar behorende juridische regels. Deze regels horen\
+        \ onlosmakelijk bij elkaar en hebben gezamenlijk een werkingsgebied.</p></body>"
+      required:
+      - "begindatum"
+      - "documentComponent"
+      - "einddatum"
+      - "identificatie"
+      - "laatsteWijzigingsdatum"
+      - "locatieIdentificaties"
+      - "omschrijving"
+      properties:
+        begindatum:
+          type: "string"
+          title: "begindatum"
+          description: ""
+          format: "date"
+        documentComponent:
+          $ref: "#/components/schemas/DocumentComponent"
+        einddatum:
+          type: "string"
+          title: "einddatum"
+          description: ""
+          format: "date"
+        gerelateerdeRegeltekstIdentificaties:
+          type: "array"
+          items:
+            type: string
+        identificatie:
+          type: string
+        laatsteWijzigingsdatum:
+          type: "string"
+          title: "laatsteWijzigingsdatum"
+          description: ""
+          format: "date"
+        locatieIdentificaties:
+          type: "array"
+          items:
+            type: string
+        omschrijving:
+          type: string
+    ActiviteitLocatieaanduiding:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      required:
+      - "activiteitregelkwalificatie"
+      - "betreffendeActiviteitIdentificatie"
+      - "gekwalificeerdeLocatieIdentificaties"
+      - "identificatie"
+      properties:
+        activiteitregelkwalificatie:
+          allOf:
+          - $ref: "#/components/schemas/Activiteitregelkwalificatie"
+          - title: "activiteitregelkwalificatie"
+            description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+              \ het informatie-element.</p></body>"
+        betreffendeActiviteitIdentificatie:
+          type: string
+        gekwalificeerdeLocatieIdentificaties:
+          type: "array"
+          items:
+            type: string
+        identificatie:
+          type: string
+    Activiteitengroep:
+      type: "object"
+      description: "<body><p>Een uitbreidbare lijst met een opsomming van de mogelijke\
+        \ domeinwaarden van een attribuutsoort, die buiten het model in een externe\
+        \ waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting\
+        \ op de toepassing van het informatie-element.</p></body>"
+      required:
+      - "code"
+      - "waarde"
+      properties:
+        code:
+          type: string
+        waarde:
+          type: string
+    Activiteitregelkwalificatie:
+      type: "object"
+      description: "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden\
+        \ van een attribuutsoort, die buiten het model in een externe waardenlijst\
+        \ worden beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing\
+        \ van het informatie-element.</p></body>"
+      required:
+      - "code"
+      - "waarde"
+      properties:
+        code:
+          type: string
+        waarde:
+          type: string
+    DocumentComponent:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      required:
+      - "codeBevoegdGezag"
+      - "documentIdentificatie"
+      - "documentOpschrift"
+      - "documentType"
+      properties:
+        codeBevoegdGezag:
+          type: string
+        documentIdentificatie:
+          type: string
+        documentOpschrift:
+          type: string
+        documentType:
+          allOf:
+          - $ref: "#/components/schemas/Soortregeling"
+          - title: "documentType"
+            description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+              \ het informatie-element.</p></body><body><p>De verzameling van waarden\
+              \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen\
+              \ het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+        kop:
+          $ref: "#/components/schemas/Kop"
+    Idealisatie:
+      type: "object"
+      description: "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden\
+        \ van een attribuutsoort, die buiten het model in een externe waardenlijst\
+        \ worden beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing\
+        \ van het informatie-element.</p></body>"
+      required:
+      - "code"
+      - "waarde"
+      properties:
+        code:
+          type: string
+        waarde:
+          type: string
+    Kop:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      properties:
+        label:
+          type: string
+        nummer:
+          type: string
+        opschrift:
+          type: string
+    Soortregeling:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      required:
+      - "code"
+      - "waarde"
+      properties:
+        code:
+          type: string
+        waarde:
+          type: string
+    Thema:
+      type: "object"
+      description: "<body><p>Een limitatieve lijst met een opsomming van de mogelijke\
+        \ domeinwaarden van een attribuutsoort, die buiten het model in een externe\
+        \ waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting\
+        \ op de toepassing van het informatie-element.</p></body>"
+      required:
+      - "code"
+      - "waarde"
+      properties:
+        code:
+          type: string
+        waarde:
+          type: string
+    WaardeEenheid:
+      type: "object"
+      description: "<body><p>Een specifieke datatype voor het vastleggen van waarden\
+        \ met een eenheid, zoals 5 meter, 30 decibel en andere.</p></body>"
+      required:
+      - "eenheid"
+      - "waarde"
+      properties:
+        eenheid:
+          type: string
+        waarde:
+          type: string
+    GeometrieType:
+      type: "string"
+      description: "<body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body><body><ul><li>`MultiSurface`\
+        \ - GM_MultiSurface</li><li>`Surface` - GM_Surface</li><li>`MultiLineString`\
+        \ - GM_MultiLineString</li><li>`LineString` - GM_LineString</li><li>`MultiPoint`\
+        \ - GM_MultiPoint</li><li>`Point` - GM_Point</li></ul></body>"
+      enum:
+      - "MultiSurface"
+      - "Surface"
+      - "MultiLineString"
+      - "LineString"
+      - "MultiPoint"
+      - "Point"
+    LocatieType:
+      type: "string"
+      description: "<body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body>"
+      enum:
+      - "punt"
+      - "ambtsgebied"
+      - "puntengroep"
+      - "gebied"
+      - "gebiedengroep"
+      - "lijn"
+      - "lijnengroep"

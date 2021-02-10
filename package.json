@@ -43,7 +43,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant && git checkout ./specificatie/genereervariant/openapi.*"
+      "pre-commit": "npm run oas:lint && npm run oas:resolve && npm run oas:lint-genereervariant"
     }
   }
 }
