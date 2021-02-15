@@ -8,7 +8,7 @@ Naast het gebruik als API is ook voorzien in het gebruik van de specificaties om
 
 ## Documentatie
 * [Technische specificaties van de **unresolved** versie](./specificatie/openapi.yaml) (Open API versie)
-* Specificaties van de actuele productie versie in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Juridische-regels/main/specificatie/openapi.yaml)
+* Specificaties van de actuele productie versie in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Regels-bij-activiteiten/main/specificatie/genereervariant/openapi.yaml)
 * [Technische specificaties](./specificatie/openapi.json) (JSON Schema versie)
 * [Technische specificaties](./specificatie/openapi_draft04.json) (JSON Schema draft 04 versie)
 
