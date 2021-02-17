@@ -15,6 +15,7 @@ Naast het gebruik als API is ook voorzien in het gebruik van de specificaties om
 * Specificaties van de actuele productie versie in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Regels-bij-activiteiten/main/specificatie/genereervariant/openapi.yaml)
 * [Technische specificaties](./specificatie/openapi.json) (JSON Schema versie)
 * [Technische specificaties](./specificatie/openapi_draft04.json) (JSON Schema draft 04 versie)
+* Download [client code](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/tree/master/code)
 
 * Ontwerpkeuzes staan in de [ontwerpbeslissingen](./docs/ontwerpbeslissingen.md)
 * Productvisie (nog in te voorzien)
