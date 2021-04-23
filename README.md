@@ -31,6 +31,7 @@ De API kan gebruikt worden om de desbetreffende gegevens in json-formaat als bes
 - de regels en bijbehorende annotaties van een specifieke regeling;  
 - de regels en bijbehorende annotaties van één of meer activiteiten;  
 - de regels en bijbehorende annotaties van een specifiek werkpakket.  
+Default worden alle regels, ook de vervallen regels, in het bestand opgenomen. Geselecteerd kan worden dat alleen niet-vervallen regels opgenomen worden. 
   
 Voor de inhoud van een dergelijk bestand gelden enkele aanvullende afspraken:  
 - Van een activiteit die deel uit maakt van de selectie (van gewenste gegevens) worden tevens de bovenliggende activiteit(en) met bijbehorende juridische regels en regelteksten geleverd. Dit gaat tot aan de (bovenliggende landelijke) activiteit op het tweede niveau in de functionele structuur (zoals "nl.imow-mnre1034.activiteit.ActInOmgevingsplan").
