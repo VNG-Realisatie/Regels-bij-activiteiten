@@ -25,6 +25,21 @@ Een applicatie ('toepasbare regelsoftware') die invulling geeft aan de Toepasbar
 Dus, als de leverancier de standaard als provider of consumer nog niet ondersteunt en nog geen leverancierseigen oplossing kan bieden voor de door de klant gebruikte te koppelen consumer- resp. provider-software, dan dient ze koppeling met die software mogelijk te maken door het alsnog gaan ondersteunen van de standaard als provider resp. consumer dan wel door het alsnog bieden van een leverancierseigen oplossing voor bestandsuitwisseling met die software.  
 Deze compliancy-afspraken waarborgen dat een hierboven, als eerste, genoemde belanghebbende haar eigen keuzes kan maken voor plansoftware en voor toepasbare regelsoftware waarbij  interoperabiliteit daartussen gegarandeerd is. Het waarborgt verder dat software-leveranciers vooralsnog met technisch relatief eenvoudige oplossingen in interoperabiliteit kunnen voorzien wat onevenredige investeringen in software-ontwikkeling voorkomt gezien de beperkte mate van volwassenheid waarin het Omgevingswetdomein zich nog bevindt.   
 
+## Toelichting op bestandsuitwisseling
+De API kan gebruikt worden om de desbetreffende gegevens in json-formaat als bestand op te vragen. Selectie van de te verkrijgen gegevens is mogelijk:  
+- alle regels en bijbehorende annotaties (zoals beheerd in de plansoftware);  
+- de regels en bijbehorende annotaties van een specifieke regeling;  
+- de regels en bijbehorende annotaties van één of meer activiteiten;  
+- de regels en bijbehorende annotaties van een specifiek werkpakket.  
+  
+Voor de inhoud van een dergelijk bestand gelden enkele aanvullende afspraken:  
+- Van een activiteit die deel uit maakt van de selectie (van gewenste gegevens) worden tevens de bovenliggende activiteit(en) met bijbehorende juridische regels en regelteksten geleverd.  
+- Van activiteiten worden wel de Id’s van gerelateerde activiteiten geleverd maar niet de gegevens daarvan (tenzij die activiteit tot de selectie behoort).  
+- Indien de selectie één of meer activiteiten betreft, dan worden van de daarbijbehorende juridische regels alleen de activiteitlocatieaanduidingen bij die activiteiten (en de bovenliggende activteiten) geleverd, niet de activiteitlocatieaanduidingen naar andere activiteiten.   
+- Embedded gegevens worden niet als embedded in het bestand opgenomen, ze zijn daar immers al als niet-embedded opgenomen.  
+  
+Zie ter illustratie van één en ander het [voorbeeldbestand](link).  
+
 ## Getting started
 ...
 
