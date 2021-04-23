@@ -33,9 +33,9 @@ De API kan gebruikt worden om de desbetreffende gegevens in json-formaat als bes
 - de regels en bijbehorende annotaties van een specifiek werkpakket.  
   
 Voor de inhoud van een dergelijk bestand gelden enkele aanvullende afspraken:  
-- Van een activiteit die deel uit maakt van de selectie (van gewenste gegevens) worden tevens de bovenliggende activiteit(en) met bijbehorende juridische regels en regelteksten geleverd.  
-- Van activiteiten worden wel de Id’s van gerelateerde activiteiten geleverd maar niet de gegevens daarvan (tenzij die activiteit tot de selectie behoort).  
-- Indien de selectie één of meer activiteiten betreft, dan worden van de daarbijbehorende juridische regels alleen de activiteitlocatieaanduidingen bij die activiteiten (en de bovenliggende activteiten) geleverd, niet de activiteitlocatieaanduidingen naar andere activiteiten.   
+- Van een activiteit die deel uit maakt van de selectie (van gewenste gegevens) worden tevens de bovenliggende activiteit(en) met bijbehorende juridische regels en regelteksten geleverd. Dit gaat tot aan de (bovenliggende landelijke) activiteit op het tweede niveau in de functionele structuur (zoals "nl.imow-mnre1034.activiteit.ActInOmgevingsplan").
+- Van een activiteit worden wel de Id’s van gerelateerde activiteiten geleverd maar niet de gegevens daarvan (tenzij de gerelateerde activiteit tot de selectie behoort).  
+- Indien één of meer activiteiten geselecteerd zijn, dan worden van de daarbijbehorende juridische regels alleen de activiteitlocatieaanduidingen bij die activiteiten (en de bovenliggende activteiten) geleverd, niet de activiteitlocatieaanduidingen naar andere activiteiten.   
 - Embedded gegevens worden niet als embedded in het bestand opgenomen, ze zijn daar immers al als niet-embedded opgenomen.  
   
 Zie ter illustratie van één en ander het [voorbeeldbestand](link).  
