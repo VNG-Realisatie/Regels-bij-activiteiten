@@ -27,6 +27,7 @@ paths:
       operationId: Getactiviteiten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
           description: "Een pagina binnen de gepagineerde resultatenset."
@@ -48,6 +49,8 @@ paths:
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Pagination-Page:
@@ -93,6 +96,7 @@ paths:
       operationId: Getactiviteit
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
@@ -106,6 +110,8 @@ paths:
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Rate-Limit-Limit:
@@ -149,6 +155,7 @@ paths:
       operationId: GetjuridischeRegelsVoorIedereen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert. I.h.k.v. deze API zijn alleen juridische regels die minimaal één activiteit bevatten van belang.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
           description: "Een pagina binnen de gepagineerde resultatenset."
@@ -164,6 +171,8 @@ paths:
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Pagination-Page:
@@ -209,6 +218,7 @@ paths:
       operationId: GetjuridischeRegelVoorIedereen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert. I.h.k.v. deze API zijn alleen juridische regels die minimaal één activiteit bevatten van belang.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
@@ -222,6 +232,8 @@ paths:
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Rate-Limit-Limit:
@@ -265,6 +277,7 @@ paths:
       operationId: Getlocaties
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
           description: "Een pagina binnen de gepagineerde resultatenset."
@@ -279,6 +292,8 @@ paths:
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Pagination-Page:
@@ -324,6 +339,7 @@ paths:
       operationId: Getlocatie
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: path
           name: identificatie
           description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
@@ -336,6 +352,8 @@ paths:
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Rate-Limit-Limit:
@@ -379,6 +397,7 @@ paths:
       operationId: Getregelteksten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
           description: "Een pagina binnen de gepagineerde resultatenset."
@@ -412,6 +431,8 @@ paths:
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Pagination-Page:
@@ -457,6 +478,7 @@ paths:
       operationId: Getregeltekst
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
@@ -470,6 +492,8 @@ paths:
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Rate-Limit-Limit:
