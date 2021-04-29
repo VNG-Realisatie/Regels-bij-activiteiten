@@ -26,18 +26,17 @@ Dus, als de leverancier de standaard als provider of consumer nog niet ondersteu
 Deze compliancy-afspraken waarborgen dat een hierboven, als eerste, genoemde belanghebbende haar eigen keuzes kan maken voor plansoftware en voor toepasbare regelsoftware waarbij  interoperabiliteit daartussen gegarandeerd is. Het waarborgt verder dat software-leveranciers vooralsnog met technisch relatief eenvoudige oplossingen in interoperabiliteit kunnen voorzien wat onevenredige investeringen in software-ontwikkeling voorkomt gezien de beperkte mate van volwassenheid waarin het Omgevingswetdomein zich nog bevindt.   
 
 ## Toelichting op bestandsuitwisseling
-De API kan gebruikt worden om de desbetreffende gegevens in json-formaat als bestand op te vragen. Selectie van de te verkrijgen gegevens is mogelijk:  
-- alle regels en bijbehorende annotaties (zoals beheerd in de plansoftware);  
-- de regels en bijbehorende annotaties van een specifieke regeling;  
-- de regels en bijbehorende annotaties van één of meer activiteiten;  
-- de regels en bijbehorende annotaties van een specifiek werkpakket.  
-Default worden alle regels, ook de vervallen regels, in het bestand opgenomen. Geselecteerd kan worden dat alleen niet-vervallen regels opgenomen worden. 
+De API kan gebruikt worden om de desbetreffende gegevens in json-formaat als bestand op te vragen. Zonder selectie resulteert dat in alle regeltektsten en bijbehorende annotaties (locaties, 'juridische regels voor iedereen', activiteiten e.d. zoals beheerd in de plansoftware) of bijvoorbeeld alle locaties. Selectie van de te verkrijgen gegevens is mogelijk:  
+- de regelteksten en bijbehorende annotaties van een specifiek omgevingsdocument;  
+- de regelteksten en bijbehorende annotaties van één of meer activiteiten;  
+- de regelteksten en bijbehorende annotaties van een specifiek werkpakket (element van regeltekst).  
+Default worden alle regelteksten, ook die vervallen zijn, in het bestand opgenomen. Geselecteerd kan worden dat alleen niet-vervallen regelteksten opgenomen worden. 
   
 Voor de inhoud van een dergelijk bestand gelden enkele aanvullende afspraken:  
-- Van een activiteit die deel uit maakt van de selectie (van gewenste gegevens) worden tevens de bovenliggende activiteit(en) met bijbehorende juridische regels en regelteksten geleverd. Dit gaat tot aan de (bovenliggende landelijke) activiteit op het tweede niveau in de functionele structuur (zoals "nl.imow-mnre1034.activiteit.ActInOmgevingsplan").
+- Van een activiteit die deel uitmaakt van de selectie (van gewenste gegevens) worden tevens de bovenliggende activiteit(en) met bijbehorende 'juridische regels (voor iedereen)' en regelteksten geleverd. Dit gaat tot aan de (bovenliggende landelijke) activiteit op het tweede niveau in de functionele structuur (zoals "nl.imow-mnre1034.activiteit.ActInOmgevingsplan").
 - Van een activiteit worden wel de Id’s van gerelateerde activiteiten geleverd maar niet de gegevens daarvan (tenzij de gerelateerde activiteit tot de selectie behoort).  
-- Indien één of meer activiteiten geselecteerd zijn, dan worden van de daarbijbehorende juridische regels alleen de activiteitlocatieaanduidingen bij die activiteiten (en de bovenliggende activteiten) geleverd, niet de activiteitlocatieaanduidingen naar andere activiteiten.   
-- Embedded gegevens worden niet als embedded in het bestand opgenomen, ze zijn daar immers al als niet-embedded opgenomen.  
+- Indien één of meer activiteiten geselecteerd zijn, dan worden van de daarbij behorende 'juridische regels voor iedereen' alleen de activiteitlocatieaanduidingen bij die activiteiten (en de bovenliggende activteiten) geleverd, niet de activiteitlocatieaanduidingen naar andere activiteiten.   
+- Embedded gegevens worden niet als embedded in het bestand opgenomen, ze zijn daar immers al als niet-embedded opgenomen. 
   
 Zie ter illustratie van één en ander het [voorbeeldbestand](link).  
 
