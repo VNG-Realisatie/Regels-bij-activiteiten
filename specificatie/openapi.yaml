@@ -603,8 +603,8 @@ components:
           description: "<body><p>De regels die gelden voor de gerelateerde activiteit(en)\
             \ zijn contextueel relevant voor deze activiteit. Toelichting: Met contextueel\
             \ relevant wordt bedoeld dat de regels die gelden voor de gerelateerde\
-            \ activiteit, binnen die gegeven context ook gelden voor deze activiteit.
-            \_Bijvoorbeeld omdat de ene activiteit altijd samen met de andere activiteit(en)\
+            \ activiteit, binnen die gegeven context ook gelden voor deze activiteit.\
+            \ Bijvoorbeeld omdat de ene activiteit altijd samen met de andere activiteit(en)\
             \ worden uitgevoerd en de regels van beide daarmee allebei tegelijk aan\
             \ de orde zijn. Als de beschreven context waarin de regels behorende bij\
             \ de gerelateerde activiteit gelden niet aan de orde is, dan gelden de\
