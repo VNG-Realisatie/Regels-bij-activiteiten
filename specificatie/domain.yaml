@@ -434,4 +434,4 @@ components:
         multiLineString:
           $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/multilinestringGeoJSON.yaml'
         multiPolygon:
-          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/multiPolygonGeoJSON.yaml'
+          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/multipolygonGeoJSON.yaml'
