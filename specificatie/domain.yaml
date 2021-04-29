@@ -330,12 +330,18 @@ components:
         \ informatie-element.</p></body>"
       required:
       - "identificatie"
+      - "kop"
+      - "omgevingsdocument"
       - "type"
       - "vervallen"
       - "volgordeNummer"
       properties:
         identificatie:
           $ref: "#/components/schemas/WId"
+        kop:
+          $ref: "#/components/schemas/Kop"
+        omgevingsdocument:
+          $ref: "#/components/schemas/Omgevingsdocument"
         type:
           type: "string"
           title: "type"
@@ -375,6 +381,55 @@ components:
           title: "waarde"
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
             \ het informatie-element.</p></body>"
+          minLength: 1
+    Kop:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      properties:
+        label:
+          type: "string"
+          title: "label"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+        nummer:
+          type: "string"
+          title: "nummer"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+        opschrift:
+          type: "string"
+          title: "opschrift"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+    Omgevingsdocument:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      required:
+      - "codeBevoegdGezag"
+      - "identificatie"
+      - "opschrift"
+      properties:
+        codeBevoegdGezag:
+          type: "string"
+          title: "code"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minLength: 1
+        identificatie:
+          type: "string"
+          title: "identificatie"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minLength: 1
+        opschrift:
+          type: "string"
+          title: "opschrift"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
+            \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het\
+            \ waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           minLength: 1
     Thema:
       type: "object"
