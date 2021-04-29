@@ -2960,6 +2960,8 @@ components:
     DocumentComponent:
       required:
       - identificatie
+      - kop
+      - omgevingsdocument
       - type
       - vervallen
       - volgordeNummer
@@ -2967,6 +2969,10 @@ components:
       properties:
         identificatie:
           $ref: '#/components/schemas/WId'
+        kop:
+          $ref: '#/components/schemas/Kop'
+        omgevingsdocument:
+          $ref: '#/components/schemas/Omgevingsdocument'
         type:
           title: type
           minLength: 1
@@ -2989,6 +2995,55 @@ components:
         informatie-element.</p></body>
     WId:
       type: string
+    Kop:
+      type: object
+      properties:
+        label:
+          title: label
+          type: string
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+        nummer:
+          title: nummer
+          type: string
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+        opschrift:
+          title: opschrift
+          type: string
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+      description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+        informatie-element.</p></body>
+    Omgevingsdocument:
+      required:
+      - codeBevoegdGezag
+      - identificatie
+      - opschrift
+      type: object
+      properties:
+        codeBevoegdGezag:
+          title: code
+          minLength: 1
+          type: string
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+        identificatie:
+          title: identificatie
+          minLength: 1
+          type: string
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+        opschrift:
+          title: opschrift
+          minLength: 1
+          type: string
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body><body><p>De verzameling van waarden
+            die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het
+            waardenbereik, uitgedrukt in een specifieke structuur.</p></body>
+      description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+        informatie-element.</p></body>
     ActiviteitHalCollectie__embedded:
       type: object
       properties:
