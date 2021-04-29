@@ -29,6 +29,16 @@ paths:
         een collectie amendementen retourneert.</p></body>
       operationId: Getactiviteiten
       parameters:
+      - name: Accept-Crs
+        in: header
+        description: Gewenste CRS van de coördinaten in de response.
+        required: false
+        schema:
+          type: string
+          description: CRS van de coördinaten in de response. epsg:28992 mapt op het
+            RD New Nederlands coordinatenstelsel.
+          enum:
+          - epsg:28992
       - name: page
         in: query
         description: Een pagina binnen de gepagineerde resultatenset.
@@ -72,6 +82,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Pagination-Page:
@@ -282,6 +294,16 @@ paths:
         gegevens van een amendement retourneert.</p></body>
       operationId: Getactiviteit
       parameters:
+      - name: Accept-Crs
+        in: header
+        description: Gewenste CRS van de coördinaten in de response.
+        required: false
+        schema:
+          type: string
+          description: CRS van de coördinaten in de response. epsg:28992 mapt op het
+            RD New Nederlands coordinatenstelsel.
+          enum:
+          - epsg:28992
       - name: expand
         in: query
         description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
@@ -309,6 +331,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Rate-Limit-Limit:
@@ -532,6 +556,16 @@ paths:
         regels die minimaal één activiteit bevatten van belang.</p></body>
       operationId: GetjuridischeRegelsVoorIedereen
       parameters:
+      - name: Accept-Crs
+        in: header
+        description: Gewenste CRS van de coördinaten in de response.
+        required: false
+        schema:
+          type: string
+          description: CRS van de coördinaten in de response. epsg:28992 mapt op het
+            RD New Nederlands coordinatenstelsel.
+          enum:
+          - epsg:28992
       - name: page
         in: query
         description: Een pagina binnen de gepagineerde resultatenset.
@@ -567,6 +601,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Pagination-Page:
@@ -778,6 +814,16 @@ paths:
         regels die minimaal één activiteit bevatten van belang.</p></body>
       operationId: GetjuridischeRegelVoorIedereen
       parameters:
+      - name: Accept-Crs
+        in: header
+        description: Gewenste CRS van de coördinaten in de response.
+        required: false
+        schema:
+          type: string
+          description: CRS van de coördinaten in de response. epsg:28992 mapt op het
+            RD New Nederlands coordinatenstelsel.
+          enum:
+          - epsg:28992
       - name: expand
         in: query
         description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
@@ -807,6 +853,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Rate-Limit-Limit:
@@ -1029,6 +1077,16 @@ paths:
         een collectie amendementen retourneert.</p></body>
       operationId: Getlocaties
       parameters:
+      - name: Accept-Crs
+        in: header
+        description: Gewenste CRS van de coördinaten in de response.
+        required: false
+        schema:
+          type: string
+          description: CRS van de coördinaten in de response. epsg:28992 mapt op het
+            RD New Nederlands coordinatenstelsel.
+          enum:
+          - epsg:28992
       - name: page
         in: query
         description: Een pagina binnen de gepagineerde resultatenset.
@@ -1052,6 +1110,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Pagination-Page:
@@ -1262,6 +1322,16 @@ paths:
         gegevens van een amendement retourneert.</p></body>
       operationId: Getlocatie
       parameters:
+      - name: Accept-Crs
+        in: header
+        description: Gewenste CRS van de coördinaten in de response.
+        required: false
+        schema:
+          type: string
+          description: CRS van de coördinaten in de response. epsg:28992 mapt op het
+            RD New Nederlands coordinatenstelsel.
+          enum:
+          - epsg:28992
       - name: identificatie
         in: path
         description: <body><p>De unieke identificatie waaronder elk object van dit
@@ -1280,6 +1350,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Rate-Limit-Limit:
@@ -1502,6 +1574,16 @@ paths:
         een collectie amendementen retourneert.</p></body>
       operationId: Getregelteksten
       parameters:
+      - name: Accept-Crs
+        in: header
+        description: Gewenste CRS van de coördinaten in de response.
+        required: false
+        schema:
+          type: string
+          description: CRS van de coördinaten in de response. epsg:28992 mapt op het
+            RD New Nederlands coordinatenstelsel.
+          enum:
+          - epsg:28992
       - name: page
         in: query
         description: Een pagina binnen de gepagineerde resultatenset.
@@ -1568,6 +1650,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Pagination-Page:
@@ -1778,6 +1862,16 @@ paths:
         gegevens van een amendement retourneert.</p></body>
       operationId: Getregeltekst
       parameters:
+      - name: Accept-Crs
+        in: header
+        description: Gewenste CRS van de coördinaten in de response.
+        required: false
+        schema:
+          type: string
+          description: CRS van de coördinaten in de response. epsg:28992 mapt op het
+            RD New Nederlands coordinatenstelsel.
+          enum:
+          - epsg:28992
       - name: expand
         in: query
         description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
@@ -1805,6 +1899,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Rate-Limit-Limit:
@@ -2928,6 +3024,13 @@ components:
         description: Geeft een specifieke API-versie aan in de context van een specifieke
           aanroep.
         example: 1.0.0
+    contentCrs:
+      description: CRS van de meegegeven geometrie. epsg:28992 mapt op het RD New
+        Nederlands coordinatenstelsel.
+      schema:
+        type: string
+        enum:
+        - epsg:28992
     warning:
       schema:
         type: string
