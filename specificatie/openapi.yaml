@@ -99,7 +99,7 @@ paths:
           description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body>"
           required: true
           schema:
-            $ref: "#/components/schemas/Identificatie"
+            $ref: "domain.yaml#/components/schemas/Identificatie"
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -215,7 +215,7 @@ paths:
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           required: true
           schema:
-            $ref: "#/components/schemas/Identificatie"
+            $ref: "domain.yaml#/components/schemas/Identificatie"
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -329,7 +329,7 @@ paths:
           description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           required: true
           schema:
-            $ref: "#/components/schemas/Identificatie"
+            $ref: "domain.yaml#/components/schemas/Identificatie"
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -463,7 +463,7 @@ paths:
           description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body>"
           required: true
           schema:
-            $ref: "#/components/schemas/Identificatie"
+            $ref: "domain.yaml#/components/schemas/Identificatie"
       responses:
         '200':
           description: "Zoekactie geslaagd"
