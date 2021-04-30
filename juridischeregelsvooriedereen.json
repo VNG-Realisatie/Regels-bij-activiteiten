@@ -1,0 +1,31 @@
+{
+	"juridischeregelsvooriedereen": [
+		{
+			"begindatum": "2017-01-01",
+			"einddatum": "2027-12-31",
+			"gedefinieerdelocatieIdentificaties": [
+				"nl.imow-gm0297.gebied.2019000001"
+			],
+			"idealisatie": {
+				"code": "Exact",
+				"waarde": "exact"
+			},
+			"identificatie": "nl.imow-gm0297.juridischeregel.2019000012",
+			"normeertActiviteiten": [
+				{
+					"activiteitIdentificatie": "nl.imow-gm0297.activiteit.2019000540",
+					"activiteitLocatieIdentificatie": "nl.imow-gm0297.activiteitlocatieaanduiding.2019000011",
+					"activiteitregelkwalificatie": {
+						"code": "Vergunningplicht",
+						"waarde": "vergunningplicht"
+					},
+					"gekwalificeerdeLocatieIdentificaties": [
+						"nl.imow-gm0297.gebied.2019000001"
+					]
+				}
+			],
+			"omschrijving": "",
+			"regeltekstIdentificatie": "nl.imow-gm0297.regeltekst.2019000007"
+		}
+	]
+}

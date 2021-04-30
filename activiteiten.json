@@ -1,0 +1,31 @@
+{
+	"activiteiten": [
+	   {
+		   "begindatum": "2019-04-20",
+		   "bovenliggendeActiviteitIdentificatie": "nl.imow-gm0297.activiteit.ActInOmgevingsplanGem",
+		   "einddatum": "2029-03-31",
+		   "gerelateerdeActiviteitIdentificaties": "nl.imow-gm0297.activiteit.2019000760",
+		   "groep": {
+			   "code": "ExploitatieactiviteitDetailhandel",
+			   "waarde": "exploitatieactiviteit detailhandel"
+		   },
+		   "identificatie": "nl.imow-gm0297.activiteit.2019000540",
+		   "juridischeRegelVoorIedereenIdentificaties": [
+			   "nl.imow-gm0297.juridischeregel.2019000012"
+		   ],
+		   "laatsteWijzigingsdatum": "2021-03-26",
+		   "naam": "exploiteren van een verkooppunt voor motorbrandstoffen niet zijnde lpg"
+	   },
+	   {
+		   "begindatum": "2019-04-19",
+		   "einddatum": "2029-03-31",
+		   "groep": {
+				"code": "???   ->   http://standaarden.omgevingswet.overheid.nl/activiteit/id/concept/Overig",
+				"waarde": "Geen idee wat hier moet komen te staan. Misschien juist wel wat bij 'code' staat."
+		   },
+		   "identificatie": "nl.imow-gm0297.activiteit.ActInOmgevingsplanGem",
+		   "laatsteWijzigingsdatum": "2021-03-26",
+		   "naam": "Activiteit in omgevingsplan Zaltbommel"
+	   }
+	]
+}
