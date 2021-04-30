@@ -372,13 +372,13 @@ components:
         omgevingsdocument:
           $ref: "#/components/schemas/Omgevingsdocument"
         type:
-          allOf:
-          - $ref: "#/components/schemas/Soortregeling"
-          - title: "documentType"
-            description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-              \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-              \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen\
-              \ het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+          type: "string"
+          title: "type"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
+            \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het\
+            \ waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+          minLength: 1
         vervallen:
           type: "boolean"
           title: "vervallen"
@@ -480,6 +480,14 @@ components:
             \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het\
             \ waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           minLength: 1
+        type:
+          allOf:
+          - $ref: "#/components/schemas/Soortregeling"
+          - title: "documentType"
+            description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+              \ het informatie-element.</p></body><body><p>De verzameling van waarden\
+              \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen\
+              \ het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
     Thema:
       type: "object"
       description: "<body><p>Een limitatieve lijst met een opsomming van de mogelijke\
