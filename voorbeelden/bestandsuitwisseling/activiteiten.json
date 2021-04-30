@@ -20,10 +20,13 @@
 		   "begindatum": "2019-04-19",
 		   "einddatum": "2029-03-31",
 		   "groep": {
-				"code": "???   ->   http://standaarden.omgevingswet.overheid.nl/activiteit/id/concept/Overig",
-				"waarde": "Geen idee wat hier moet komen te staan. Misschien juist wel wat bij 'code' staat."
+				"code": "Overig",
+				"waarde": "overig"
 		   },
 		   "identificatie": "nl.imow-gm0297.activiteit.ActInOmgevingsplanGem",
+		   "juridischeRegelVoorIedereenIdentificaties": [
+			   "nl.imow-gm0297.juridischeregel.2019000019"
+		   ],
 		   "laatsteWijzigingsdatum": "2021-03-26",
 		   "naam": "Activiteit in omgevingsplan Zaltbommel"
 	   }
