@@ -280,6 +280,7 @@ components:
       required:
       - "activiteitIdentificatie"
       - "activiteitLocatieIdentificatie"
+      - "activiteitregelkwalificatie"
       - "gekwalificeerdeLocatieIdentificaties"
       properties:
         activiteitIdentificatie:
@@ -294,6 +295,12 @@ components:
             \ is</p></body><body><p>Een inhoudelijke toelichting op de toepassing\
             \ van het informatie-element.</p></body>"
           minLength: 1
+        activiteitregelkwalificatie:
+          allOf:
+          - $ref: "#/components/schemas/Activiteitregelkwalificatie"
+          - title: "activiteitregelkwalificatie"
+            description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+              \ het informatie-element.</p></body>"
         gekwalificeerdeLocatieIdentificaties:
           type: "array"
           title: "gekwalificeerdeLocatieIdentificaties"
@@ -308,6 +315,28 @@ components:
         \ domeinwaarden van een attribuutsoort, die buiten het model in een externe\
         \ waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting\
         \ op de toepassing van het informatie-element.</p></body>"
+      required:
+      - "code"
+      - "waarde"
+      properties:
+        code:
+          type: "string"
+          title: "code"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minLength: 1
+        waarde:
+          type: "string"
+          title: "waarde"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minLength: 1
+    Activiteitregelkwalificatie:
+      type: "object"
+      description: "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden\
+        \ van een attribuutsoort, die buiten het model in een externe waardenlijst\
+        \ worden beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing\
+        \ van het informatie-element.</p></body>"
       required:
       - "code"
       - "waarde"
@@ -343,13 +372,13 @@ components:
         omgevingsdocument:
           $ref: "#/components/schemas/Omgevingsdocument"
         type:
-          type: "string"
-          title: "type"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body><body><p>De verzameling van waarden\
-            \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het\
-            \ waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-          minLength: 1
+          allOf:
+          - $ref: "#/components/schemas/Soortregeling"
+          - title: "documentType"
+            description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+              \ het informatie-element.</p></body><body><p>De verzameling van waarden\
+              \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen\
+              \ het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
         vervallen:
           type: "boolean"
           title: "vervallen"
@@ -402,6 +431,26 @@ components:
           title: "opschrift"
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
             \ het informatie-element.</p></body>"
+    Soortregeling:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      required:
+      - "code"
+      - "waarde"
+      properties:
+        code:
+          type: "string"
+          title: "code"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minLength: 1
+        waarde:
+          type: "string"
+          title: "waarde"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minLength: 1
     Omgevingsdocument:
       type: "object"
       description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
