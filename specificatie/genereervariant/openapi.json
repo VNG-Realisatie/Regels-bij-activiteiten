@@ -3341,7 +3341,7 @@
         "description" : "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
       },
       "ActiviteitLocatieaanduiding" : {
-        "required" : [ "activiteitIdentificatie", "activiteitLocatieIdentificatie", "gekwalificeerdeLocatieIdentificaties" ],
+        "required" : [ "activiteitIdentificatie", "activiteitLocatieIdentificatie", "activiteitregelkwalificatie", "gekwalificeerdeLocatieIdentificaties" ],
         "type" : "object",
         "properties" : {
           "activiteitIdentificatie" : {
@@ -3355,6 +3355,14 @@
             "type" : "string",
             "description" : "<body><p>Dit attribute is</p></body><body><p>Dit attribute is</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           },
+          "activiteitregelkwalificatie" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/Activiteitregelkwalificatie"
+            }, {
+              "title" : "activiteitregelkwalificatie",
+              "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+            } ]
+          },
           "gekwalificeerdeLocatieIdentificaties" : {
             "title" : "gekwalificeerdeLocatieIdentificaties",
             "minItems" : 1,
@@ -3366,6 +3374,25 @@
           }
         },
         "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+      },
+      "Activiteitregelkwalificatie" : {
+        "required" : [ "code", "waarde" ],
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "title" : "code",
+            "minLength" : 1,
+            "type" : "string",
+            "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          },
+          "waarde" : {
+            "title" : "waarde",
+            "minLength" : 1,
+            "type" : "string",
+            "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          }
+        },
+        "description" : "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
       },
       "Thema" : {
         "required" : [ "code", "waarde" ],
@@ -3679,10 +3706,12 @@
             "$ref" : "#/components/schemas/Omgevingsdocument"
           },
           "type" : {
-            "title" : "type",
-            "minLength" : 1,
-            "type" : "string",
-            "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/Soortregeling"
+            }, {
+              "title" : "documentType",
+              "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+            } ]
           },
           "vervallen" : {
             "title" : "vervallen",
@@ -3742,6 +3771,25 @@
             "minLength" : 1,
             "type" : "string",
             "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+          }
+        },
+        "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+      },
+      "Soortregeling" : {
+        "required" : [ "code", "waarde" ],
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "title" : "code",
+            "minLength" : 1,
+            "type" : "string",
+            "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          },
+          "waarde" : {
+            "title" : "waarde",
+            "minLength" : 1,
+            "type" : "string",
+            "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           }
         },
         "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
