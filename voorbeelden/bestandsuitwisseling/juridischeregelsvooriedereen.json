@@ -26,6 +26,33 @@
 			],
 			"omschrijving": "",
 			"regeltekstIdentificatie": "nl.imow-gm0297.regeltekst.2019000007"
+		},
+		{
+			"begindatum": "2017-08-11",
+			"einddatum": "2027-08-10",
+			"gedefinieerdelocatieIdentificaties": [
+				"nl.imow-gm0297.gebied.2019000011"
+			],
+			"idealisatie": {
+				"code": "Exact",
+				"waarde": "exact"
+			},
+			"identificatie": "nl.imow-gm0297.juridischeregel.2019000019",
+			"normeertActiviteiten": [
+				{
+					"activiteitIdentificatie": "nl.imow-gm0297.activiteit.ActInOmgevingsplanGem",
+					"activiteitLocatieIdentificatie": "nl.imow-gm0297.activiteitlocatieaanduiding.2019000015",
+					"activiteitregelkwalificatie": {
+						"code": "AndersGeduid",
+						"waarde": "anders geduid"
+					},
+					"gekwalificeerdeLocatieIdentificaties": [
+						"nl.imow-gm0297.gebied.2019000011"
+					]
+				}
+			],
+			"omschrijving": "",
+			"regeltekstIdentificatie": "nl.imow-gm0297.regeltekst.2019000116"
 		}
 	]
 }
