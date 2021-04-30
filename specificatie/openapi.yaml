@@ -421,7 +421,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/pageSize"
         - in: query
           name: werkpakketcode
-          description: "<body><p>Een unieke aanduiding van de verzameling samenhangende activiteiten gericht op het publiceren van een nieuwe versie van een omgevingsdocument.</p></body><body><p>Er kunnen tegelijkertijd meerdere trajecten gaande zijn waarin bijvoorbeeld een omgevingsplan gewijzigd wordt, die elk leiden tot een apart te publiceren nieuwe versie van het omgevingsplan. De werkpakketcode biedt de mogelijkheid om de regelteksten te m</p></body>"
+          description: "<body><p>Een unieke aanduiding van de verzameling samenhangende activiteiten gericht op het publiceren van een nieuwe versie van een omgevingsdocument.</p></body><body><p>Er kunnen tegelijkertijd meerdere trajecten gaande zijn waarin bijvoorbeeld een omgevingsplan gewijzigd wordt, die elk leiden tot een apart te publiceren nieuwe versie van het omgevingsplan. De werkpakketcode biedt de mogelijkheid om de regelteksten te markeren die betrokken zijn in zo'n traject. Daarvan kan gebruik gemaakt worden om alleen de regels  met bijhorende annotaties op te vragen voor een specifiek werkpakket. </p></body>"
           required: false
           schema:
             type: string
