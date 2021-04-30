@@ -205,7 +205,9 @@ components:
             \ trajecten gaande zijn waarin bijvoorbeeld een omgevingsplan gewijzigd\
             \ wordt, die elk leiden tot een apart te publiceren nieuwe versie van\
             \ het omgevingsplan. De werkpakketcode biedt de mogelijkheid om de regelteksten\
-            \ te m</p></body>"
+            \ te markeren die betrokken zijn in zo'n traject. Daarvan kan gebruik gemaakt\
+            \ worden om alleen de regels  met bijhorende annotaties op te vragen voor een\
+            \ specifiek werkpakket. </p></body>"
           minLength: 1
     Regeltekst:
       type: "object"
