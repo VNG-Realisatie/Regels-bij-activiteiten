@@ -3706,12 +3706,10 @@
             "$ref" : "#/components/schemas/Omgevingsdocument"
           },
           "type" : {
-            "allOf" : [ {
-              "$ref" : "#/components/schemas/Soortregeling"
-            }, {
-              "title" : "documentType",
-              "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-            } ]
+            "title" : "type",
+            "minLength" : 1,
+            "type" : "string",
+            "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           },
           "vervallen" : {
             "title" : "vervallen",
@@ -3771,6 +3769,14 @@
             "minLength" : 1,
             "type" : "string",
             "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+          },
+          "type" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/Soortregeling"
+            }, {
+              "title" : "documentType",
+              "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+            } ]
           }
         },
         "description" : "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
