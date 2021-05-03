@@ -2918,6 +2918,12 @@ components:
                 type: array
                 items:
                   type: number
+    CrsEnum:
+      description: CRS van geometrie. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.
+      type: string
+      enum:
+        - epsg:28992
+      default: epsg:28992
     LocatieType:
       type: string
       description: <body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body>
@@ -3141,12 +3147,9 @@ components:
           aanroep.
         example: 1.0.0
     contentCrs:
-      description: CRS van de meegegeven geometrie. epsg:28992 mapt op het RD New
-        Nederlands coordinatenstelsel.
+      description: CRS van de meegegeven geometrie. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.
       schema:
-        type: string
-        enum:
-        - epsg:28992
+        $ref: '#/components/schemas/CrsEnum'
     warning:
       schema:
         type: string

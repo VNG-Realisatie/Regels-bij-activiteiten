@@ -44,7 +44,8 @@
           "schema" : {
             "type" : "string",
             "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "enum" : [ "epsg:28992" ],
+            "default" : "epsg:28992"
           }
         }, {
           "name" : "page",
@@ -390,7 +391,8 @@
           "schema" : {
             "type" : "string",
             "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "enum" : [ "epsg:28992" ],
+            "default" : "epsg:28992"
           }
         }, {
           "name" : "expand",
@@ -732,7 +734,8 @@
           "schema" : {
             "type" : "string",
             "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "enum" : [ "epsg:28992" ],
+            "default" : "epsg:28992"
           }
         }, {
           "name" : "page",
@@ -1068,7 +1071,8 @@
           "schema" : {
             "type" : "string",
             "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "enum" : [ "epsg:28992" ],
+            "default" : "epsg:28992"
           }
         }, {
           "name" : "expand",
@@ -1410,7 +1414,8 @@
           "schema" : {
             "type" : "string",
             "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "enum" : [ "epsg:28992" ],
+            "default" : "epsg:28992"
           }
         }, {
           "name" : "page",
@@ -1738,7 +1743,8 @@
           "schema" : {
             "type" : "string",
             "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "enum" : [ "epsg:28992" ],
+            "default" : "epsg:28992"
           }
         }, {
           "name" : "identificatie",
@@ -2072,7 +2078,8 @@
           "schema" : {
             "type" : "string",
             "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "enum" : [ "epsg:28992" ],
+            "default" : "epsg:28992"
           }
         }, {
           "name" : "page",
@@ -2438,7 +2445,8 @@
           "schema" : {
             "type" : "string",
             "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "enum" : [ "epsg:28992" ],
+            "default" : "epsg:28992"
           }
         }, {
           "name" : "expand",
@@ -3857,7 +3865,8 @@
         "description" : "CRS van de meegegeven geometrie. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
         "schema" : {
           "type" : "string",
-          "enum" : [ "epsg:28992" ]
+          "enum" : [ "epsg:28992" ],
+          "default" : "epsg:28992"
         }
       },
       "warning" : {
