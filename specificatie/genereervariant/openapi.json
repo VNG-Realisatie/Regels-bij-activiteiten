@@ -10,7 +10,7 @@
       "name" : "European Union Public License, version 1.2 (EUPL-1.2)",
       "url" : "https://eupl.eu/1.2/nl/"
     },
-    "version" : "0.0.1",
+    "version" : "0.9.0",
     "x-imvertor-generator-version" : "1.64.1",
     "x-yamlCompiler-stylesheets-version" : "20210428"
   },
@@ -42,9 +42,7 @@
           "description" : "Gewenste CRS van de coördinaten in de response.",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "$ref" : "#/components/schemas/CrsEnum"
           }
         }, {
           "name" : "page",
@@ -388,9 +386,7 @@
           "description" : "Gewenste CRS van de coördinaten in de response.",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "$ref" : "#/components/schemas/CrsEnum"
           }
         }, {
           "name" : "expand",
@@ -730,9 +726,7 @@
           "description" : "Gewenste CRS van de coördinaten in de response.",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "$ref" : "#/components/schemas/CrsEnum"
           }
         }, {
           "name" : "page",
@@ -1066,9 +1060,7 @@
           "description" : "Gewenste CRS van de coördinaten in de response.",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "$ref" : "#/components/schemas/CrsEnum"
           }
         }, {
           "name" : "expand",
@@ -1408,9 +1400,7 @@
           "description" : "Gewenste CRS van de coördinaten in de response.",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "$ref" : "#/components/schemas/CrsEnum"
           }
         }, {
           "name" : "page",
@@ -1736,9 +1726,7 @@
           "description" : "Gewenste CRS van de coördinaten in de response.",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "$ref" : "#/components/schemas/CrsEnum"
           }
         }, {
           "name" : "identificatie",
@@ -2070,9 +2058,7 @@
           "description" : "Gewenste CRS van de coördinaten in de response.",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "$ref" : "#/components/schemas/CrsEnum"
           }
         }, {
           "name" : "page",
@@ -2436,9 +2422,7 @@
           "description" : "Gewenste CRS van de coördinaten in de response.",
           "required" : false,
           "schema" : {
-            "type" : "string",
-            "description" : "CRS van de coördinaten in de response. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
-            "enum" : [ "epsg:28992" ]
+            "$ref" : "#/components/schemas/CrsEnum"
           }
         }, {
           "name" : "expand",
@@ -3034,6 +3018,12 @@
             }
           }
         }
+      },
+      "CrsEnum" : {
+        "type" : "string",
+        "description" : "CRS van geometrie. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
+        "default" : "epsg:28992",
+        "enum" : [ "epsg:28992" ]
       },
       "BadRequestFoutbericht" : {
         "allOf" : [ {
@@ -3856,8 +3846,7 @@
       "contentCrs" : {
         "description" : "CRS van de meegegeven geometrie. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.",
         "schema" : {
-          "type" : "string",
-          "enum" : [ "epsg:28992" ]
+          "$ref" : "#/components/schemas/CrsEnum"
         }
       },
       "warning" : {
