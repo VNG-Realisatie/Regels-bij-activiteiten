@@ -6,12 +6,12 @@ servers:
     url: https://www.voorbeeldgemeente.nl/api/plan_sw___toepasbare_regel_sw/v0
 info:
   title: Plan SW - Toepasbare regel SW
-  description: "Nog in te voorzien"
+  description: ""
   version: "0.0.1"
-  x-imvertor-generator-version: "1.62.2"
-  x-yamlCompiler-stylesheets-version: "20200903"
+  x-imvertor-generator-version: "1.64.1"
+  x-yamlCompiler-stylesheets-version: "20210428"
   contact:
-    url: https://github.com/VNG-Realisatie/PSW-TRSW
+    url: https://github.com/VNG-Realisatie/Regels-bij-activiteiten
     email: robert.melskens@vng.nl
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
@@ -27,6 +27,7 @@ paths:
       operationId: Getactiviteiten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
           description: "Een pagina binnen de gepagineerde resultatenset."
@@ -36,69 +37,20 @@ paths:
             minimum: 1
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: query
-          name: begindatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: bovenliggendeactiviteitidentificatie
-          description: ""
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: einddatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: gerelateerdeactiviteitidentificaties
-          description: ""
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: inclusiefvervallen
-          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
-          required: false
-          schema:
-            type: boolean
-        - in: query
-          name: juridischeregelvooriedereenidentificaties
-          description: ""
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: laatstewijzigingsdatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
           name: naam
           description: "<body><p>Een (korte) omschrijving van de activiteit.</p></body>"
           required: false
           schema:
             type: string
-        - in: query
-          name: vanafdatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/pageSize"
       responses:
         '200':
           description: "Zoekactie geslaagd"
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Pagination-Page:
@@ -144,32 +96,22 @@ paths:
       operationId: Getactiviteit
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
           description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body>"
           required: true
           schema:
-            type: string
-        - in: query
-          name: inclusiefvervallen
-          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
-          required: false
-          schema:
-            type: boolean
-        - in: query
-          name: vanafdatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
+            $ref: "domain.yaml#/components/schemas/Identificatie"
       responses:
         '200':
           description: "Zoekactie geslaagd"
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Rate-Limit-Limit:
@@ -211,8 +153,9 @@ paths:
   /juridischeregelsvooriedereen:
     get:
       operationId: GetjuridischeRegelsVoorIedereen
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert.</p></body>"
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert. I.h.k.v. deze API zijn alleen juridische regels die minimaal één activiteit bevatten van belang.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
           description: "Een pagina binnen de gepagineerde resultatenset."
@@ -221,76 +164,15 @@ paths:
             type: integer
             minimum: 1
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
-        - in: query
-          name: begindatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: betreffendegenormeerdeactiviteitidentificaties
-          description: ""
-          required: false
-          schema:
-            type: string
-
-        - in: query
-          name: einddatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: gekwalificeerdegenormeerdeactiviteitlocatieidentificaties
-          description: ""
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: genormeerdeactiviteitidentificaties
-          description: ""
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: inclusiefvervallen
-          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
-          required: false
-          schema:
-            type: boolean
-        - in: query
-          name: locatieidentificaties
-          description: ""
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: omschrijving
-          description: "<body><p>Één doorlopend stuk juridische tekst, van een artikel of een lid, die omschrijvingen van (een of meer) juridische regels bevat.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: regeltekstidentificatie
-          description: ""
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: vanafdatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/pageSize"
       responses:
         '200':
           description: "Zoekactie geslaagd"
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Pagination-Page:
@@ -334,34 +216,24 @@ paths:
   /juridischeregelsvooriedereen/{identificatie}:
     get:
       operationId: GetjuridischeRegelVoorIedereen
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert. I.h.k.v. deze API zijn alleen juridische regels die minimaal één activiteit bevatten van belang.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           required: true
           schema:
-            type: string
-        - in: query
-          name: inclusiefvervallen
-          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
-          required: false
-          schema:
-            type: boolean
-        - in: query
-          name: vanafdatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
+            $ref: "domain.yaml#/components/schemas/Identificatie"
       responses:
         '200':
           description: "Zoekactie geslaagd"
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Rate-Limit-Limit:
@@ -405,6 +277,7 @@ paths:
       operationId: Getlocaties
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
           description: "Een pagina binnen de gepagineerde resultatenset."
@@ -412,75 +285,15 @@ paths:
           schema:
             type: integer
             minimum: 1
-        - in: query
-          name: begindatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: einddatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: geometrie
-          description: "<body><p>De geometrische bepaling van de lijn door middel van coördinaten.</p></body><body><p>De geometrische bepaling van het gebied door middel van coördinaten.</p></body><body><p>De geometrische bepaling van de punt door middel van coÃ¶rdinaten.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: geometriebron
-          description: "<body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: geometrietype
-          description: ""
-          required: false
-          schema:
-            $ref: "domain.yaml#/components/schemas/GeometrieType"
-        - in: query
-          name: inclusiefvervallen
-          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
-          required: false
-          schema:
-            type: boolean
-        - in: query
-          name: noemer
-          description: "<body><p>Tekstuele beschrijving van een Locatie, zodat er als zodanig over deze locatie gesproken kan worden. De beschrijving kan een bepaalde naam zijn waaronder de Locatie bekend staat, maar (lang) niet elke Locatie heef een naam.</p></body><body><p>Bijvoorbeeld het hele werkingsgebied van bevoegd gezag, zoals 'Het Koninkrijk der Nederlanden' of gemeente 'Amersfoort'. Bijvoorbeeld een natuurgebied zoals de 'Veluwe' of de rivier de 'Rijn' of het centrum van een woonplaats 'centrum Apeldoorn'.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: omvattendelocatieidentificaties
-          description: ""
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: type
-          description: ""
-          required: false
-          schema:
-            $ref: "domain.yaml#/components/schemas/LocatieType"
-        - in: query
-          name: vanafdatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/pageSize"
       responses:
         '200':
           description: "Zoekactie geslaagd"
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Pagination-Page:
@@ -526,31 +339,21 @@ paths:
       operationId: Getlocatie
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: path
           name: identificatie
           description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           required: true
           schema:
-            type: string
-        - in: query
-          name: inclusiefvervallen
-          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
-          required: false
-          schema:
-            type: boolean
-        - in: query
-          name: vanafdatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
+            $ref: "domain.yaml#/components/schemas/Identificatie"
       responses:
         '200':
           description: "Zoekactie geslaagd"
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Rate-Limit-Limit:
@@ -594,6 +397,7 @@ paths:
       operationId: Getregelteksten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
           description: "Een pagina binnen de gepagineerde resultatenset."
@@ -603,99 +407,32 @@ paths:
             minimum: 1
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: query
-          name: begindatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: codebevoegdgezag
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: documentidentificatie
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: documentopschrift
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: einddatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: gerelateerderegeltekstidentificaties
-          description: ""
-          required: false
-          schema:
-            type: string
-        - in: query
           name: inclusiefvervallen
           description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
           required: false
           schema:
             type: boolean
         - in: query
-          name: koplabel
+          name: omgevingsdocumentidentificatie
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           required: false
           schema:
             type: string
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/pageSize"
         - in: query
-          name: kopnummer
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          name: werkpakketcode
+          description: "<body><p>Een unieke aanduiding van de verzameling samenhangende activiteiten gericht op het publiceren van een nieuwe versie van een omgevingsdocument.</p></body><body><p>Er kunnen tegelijkertijd meerdere trajecten gaande zijn waarin bijvoorbeeld een omgevingsplan gewijzigd wordt, die elk leiden tot een apart te publiceren nieuwe versie van het omgevingsplan. De werkpakketcode biedt de mogelijkheid om de regelteksten te markeren die betrokken zijn in zo'n traject. Daarvan kan gebruik gemaakt worden om alleen de regels  met bijhorende annotaties op te vragen voor een specifiek werkpakket. </p></body>"
           required: false
           schema:
             type: string
-        - in: query
-          name: kopopschrift
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: laatstewijzigingsdatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: locatieidentificaties
-          description: ""
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: omschrijving
-          description: "<body><p>De letterlijke tekst waarmee de Regeltekst is omschreven, in een artikel of een lid. Een Regeltekst is altijd Ã©Ã©n doorlopend stuk juridische tekst, welke juridische regels bevat.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: vanafdatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Pagination-Page:
@@ -741,32 +478,22 @@ paths:
       operationId: Getregeltekst
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
       parameters: 
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
           description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body>"
           required: true
           schema:
-            type: string
-        - in: query
-          name: inclusiefvervallen
-          description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
-          required: false
-          schema:
-            type: boolean
-        - in: query
-          name: vanafdatum
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
+            $ref: "domain.yaml#/components/schemas/Identificatie"
       responses:
         '200':
           description: "Zoekactie geslaagd"
           headers:
             api-version:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/api_version"
+            Content-Crs:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/contentCrs"
             warning:
               $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/headers/warning"
             X-Rate-Limit-Limit:
@@ -901,7 +628,7 @@ components:
             \ zijn contextueel relevant voor deze activiteit. Toelichting: Met contextueel\
             \ relevant wordt bedoeld dat de regels die gelden voor de gerelateerde\
             \ activiteit, binnen die gegeven context ook gelden voor deze activiteit.\
-            \_Bijvoorbeeld omdat de ene activiteit altijd samen met de andere activiteit(en)\
+            \ Bijvoorbeeld omdat de ene activiteit altijd samen met de andere activiteit(en)\
             \ worden uitgevoerd en de regels van beide daarmee allebei tegelijk aan\
             \ de orde zijn. Als de beschreven context waarin de regels behorende bij\
             \ de gerelateerde activiteit gelden niet aan de orde is, dan gelden de\
@@ -918,7 +645,7 @@ components:
           allOf:
           - title: "is"
             type: "object"
-            description: "<body><p>Met is (een) wordt een bepaalde activiteit\
+            description: "<body><p>Met “is (een)‿ wordt een bepaalde activiteit\
               \ rechtstreeks verbonden met een andere activiteit van hetzelfde type\
               \ (van specifiek naar generiek). Toelichting: Met een activiteit van\
               \ hetzelfde type wordt bedoeld dat andere regels (generieker) contextueel\
@@ -932,7 +659,7 @@ components:
               \ regels, mogelijk wel vanuit andere regels.</p></body><body><p>Een\
               \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        bijbehorendeJuridischeRegelsVoorIedereen:
+        juridischeRegelsVoorIedereen:
           title: "kent"
           type: "array"
           description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
@@ -957,7 +684,7 @@ components:
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        omvattendeRegeltekst:
+        regeltekst:
           allOf:
           - title: "isOpgenomenIn"
             type: "object"
@@ -973,15 +700,16 @@ components:
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        betreffendeActiviteit:
-          allOf:
-          - title: "betreftEenActiviteit"
-            type: "object"
-            description: "<body><p>Bij een regel die een activiteit vastlegt geeft\
-              \ deze relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)\
-              \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een\
-              \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-          - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
+        activiteiten:
+          title: "betreftEenActiviteit"
+          type: "array"
+          description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
+            \ relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)\
+            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een\
+            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          minItems: 1
+          items:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     Locatie_links:
       type: "object"
       properties:
@@ -1013,7 +741,7 @@ components:
             \ toelichting op de toepassing van het informatie-element.</p></body>"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/schemas/HalLink"
-        betreffendeLocaties:
+        locaties:
           title: "heeftWerkingIn"
           type: "array"
           description: "<body><p>Het werkingsgebied c.q. de locatie begrenst de juridische\
@@ -1031,7 +759,7 @@ components:
     Activiteit_embedded:
       type: "object"
       properties:
-        bijbehorendeJuridischeRegelsVoorIedereen:
+        juridischeRegelsVoorIedereen:
           title: "betreft een activiteit"
           type: "array"
           description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
@@ -1054,12 +782,12 @@ components:
           minItems: 1
           items:
             $ref: "#/components/schemas/LocatieHal"
-        omvattendeRegeltekst:
+        regeltekst:
           $ref: "#/components/schemas/RegeltekstHal"
     Regeltekst_embedded:
       type: "object"
       properties:
-        betreffendeLocaties:
+        locaties:
           title: "heeft werking in"
           type: "array"
           description: "<body><p>Het werkingsgebied c.q. de locatie begrenst de juridische\

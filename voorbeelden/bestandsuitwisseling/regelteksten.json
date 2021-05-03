@@ -1,0 +1,62 @@
+{
+	"regelteksten": [
+	  {
+		"begindatum": "2017-01-01",
+		"documentComponent": {
+		  "identificatie": "gm0297_1__chp_2__subchp_2.2__art_2.7__para_1",
+		  "kop": {
+			"label": "Artikel",
+			"nummer": "2.7",
+			"opschrift": "Gebruiksactiviteiten die zijn toegelaten nadat daarvoor omgevingsvergunning is verleend"
+		  },
+		  "omgevingsdocument": {
+			"codeBevoegdGezag": "/tooi/id/gemeente/gm0297",
+			"identificatie": "/akn/nl/bill/gm0297/2019/3520",
+			"opschrift": "Omgevingsplan Zaltbommel (met de nadruk op Zuilichem)",
+			"type": {
+			  "code": "/join/id/stop/regelingtype_003",
+			  "waarde": "Omgevingsplan"
+			}
+		  },
+		  "type": "lid",
+		  "volgordenummer": 1
+		},
+		"einddatum": "2027-12-31",
+		"identificatie": "nl.imow-gm0297.regeltekst.2019000007",
+		"laatsteWijzigingsdatum": "2019-11-04",
+		"locatieIdentificaties": [
+		  "nl.imow-gm0297.gebied.2019000001"
+		],
+		"omschrijving": "Ter plaatse van het werkingsgebied van de functie 'Bedrijf categorie 2' is het verboden om zonder omgevingsvergunning de gebruiksactiviteit 'het exploiteren van een verkooppunt voor motorbrandstoffen niet zijnde lpg' te verrichten. Daarnaast is het eveneens verboden om deze gebruiksactiviteit uit te voeren zonder een vergunning voor de milieubelastende activiteit ‘het opslaan van motorbrandstoffen niet zijnde lpg’, zoals beschreven in Artikel 13.24."
+	  },
+	  {
+		"begindatum": "2016-09-23",
+		"documentComponent": {
+		  "identificatie": "gm0297_1__chp_1__art_1.4",
+		  "kop": {
+			"label": "Artikel",
+			"nummer": "1.4",
+			"opschrift": "Toepassingsgebied"
+		  },
+		  "omgevingsdocument": {
+			"codeBevoegdGezag": "/tooi/id/gemeente/gm0297",
+			"identificatie": "/akn/nl/bill/gm0297/2019/3520",
+			"opschrift": "Omgevingsplan Zaltbommel (met de nadruk op Zuilichem)",
+			"type": {
+			  "code": "/join/id/stop/regelingtype_003",
+			  "waarde": "Omgevingsplan"
+			}
+		  },
+		  "type": "artikel",
+		  "volgordenummer": 1
+		},
+		"einddatum": "2026-09-22",
+		"identificatie": "nl.imow-gm0297.regeltekst.2019000116",
+		"laatsteWijzigingsdatum": "2018-10-06",
+		"locatieIdentificaties": [
+		  "nl.imow-gm0297.gebied.2019000011"
+		],
+		"omschrijving": "Dit omgevingsplan is van toepassing in Zaltbommel."
+	  }
+	]
+}
