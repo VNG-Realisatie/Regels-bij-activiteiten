@@ -7,7 +7,7 @@ servers:
 info:
   title: Plan SW - Toepasbare regel SW
   description: ""
-  version: "0.0.1"
+  version: "0.9.0"
   x-imvertor-generator-version: "1.64.1"
   x-yamlCompiler-stylesheets-version: "20210428"
   contact:
@@ -26,7 +26,7 @@ paths:
     get:
       operationId: Getactiviteiten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
@@ -89,13 +89,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Activiteiten
   /activiteiten/{identificatie}:
     get:
       operationId: Getactiviteit
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
@@ -148,13 +148,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Activiteiten
   /juridischeregelsvooriedereen:
     get:
       operationId: GetjuridischeRegelsVoorIedereen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert. I.h.k.v. deze API zijn alleen juridische regels die minimaal één activiteit bevatten van belang.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
@@ -211,13 +211,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - JuridischeRegelsVoorIedereen
   /juridischeregelsvooriedereen/{identificatie}:
     get:
       operationId: GetjuridischeRegelVoorIedereen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert. I.h.k.v. deze API zijn alleen juridische regels die minimaal één activiteit bevatten van belang.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
@@ -270,13 +270,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - JuridischeRegelsVoorIedereen
   /locaties:
     get:
       operationId: Getlocaties
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
@@ -332,13 +332,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Locaties
   /locaties/{identificatie}:
     get:
       operationId: Getlocatie
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: path
           name: identificatie
@@ -390,13 +390,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Locaties
   /regelteksten:
     get:
       operationId: Getregelteksten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie amendementen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: query
           name: page
@@ -471,13 +471,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Regelteksten
   /regelteksten/{identificatie}:
     get:
       operationId: Getregeltekst
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van gegevens van een amendement retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
@@ -530,7 +530,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.2.0/api-specificatie/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Regelteksten
 components:
   schemas:
