@@ -1,3 +1,8 @@
+---
+layout: page-with-side-nav
+title: Releasecandidate Regels bij activiteiten
+---
+
 # Regels bij activiteiten
 
 Deze API is relevant bij uitvoering van de Omgevingswet, i.h.b. bij het opstellen en onderhouden van zgn. toepasbare regels. Het verschaft de toepasbare regelmaker actuele informatie over de juridische regels en bijbehorende werkingsgebieden en actviteiten waarvoor toepasbare regels opgesteld of aangepast gaan worden.  
