@@ -47,7 +47,8 @@
 			  		"waarde": "Omgevingsplan"
 					}
 		  	},
-		  	"type": "artikel"
+		  	"type": "artikel",
+		  	"volgordenummer": 0
 			},
 			"einddatum": "2026-09-22",
 			"identificatie": "nl.imow-gm0297.regeltekst.2019000116",
