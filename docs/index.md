@@ -1,5 +1,5 @@
 ---
-layout: page-with-side-nav
+layout: page
 title: Releasecandidate Regels bij activiteiten
 ---
 
