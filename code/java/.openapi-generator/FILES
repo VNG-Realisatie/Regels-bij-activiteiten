@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -47,9 +46,10 @@ src/main/java/org/openapitools/client/model/Activiteitengroep.java
 src/main/java/org/openapitools/client/model/Activiteitregelkwalificatie.java
 src/main/java/org/openapitools/client/model/BadRequestFoutbericht.java
 src/main/java/org/openapitools/client/model/BadRequestFoutberichtAllOf.java
+src/main/java/org/openapitools/client/model/CrsEnum.java
 src/main/java/org/openapitools/client/model/DocumentComponent.java
 src/main/java/org/openapitools/client/model/Foutbericht.java
-src/main/java/org/openapitools/client/model/GeometrieType.java
+src/main/java/org/openapitools/client/model/GeoJSONGeometrie.java
 src/main/java/org/openapitools/client/model/HalCollectionLinks.java
 src/main/java/org/openapitools/client/model/HalLink.java
 src/main/java/org/openapitools/client/model/HalPaginationLinks.java
@@ -64,6 +64,7 @@ src/main/java/org/openapitools/client/model/JuridischeRegelVoorIedereenHalCollec
 src/main/java/org/openapitools/client/model/JuridischeRegelVoorIedereenHalCollectieEmbedded.java
 src/main/java/org/openapitools/client/model/JuridischeRegelVoorIedereenLinks.java
 src/main/java/org/openapitools/client/model/Kop.java
+src/main/java/org/openapitools/client/model/LinestringGeoJSON.java
 src/main/java/org/openapitools/client/model/Locatie.java
 src/main/java/org/openapitools/client/model/LocatieHal.java
 src/main/java/org/openapitools/client/model/LocatieHalAllOf.java
@@ -71,6 +72,12 @@ src/main/java/org/openapitools/client/model/LocatieHalCollectie.java
 src/main/java/org/openapitools/client/model/LocatieHalCollectieEmbedded.java
 src/main/java/org/openapitools/client/model/LocatieLinks.java
 src/main/java/org/openapitools/client/model/LocatieType.java
+src/main/java/org/openapitools/client/model/MultilinestringGeoJSON.java
+src/main/java/org/openapitools/client/model/MultipointGeoJSON.java
+src/main/java/org/openapitools/client/model/MultipolygonGeoJSON.java
+src/main/java/org/openapitools/client/model/Omgevingsdocument.java
+src/main/java/org/openapitools/client/model/PointGeoJSON.java
+src/main/java/org/openapitools/client/model/PolygonGeoJSON.java
 src/main/java/org/openapitools/client/model/Regeltekst.java
 src/main/java/org/openapitools/client/model/RegeltekstEmbedded.java
 src/main/java/org/openapitools/client/model/RegeltekstHal.java
@@ -80,4 +87,3 @@ src/main/java/org/openapitools/client/model/RegeltekstHalCollectieEmbedded.java
 src/main/java/org/openapitools/client/model/RegeltekstLinks.java
 src/main/java/org/openapitools/client/model/Soortregeling.java
 src/main/java/org/openapitools/client/model/Thema.java
-src/main/java/org/openapitools/client/model/WaardeEenheid.java

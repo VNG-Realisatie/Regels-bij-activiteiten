@@ -2,15 +2,14 @@ openapi: 3.0.0
 info:
   contact:
     email: robert.melskens@vng.nl
-    url: https://github.com/VNG-Realisatie/PSW-TRSW
-  description: Nog in te voorzien
+    url: https://github.com/VNG-Realisatie/Regels-bij-activiteiten
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
   title: Plan SW - Toepasbare regel SW
-  version: 0.0.1
-  x-imvertor-generator-version: 1.62.2
-  x-yamlCompiler-stylesheets-version: "20200903"
+  version: 1.0.0
+  x-imvertor-generator-version: 1.64.1
+  x-yamlCompiler-stylesheets-version: "20210428"
 servers:
 - description: SwaggerHub API Auto Mocking
   url: https://virtserver.swaggerhub.com/VNGRealisatie/api/plan_sw___toepasbare_regel_sw/v0
@@ -28,6 +27,14 @@ paths:
         een collectie amendementen retourneert.</p></body>
       operationId: Getactiviteiten
       parameters:
+      - description: Gewenste CRS van de coördinaten in de response.
+        explode: false
+        in: header
+        name: Accept-Crs
+        required: false
+        schema:
+          $ref: '#/components/schemas/CrsEnum'
+        style: simple
       - description: Een pagina binnen de gepagineerde resultatenset.
         explode: true
         in: query
@@ -51,60 +58,6 @@ paths:
         schema:
           type: string
         style: form
-      - explode: true
-        in: query
-        name: begindatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: bovenliggendeactiviteitidentificatie
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: einddatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: gerelateerdeactiviteitidentificaties
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
-          een evt. waarde van dit attribute worden genegeerd.</p></body>
-        explode: true
-        in: query
-        name: inclusiefvervallen
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: juridischeregelvooriedereenidentificaties
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: laatstewijzigingsdatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
       - description: <body><p>Een (korte) omschrijving van de activiteit.</p></body>
         explode: true
         in: query
@@ -115,11 +68,13 @@ paths:
         style: form
       - explode: true
         in: query
-        name: vanafdatum
+        name: pageSize
         required: false
         schema:
-          format: date
-          type: string
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
         style: form
       responses:
         "200":
@@ -131,6 +86,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Pagination-Page:
@@ -338,6 +295,14 @@ paths:
         gegevens van een amendement retourneert.</p></body>
       operationId: Getactiviteit
       parameters:
+      - description: Gewenste CRS van de coördinaten in de response.
+        explode: false
+        in: header
+        name: Accept-Crs
+        required: false
+        schema:
+          $ref: '#/components/schemas/CrsEnum'
+        style: simple
       - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
           moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
           enkele properties geef je in de expand parameter kommagescheiden op. Properties
@@ -359,25 +324,8 @@ paths:
         name: identificatie
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/Identificatie'
         style: simple
-      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
-          een evt. waarde van dit attribute worden genegeerd.</p></body>
-        explode: true
-        in: query
-        name: inclusiefvervallen
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: vanafdatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -388,6 +336,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Rate-Limit-Limit:
@@ -604,9 +554,18 @@ paths:
   /juridischeregelsvooriedereen:
     get:
       description: <body><p>Het bericht dat de JSON/REST API voor het ophalen van
-        een collectie amendementen retourneert.</p></body>
+        een collectie amendementen retourneert. I.h.k.v. deze API zijn alleen juridische
+        regels die minimaal één activiteit bevatten van belang.</p></body>
       operationId: GetjuridischeRegelsVoorIedereen
       parameters:
+      - description: Gewenste CRS van de coördinaten in de response.
+        explode: false
+        in: header
+        name: Accept-Crs
+        required: false
+        schema:
+          $ref: '#/components/schemas/CrsEnum'
+        style: simple
       - description: Een pagina binnen de gepagineerde resultatenset.
         explode: true
         in: query
@@ -632,80 +591,13 @@ paths:
         style: form
       - explode: true
         in: query
-        name: begindatum
+        name: pageSize
         required: false
         schema:
-          format: date
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: betreffendegenormeerdeactiviteitidentificaties
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: einddatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: gekwalificeerdegenormeerdeactiviteitlocatieidentificaties
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: genormeerdeactiviteitidentificaties
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
-          een evt. waarde van dit attribute worden genegeerd.</p></body>
-        explode: true
-        in: query
-        name: inclusiefvervallen
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: locatieidentificaties
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: <body><p>Één doorlopend stuk juridische tekst, van een artikel
-          of een lid, die omschrijvingen van (een of meer) juridische regels bevat.</p></body>
-        explode: true
-        in: query
-        name: omschrijving
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: regeltekstidentificatie
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: vanafdatum
-        required: false
-        schema:
-          format: date
-          type: string
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
         style: form
       responses:
         "200":
@@ -717,6 +609,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Pagination-Page:
@@ -921,9 +815,18 @@ paths:
   /juridischeregelsvooriedereen/{identificatie}:
     get:
       description: <body><p>Het bericht dat de JSON/REST API voor het ophalen van
-        gegevens van een amendement retourneert.</p></body>
+        gegevens van een amendement retourneert. I.h.k.v. deze API zijn alleen juridische
+        regels die minimaal één activiteit bevatten van belang.</p></body>
       operationId: GetjuridischeRegelVoorIedereen
       parameters:
+      - description: Gewenste CRS van de coördinaten in de response.
+        explode: false
+        in: header
+        name: Accept-Crs
+        required: false
+        schema:
+          $ref: '#/components/schemas/CrsEnum'
+        style: simple
       - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
           moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
           enkele properties geef je in de expand parameter kommagescheiden op. Properties
@@ -947,25 +850,8 @@ paths:
         name: identificatie
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/Identificatie'
         style: simple
-      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
-          een evt. waarde van dit attribute worden genegeerd.</p></body>
-        explode: true
-        in: query
-        name: inclusiefvervallen
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: vanafdatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -976,6 +862,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Rate-Limit-Limit:
@@ -1195,6 +1083,14 @@ paths:
         een collectie amendementen retourneert.</p></body>
       operationId: Getlocaties
       parameters:
+      - description: Gewenste CRS van de coördinaten in de response.
+        explode: false
+        in: header
+        name: Accept-Crs
+        required: false
+        schema:
+          $ref: '#/components/schemas/CrsEnum'
+        style: simple
       - description: Een pagina binnen de gepagineerde resultatenset.
         explode: true
         in: query
@@ -1206,95 +1102,13 @@ paths:
         style: form
       - explode: true
         in: query
-        name: begindatum
+        name: pageSize
         required: false
         schema:
-          format: date
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: einddatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
-      - description: <body><p>De geometrische bepaling van de lijn door middel van
-          coördinaten.</p></body><body><p>De geometrische bepaling van het gebied
-          door middel van coördinaten.</p></body><body><p>De geometrische bepaling
-          van de punt door middel van coÃ¶rdinaten.</p></body><body><p>Een inhoudelijke
-          toelichting op de toepassing van het informatie-element.</p></body>
-        explode: true
-        in: query
-        name: geometrie
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: <body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning
-          van de geometrie.</p></body><body><p>De bron die is gebruikt voor, dan wel
-          de wijze van inwinning van de geometrie.</p></body><body><p>De bron die
-          is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>Een
-          inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
-        explode: true
-        in: query
-        name: geometriebron
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: geometrietype
-        required: false
-        schema:
-          $ref: '#/components/schemas/GeometrieType'
-        style: form
-      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
-          een evt. waarde van dit attribute worden genegeerd.</p></body>
-        explode: true
-        in: query
-        name: inclusiefvervallen
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - description: <body><p>Tekstuele beschrijving van een Locatie, zodat er als
-          zodanig over deze locatie gesproken kan worden. De beschrijving kan een
-          bepaalde naam zijn waaronder de Locatie bekend staat, maar (lang) niet elke
-          Locatie heef een naam.</p></body><body><p>Bijvoorbeeld het hele werkingsgebied
-          van bevoegd gezag, zoals 'Het Koninkrijk der Nederlanden' of gemeente 'Amersfoort'.
-          Bijvoorbeeld een natuurgebied zoals de 'Veluwe' of de rivier de 'Rijn' of
-          het centrum van een woonplaats 'centrum Apeldoorn'.</p></body>
-        explode: true
-        in: query
-        name: noemer
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: omvattendelocatieidentificaties
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: type
-        required: false
-        schema:
-          $ref: '#/components/schemas/LocatieType'
-        style: form
-      - explode: true
-        in: query
-        name: vanafdatum
-        required: false
-        schema:
-          format: date
-          type: string
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
         style: form
       responses:
         "200":
@@ -1306,6 +1120,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Pagination-Page:
@@ -1513,6 +1329,14 @@ paths:
         gegevens van een amendement retourneert.</p></body>
       operationId: Getlocatie
       parameters:
+      - description: Gewenste CRS van de coördinaten in de response.
+        explode: false
+        in: header
+        name: Accept-Crs
+        required: false
+        schema:
+          $ref: '#/components/schemas/CrsEnum'
+        style: simple
       - description: <body><p>De unieke identificatie waaronder elk object van dit
           type bekend is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing
           van het informatie-element.</p></body><body><p>De verzameling van waarden
@@ -1523,25 +1347,8 @@ paths:
         name: identificatie
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/Identificatie'
         style: simple
-      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
-          een evt. waarde van dit attribute worden genegeerd.</p></body>
-        explode: true
-        in: query
-        name: inclusiefvervallen
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: vanafdatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -1552,6 +1359,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Rate-Limit-Limit:
@@ -1771,6 +1580,14 @@ paths:
         een collectie amendementen retourneert.</p></body>
       operationId: Getregelteksten
       parameters:
+      - description: Gewenste CRS van de coördinaten in de response.
+        explode: false
+        in: header
+        name: Accept-Crs
+        required: false
+        schema:
+          $ref: '#/components/schemas/CrsEnum'
+        style: simple
       - description: Een pagina binnen de gepagineerde resultatenset.
         explode: true
         in: query
@@ -1794,56 +1611,6 @@ paths:
         schema:
           type: string
         style: form
-      - explode: true
-        in: query
-        name: begindatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
-      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
-          informatie-element.</p></body>
-        explode: true
-        in: query
-        name: codebevoegdgezag
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
-          informatie-element.</p></body>
-        explode: true
-        in: query
-        name: documentidentificatie
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
-          informatie-element.</p></body>
-        explode: true
-        in: query
-        name: documentopschrift
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: einddatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: gerelateerderegeltekstidentificaties
-        required: false
-        schema:
-          type: string
-        style: form
       - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
           een evt. waarde van dit attribute worden genegeerd.</p></body>
         explode: true
@@ -1857,60 +1624,34 @@ paths:
           informatie-element.</p></body>
         explode: true
         in: query
-        name: koplabel
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
-          informatie-element.</p></body>
-        explode: true
-        in: query
-        name: kopnummer
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: <body><p>Een inhoudelijke toelichting op de toepassing van het
-          informatie-element.</p></body>
-        explode: true
-        in: query
-        name: kopopschrift
+        name: omgevingsdocumentidentificatie
         required: false
         schema:
           type: string
         style: form
       - explode: true
         in: query
-        name: laatstewijzigingsdatum
+        name: pageSize
         required: false
         schema:
-          format: date
-          type: string
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
         style: form
-      - explode: true
-        in: query
-        name: locatieidentificaties
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: <body><p>De letterlijke tekst waarmee de Regeltekst is omschreven,
-          in een artikel of een lid. Een Regeltekst is altijd Ã©Ã©n doorlopend stuk
-          juridische tekst, welke juridische regels bevat.</p></body>
+      - description: <body><p>Een unieke aanduiding van de verzameling samenhangende
+          activiteiten gericht op het publiceren van een nieuwe versie van een omgevingsdocument.</p></body><body><p>Er
+          kunnen tegelijkertijd meerdere trajecten gaande zijn waarin bijvoorbeeld
+          een omgevingsplan gewijzigd wordt, die elk leiden tot een apart te publiceren
+          nieuwe versie van het omgevingsplan. De werkpakketcode biedt de mogelijkheid
+          om de regelteksten te markeren die betrokken zijn in zo'n traject. Daarvan
+          kan gebruik gemaakt worden om alleen de regels  met bijhorende annotaties
+          op te vragen voor een specifiek werkpakket. </p></body>
         explode: true
         in: query
-        name: omschrijving
+        name: werkpakketcode
         required: false
         schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: vanafdatum
-        required: false
-        schema:
-          format: date
           type: string
         style: form
       responses:
@@ -1923,6 +1664,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Pagination-Page:
@@ -2130,6 +1873,14 @@ paths:
         gegevens van een amendement retourneert.</p></body>
       operationId: Getregeltekst
       parameters:
+      - description: Gewenste CRS van de coördinaten in de response.
+        explode: false
+        in: header
+        name: Accept-Crs
+        required: false
+        schema:
+          $ref: '#/components/schemas/CrsEnum'
+        style: simple
       - description: Hiermee kun je opgeven welke gerelateerde resources meegeleverd
           moeten worden, en hun inhoud naar behoefte aanpassen. Hele resources of
           enkele properties geef je in de expand parameter kommagescheiden op. Properties
@@ -2151,25 +1902,8 @@ paths:
         name: identificatie
         required: true
         schema:
-          type: string
+          $ref: '#/components/schemas/Identificatie'
         style: simple
-      - description: <body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet
-          een evt. waarde van dit attribute worden genegeerd.</p></body>
-        explode: true
-        in: query
-        name: inclusiefvervallen
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: vanafdatum
-        required: false
-        schema:
-          format: date
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -2180,6 +1914,8 @@ paths:
           headers:
             api-version:
               $ref: '#/components/headers/api_version'
+            Content-Crs:
+              $ref: '#/components/headers/contentCrs'
             warning:
               $ref: '#/components/headers/warning'
             X-Rate-Limit-Limit:
@@ -2403,6 +2139,13 @@ components:
         example: 1.0.0
         type: string
       style: simple
+    contentCrs:
+      description: CRS van de meegegeven geometrie. epsg:28992 mapt op het RD New
+        Nederlands coordinatenstelsel.
+      explode: false
+      schema:
+        $ref: '#/components/schemas/CrsEnum'
+      style: simple
     warning:
       explode: false
       schema:
@@ -2497,7 +2240,7 @@ components:
           description: '<body><p>De regels die gelden voor de gerelateerde activiteit(en)
             zijn contextueel relevant voor deze activiteit. Toelichting: Met contextueel
             relevant wordt bedoeld dat de regels die gelden voor de gerelateerde activiteit,
-            binnen die gegeven context ook gelden voor deze activiteit. Bijvoorbeeld
+            binnen die gegeven context ook gelden voor deze activiteit. Bijvoorbeeld
             omdat de ene activiteit altijd samen met de andere activiteit(en) worden
             uitgevoerd en de regels van beide daarmee allebei tegelijk aan de orde
             zijn. Als de beschreven context waarin de regels behorende bij de gerelateerde
@@ -2515,7 +2258,7 @@ components:
           type: array
         bovenliggendeActiviteit:
           allOf:
-          - description: '<body><p>Met is (een) wordt een bepaalde activiteit rechtstreeks
+          - description: '<body><p>Met “is (een)‿ wordt een bepaalde activiteit rechtstreeks
               verbonden met een andere activiteit van hetzelfde type (van specifiek
               naar generiek). Toelichting: Met een activiteit van hetzelfde type wordt
               bedoeld dat andere regels (generieker) contextueel wel of niet relevant
@@ -2531,7 +2274,7 @@ components:
             title: is
             type: object
           - $ref: '#/components/schemas/HalLink'
-        bijbehorendeJuridischeRegelsVoorIedereen:
+        juridischeRegelsVoorIedereen:
           description: <body><p>Bij een regel die een activiteit vastlegt geeft deze
             relatie aan om welke activiteit het gaat. De bijbehorende locatie(s) waar
             het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een
@@ -2556,7 +2299,7 @@ components:
           minItems: 1
           title: definieert
           type: array
-        omvattendeRegeltekst:
+        regeltekst:
           allOf:
           - description: <body><p>Artikel of lid is waar de Juridische regel onderdeel
               van is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing
@@ -2572,15 +2315,16 @@ components:
           minItems: 1
           title: kwalificeert
           type: array
-        betreffendeActiviteit:
-          allOf:
-          - description: <body><p>Bij een regel die een activiteit vastlegt geeft
-              deze relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)
-              waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een
-              inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
-            title: betreftEenActiviteit
-            type: object
-          - $ref: '#/components/schemas/HalLink'
+        activiteiten:
+          description: <body><p>Bij een regel die een activiteit vastlegt geeft deze
+            relatie aan om welke activiteit het gaat. De bijbehorende locatie(s) waar
+            het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een
+            inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
+          items:
+            $ref: '#/components/schemas/HalLink'
+          minItems: 1
+          title: betreftEenActiviteit
+          type: array
       type: object
     Locatie_links:
       properties:
@@ -2612,7 +2356,7 @@ components:
             $ref: '#/components/schemas/HalLink'
           title: gerelateerd
           type: array
-        betreffendeLocaties:
+        locaties:
           description: <body><p>Het werkingsgebied c.q. de locatie begrenst de juridische
             werking van de regeltekst, in juridische zin, te weten dat deze regeltekst
             alleen binnen dit werkingsgebied juridische werkingskracht heeft. Het
@@ -2630,7 +2374,7 @@ components:
       type: object
     Activiteit_embedded:
       properties:
-        bijbehorendeJuridischeRegelsVoorIedereen:
+        juridischeRegelsVoorIedereen:
           description: <body><p>Bij een regel die een activiteit vastlegt geeft deze
             relatie aan om welke activiteit het gaat. De bijbehorende locatie(s) waar
             het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een
@@ -2653,12 +2397,12 @@ components:
           minItems: 1
           title: definieert
           type: array
-        omvattendeRegeltekst:
+        regeltekst:
           $ref: '#/components/schemas/RegeltekstHal'
       type: object
     Regeltekst_embedded:
       properties:
-        betreffendeLocaties:
+        locaties:
           description: <body><p>Het werkingsgebied c.q. de locatie begrenst de juridische
             werking van de regeltekst, in juridische zin, te weten dat deze regeltekst
             alleen binnen dit werkingsgebied juridische werkingskracht heeft. Het
@@ -2674,6 +2418,12 @@ components:
           title: heeft werking in
           type: array
       type: object
+    CrsEnum:
+      default: epsg:28992
+      description: CRS van geometrie. epsg:28992 mapt op het RD New Nederlands coordinatenstelsel.
+      enum:
+      - epsg:28992
+      type: string
     BadRequestFoutbericht:
       allOf:
       - $ref: '#/components/schemas/Foutbericht'
@@ -2724,29 +2474,7 @@ components:
           example: Waarde is geen geldige integer.
           type: string
       type: object
-    GeometrieType:
-      description: <body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body><body><ul><li>`MultiSurface`
-        - GM_MultiSurface</li><li>`Surface` - GM_Surface</li><li>`MultiLineString`
-        - GM_MultiLineString</li><li>`LineString` - GM_LineString</li><li>`MultiPoint`
-        - GM_MultiPoint</li><li>`Point` - GM_Point</li></ul></body>
-      enum:
-      - MultiSurface
-      - Surface
-      - MultiLineString
-      - LineString
-      - MultiPoint
-      - Point
-      type: string
-    LocatieType:
-      description: <body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body>
-      enum:
-      - punt
-      - ambtsgebied
-      - puntengroep
-      - gebied
-      - gebiedengroep
-      - lijn
-      - lijnengroep
+    Identificatie:
       type: string
     HalPaginationLinks:
       allOf:
@@ -2841,19 +2569,21 @@ components:
           title: juridischeRegelVoorIedereenIdentificaties
           type: array
         laatsteWijzigingsdatum:
+          description: <body><p>De laatste datum waarop, binnen het pakket, wijzigingen
+            zijn aangebracht aan de activiteit.</p></body>
           format: date
           title: laatsteWijzigingsdatum
           type: string
         naam:
+          description: <body><p>Een (korte) omschrijving van de activiteit.</p></body>
+          minLength: 1
+          title: naam
           type: string
       required:
-      - begindatum
       - bovenliggendeActiviteitIdentificatie
-      - einddatum
       - groep
       - identificatie
       - juridischeRegelVoorIedereenIdentificaties
-      - laatsteWijzigingsdatum
       - naam
       type: object
     Activiteitengroep:
@@ -2863,8 +2593,16 @@ components:
         op de toepassing van het informatie-element.</p></body>
       properties:
         code:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: code
           type: string
         waarde:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: waarde
           type: string
       required:
       - code
@@ -2884,6 +2622,13 @@ components:
           format: date
           title: einddatum
           type: string
+        gedefinieerdeLocatieIdentificaties:
+          items:
+            minLength: 1
+            type: string
+          minItems: 1
+          title: gedefinieerdeLocatieIdentificaties
+          type: array
         idealisatie:
           allOf:
           - $ref: '#/components/schemas/Idealisatie'
@@ -2894,28 +2639,27 @@ components:
             title: idealisatie
         identificatie:
           type: string
-        locatieIdentificaties:
-          items:
-            type: string
-          type: array
         normeertActiviteiten:
           items:
             $ref: '#/components/schemas/ActiviteitLocatieaanduiding'
           type: array
         omschrijving:
+          description: <body><p>&#201;&#233;n doorlopend stuk juridische tekst zijnde
+            een geheel of gedeelte van de tekst van een artikel of een lid.</p></body>
+          minLength: 1
+          title: omschrijving
           type: string
         regeltekstIdentificatie:
+          minLength: 1
+          title: regeltekstIdentificatie
           type: string
         themas:
           items:
             $ref: '#/components/schemas/Thema'
           type: array
       required:
-      - begindatum
-      - einddatum
-      - idealisatie
+      - gedefinieerdeLocatieIdentificaties
       - identificatie
-      - locatieIdentificaties
       - omschrijving
       - regeltekstIdentificatie
       type: object
@@ -2926,8 +2670,16 @@ components:
         van het informatie-element.</p></body>
       properties:
         code:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: code
           type: string
         waarde:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: waarde
           type: string
       required:
       - code
@@ -2937,25 +2689,35 @@ components:
       description: <body><p>Een inhoudelijke toelichting op de toepassing van het
         informatie-element.</p></body>
       properties:
+        activiteitIdentificatie:
+          minLength: 1
+          title: activiteitIdentificatie
+          type: string
+        activiteitLocatieIdentificatie:
+          description: <body><p>Dit attribute is</p></body><body><p>Dit attribute
+            is</p></body><body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: identificatie
+          type: string
         activiteitregelkwalificatie:
           allOf:
           - $ref: '#/components/schemas/Activiteitregelkwalificatie'
           - description: <body><p>Een inhoudelijke toelichting op de toepassing van
               het informatie-element.</p></body>
             title: activiteitregelkwalificatie
-        betreffendeActiviteitIdentificatie:
-          type: string
         gekwalificeerdeLocatieIdentificaties:
           items:
+            minLength: 1
             type: string
+          minItems: 1
+          title: gekwalificeerdeLocatieIdentificaties
           type: array
-        identificatie:
-          type: string
       required:
+      - activiteitIdentificatie
+      - activiteitLocatieIdentificatie
       - activiteitregelkwalificatie
-      - betreffendeActiviteitIdentificatie
       - gekwalificeerdeLocatieIdentificaties
-      - identificatie
       type: object
     Activiteitregelkwalificatie:
       description: <body><p>Een lijst met een opsomming van de mogelijke domeinwaarden
@@ -2964,8 +2726,16 @@ components:
         van het informatie-element.</p></body>
       properties:
         code:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: code
           type: string
         waarde:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: waarde
           type: string
       required:
       - code
@@ -2978,8 +2748,16 @@ components:
         op de toepassing van het informatie-element.</p></body>
       properties:
         code:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: code
           type: string
         waarde:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: waarde
           type: string
       required:
       - code
@@ -2998,45 +2776,207 @@ components:
           title: einddatum
           type: string
         geometrie:
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/GeoJSONGeometrie'
+          - description: <body><p>De geometrische bepaling van het gebied door middel
+              van coördinaten.</p></body><body><p>De geometrische bepaling van de
+              punt door middel van coördinaten.</p></body><body><p>De geometrische
+              bepaling van de lijn door middel van coördinaten.</p></body><body><p>Een
+              inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
         geometrieBron:
+          description: <body><p>De bron die is gebruikt voor, dan wel de wijze van
+            inwinning van de geometrie.</p></body><body><p>De bron die is gebruikt
+            voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>De
+            bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>Een
+            inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
+          title: bron
           type: string
-        geometrieType:
-          $ref: '#/components/schemas/GeometrieType'
-        hoogte:
-          $ref: '#/components/schemas/WaardeEenheid'
         identificatie:
           type: string
         noemer:
+          description: <body><p>Tekstuele beschrijving van een Locatie, zodat er als
+            zodanig over deze locatie gesproken kan worden. De beschrijving kan een
+            bepaalde naam zijn waaronder de Locatie bekend staat, maar (lang) niet
+            elke Locatie heef een naam.</p></body><body><p>Bijvoorbeeld het hele werkingsgebied
+            van bevoegd gezag, zoals 'Het Koninkrijk der Nederlanden' of gemeente
+            'Amersfoort'. Bijvoorbeeld een natuurgebied zoals de 'Veluwe' of de rivier
+            de 'Rijn' of het centrum van een woonplaats 'centrum Apeldoorn'.</p></body>
+          title: noemer
           type: string
         omvattendeLocatieIdentificaties:
           items:
             type: string
+          minItems: 0
+          title: omvattendeLocatieIdentificaties
           type: array
         type:
           $ref: '#/components/schemas/LocatieType'
+        werkpakketCode:
+          description: <body><p>Een unieke aanduiding van de verzameling samenhangende
+            activiteiten gericht op het publiceren van een nieuwe versie van een omgevingsdocument.</p></body><body><p>Er
+            kunnen tegelijkertijd meerdere trajecten gaande zijn waarin bijvoorbeeld
+            een omgevingsplan gewijzigd wordt, die elk leiden tot een apart te publiceren
+            nieuwe versie van het omgevingsplan. De werkpakketcode biedt de mogelijkheid
+            om de regelteksten te markeren die betrokken zijn in zo'n traject. Daarvan
+            kan gebruik gemaakt worden om alleen de regels  met bijhorende annotaties
+            op te vragen voor een specifiek werkpakket. </p></body>
+          minLength: 1
+          title: werkpakketCode
+          type: string
       required:
-      - begindatum
-      - einddatum
       - identificatie
       - type
+      - werkpakketCode
       type: object
-    WaardeEenheid:
-      description: <body><p>Een specifieke datatype voor het vastleggen van waarden
-        met een eenheid, zoals 5 meter, 30 decibel en andere.</p></body>
+    GeoJSONGeometrie:
+      description: Geometrie in GeoJSON formaat (RFC 7946). Een property die dit datatype
+        heeft mag slechts 1 van de opgenomen properties bevatten. Deze constructie
+        vervangt de oneOf vanwege codegeneratie-issues.
+      externalDocs:
+        description: RFC 7946 - The GeoJSON Format
+        url: https://tools.ietf.org/html/rfc7946
       properties:
-        eenheid:
-          type: string
-        waarde:
-          type: string
-      required:
-      - eenheid
-      - waarde
+        point:
+          $ref: '#/components/schemas/pointGeoJSON'
+        lineString:
+          $ref: '#/components/schemas/linestringGeoJSON'
+        polygon:
+          $ref: '#/components/schemas/polygonGeoJSON'
+        multiPoint:
+          $ref: '#/components/schemas/multipointGeoJSON'
+        multiLineString:
+          $ref: '#/components/schemas/multilinestringGeoJSON'
+        multiPolygon:
+          $ref: '#/components/schemas/multipolygonGeoJSON'
+      title: GeoJSON Geometrie
       type: object
+    pointGeoJSON:
+      properties:
+        type:
+          enum:
+          - Point
+          type: string
+        coordinates:
+          items:
+            type: number
+          minItems: 2
+          type: array
+      required:
+      - coordinates
+      - type
+      type: object
+    linestringGeoJSON:
+      properties:
+        type:
+          enum:
+          - LineString
+          type: string
+        coordinates:
+          items:
+            items:
+              type: number
+            minItems: 2
+            type: array
+          minItems: 2
+          type: array
+      required:
+      - coordinates
+      - type
+      type: object
+    polygonGeoJSON:
+      properties:
+        type:
+          enum:
+          - Polygon
+          type: string
+        coordinates:
+          items:
+            items:
+              items:
+                type: number
+              minItems: 2
+              type: array
+            minItems: 4
+            type: array
+          type: array
+      required:
+      - coordinates
+      - type
+      type: object
+    multipointGeoJSON:
+      properties:
+        type:
+          enum:
+          - MultiPoint
+          type: string
+        coordinates:
+          items:
+            items:
+              type: number
+            minItems: 2
+            type: array
+          type: array
+      required:
+      - coordinates
+      - type
+      type: object
+    multilinestringGeoJSON:
+      properties:
+        type:
+          enum:
+          - MultiLineString
+          type: string
+        coordinates:
+          items:
+            items:
+              items:
+                type: number
+              minItems: 2
+              type: array
+            minItems: 2
+            type: array
+          type: array
+      required:
+      - coordinates
+      - type
+      type: object
+    multipolygonGeoJSON:
+      properties:
+        type:
+          enum:
+          - MultiPolygon
+          type: string
+        coordinates:
+          items:
+            items:
+              items:
+                items:
+                  type: number
+                minItems: 2
+                type: array
+              minItems: 4
+              type: array
+            type: array
+          type: array
+      required:
+      - coordinates
+      - type
+      type: object
+    LocatieType:
+      description: <body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body>
+      enum:
+      - punt
+      - ambtsgebied
+      - puntengroep
+      - gebied
+      - gebiedengroep
+      - lijn
+      - lijnengroep
+      type: string
     Regeltekst:
       description: <body><p>Een Regeltekst is de kleinste zelfstandige eenheid van
         (een of meer) bij elkaar behorende juridische regels. Deze regels horen onlosmakelijk
-        bij elkaar en hebben gezamenlijk een werkingsgebied.</p></body>
+        bij elkaar en hebben gezamenlijk één werkingsgebied.</p></body>
       properties:
         begindatum:
           format: date
@@ -3051,39 +2991,132 @@ components:
         gerelateerdeRegeltekstIdentificaties:
           items:
             type: string
+          minItems: 0
+          title: gerelateerdeRegeltekstIdentificaties
           type: array
         identificatie:
           type: string
         laatsteWijzigingsdatum:
+          description: <body><p>De laatste datum waarop, binnen het pakket, wijzigingen
+            zijn aangebracht aan de regeltekst.</p></body>
           format: date
           title: laatsteWijzigingsdatum
           type: string
         locatieIdentificaties:
           items:
+            minLength: 1
             type: string
+          minItems: 1
+          title: locatieIdentificaties
           type: array
         omschrijving:
+          description: <body><p>De letterlijke tekst waarmee de Regeltekst is omschreven,
+            in een artikel of een lid. Een Regeltekst is altijd één doorlopend stuk
+            juridische tekst, welke juridische regels bevat.</p></body>
+          minLength: 1
+          title: omschrijving
+          type: string
+        werkpakketCode:
+          description: <body><p>Een unieke aanduiding van de verzameling samenhangende
+            activiteiten gericht op het publiceren van een nieuwe versie van een omgevingsdocument.</p></body><body><p>Er
+            kunnen tegelijkertijd meerdere trajecten gaande zijn waarin bijvoorbeeld
+            een omgevingsplan gewijzigd wordt, die elk leiden tot een apart te publiceren
+            nieuwe versie van het omgevingsplan. De werkpakketcode biedt de mogelijkheid
+            om de regelteksten te m</p></body>
+          minLength: 1
+          title: werkpakketCode
           type: string
       required:
-      - begindatum
       - documentComponent
-      - einddatum
       - identificatie
       - laatsteWijzigingsdatum
       - locatieIdentificaties
       - omschrijving
+      - werkpakketCode
       type: object
     DocumentComponent:
       description: <body><p>Een inhoudelijke toelichting op de toepassing van het
         informatie-element.</p></body>
       properties:
+        identificatie:
+          type: string
+        kop:
+          $ref: '#/components/schemas/Kop'
+        omgevingsdocument:
+          $ref: '#/components/schemas/Omgevingsdocument'
+        type:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body><body><p>De verzameling van waarden
+            die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het
+            waardenbereik, uitgedrukt in een specifieke structuur.</p></body>
+          minLength: 1
+          title: type
+          type: string
+        vervallen:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          title: vervallen
+          type: boolean
+        volgordeNummer:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          title: volgordeNummer
+          type: integer
+      required:
+      - identificatie
+      - kop
+      - omgevingsdocument
+      - type
+      - vervallen
+      - volgordeNummer
+      type: object
+    WId:
+      type: string
+    Kop:
+      description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+        informatie-element.</p></body>
+      properties:
+        label:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          title: label
+          type: string
+        nummer:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          title: nummer
+          type: string
+        opschrift:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          title: opschrift
+          type: string
+      type: object
+    Omgevingsdocument:
+      description: <body><p>Een inhoudelijke toelichting op de toepassing van het
+        informatie-element.</p></body>
+      properties:
         codeBevoegdGezag:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: code
           type: string
-        documentIdentificatie:
+        identificatie:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: identificatie
           type: string
-        documentOpschrift:
+        opschrift:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body><body><p>De verzameling van waarden
+            die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het
+            waardenbereik, uitgedrukt in een specifieke structuur.</p></body>
+          minLength: 1
+          title: opschrift
           type: string
-        documentType:
+        type:
           allOf:
           - $ref: '#/components/schemas/Soortregeling'
           - description: <body><p>Een inhoudelijke toelichting op de toepassing van
@@ -3091,36 +3124,30 @@ components:
               die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het
               waardenbereik, uitgedrukt in een specifieke structuur.</p></body>
             title: documentType
-        kop:
-          $ref: '#/components/schemas/Kop'
       required:
       - codeBevoegdGezag
-      - documentIdentificatie
-      - documentOpschrift
-      - documentType
+      - identificatie
+      - opschrift
       type: object
     Soortregeling:
       description: <body><p>Een inhoudelijke toelichting op de toepassing van het
         informatie-element.</p></body>
       properties:
         code:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: code
           type: string
         waarde:
+          description: <body><p>Een inhoudelijke toelichting op de toepassing van
+            het informatie-element.</p></body>
+          minLength: 1
+          title: waarde
           type: string
       required:
       - code
       - waarde
-      type: object
-    Kop:
-      description: <body><p>Een inhoudelijke toelichting op de toepassing van het
-        informatie-element.</p></body>
-      properties:
-        label:
-          type: string
-        nummer:
-          type: string
-        opschrift:
-          type: string
       type: object
     ActiviteitHalCollectie__embedded:
       properties:

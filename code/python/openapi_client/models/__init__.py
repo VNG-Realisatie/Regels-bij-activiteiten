@@ -21,9 +21,10 @@ from openapi_client.model.activiteitengroep import Activiteitengroep
 from openapi_client.model.activiteitregelkwalificatie import Activiteitregelkwalificatie
 from openapi_client.model.bad_request_foutbericht import BadRequestFoutbericht
 from openapi_client.model.bad_request_foutbericht_all_of import BadRequestFoutberichtAllOf
+from openapi_client.model.crs_enum import CrsEnum
 from openapi_client.model.document_component import DocumentComponent
 from openapi_client.model.foutbericht import Foutbericht
-from openapi_client.model.geometrie_type import GeometrieType
+from openapi_client.model.geo_json_geometrie import GeoJSONGeometrie
 from openapi_client.model.hal_collection_links import HalCollectionLinks
 from openapi_client.model.hal_link import HalLink
 from openapi_client.model.hal_pagination_links import HalPaginationLinks
@@ -38,6 +39,7 @@ from openapi_client.model.juridische_regel_voor_iedereen_hal_collectie import Ju
 from openapi_client.model.juridische_regel_voor_iedereen_hal_collectie_embedded import JuridischeRegelVoorIedereenHalCollectieEmbedded
 from openapi_client.model.juridische_regel_voor_iedereen_links import JuridischeRegelVoorIedereenLinks
 from openapi_client.model.kop import Kop
+from openapi_client.model.linestring_geo_json import LinestringGeoJSON
 from openapi_client.model.locatie import Locatie
 from openapi_client.model.locatie_hal import LocatieHal
 from openapi_client.model.locatie_hal_all_of import LocatieHalAllOf
@@ -45,6 +47,12 @@ from openapi_client.model.locatie_hal_collectie import LocatieHalCollectie
 from openapi_client.model.locatie_hal_collectie_embedded import LocatieHalCollectieEmbedded
 from openapi_client.model.locatie_links import LocatieLinks
 from openapi_client.model.locatie_type import LocatieType
+from openapi_client.model.multilinestring_geo_json import MultilinestringGeoJSON
+from openapi_client.model.multipoint_geo_json import MultipointGeoJSON
+from openapi_client.model.multipolygon_geo_json import MultipolygonGeoJSON
+from openapi_client.model.omgevingsdocument import Omgevingsdocument
+from openapi_client.model.point_geo_json import PointGeoJSON
+from openapi_client.model.polygon_geo_json import PolygonGeoJSON
 from openapi_client.model.regeltekst import Regeltekst
 from openapi_client.model.regeltekst_embedded import RegeltekstEmbedded
 from openapi_client.model.regeltekst_hal import RegeltekstHal
@@ -54,4 +62,3 @@ from openapi_client.model.regeltekst_hal_collectie_embedded import RegeltekstHal
 from openapi_client.model.regeltekst_links import RegeltekstLinks
 from openapi_client.model.soortregeling import Soortregeling
 from openapi_client.model.thema import Thema
-from openapi_client.model.waarde_eenheid import WaardeEenheid
