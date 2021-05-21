@@ -11,10 +11,12 @@ plugins:
   - jekyll-redirect-from
   - jekyll-remote-theme
 
-remote_theme: VNG-Realisatie/jekyll-theme-haal-centraal
+remote_theme: VNG-Realisatie/jekyll-theme-vng-realisatie
 
 github: VNG-Realisatie/Regels-bij-activiteiten
 
 theme: jekyll-theme-time-machine
 
 project_name: /Regels-bij-activiteiten
+
+standard_family: VNG
