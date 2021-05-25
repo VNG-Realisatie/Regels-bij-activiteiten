@@ -5,6 +5,10 @@ title: Releasecandidate Regels bij activiteiten
 
 # Regels bij activiteiten
 
+![lint oas](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/workflows/lint-oas/badge.svg)
+![generate sdks](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/workflows/generate-sdks/badge.svg)
+![generate postman collection](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/workflows/generate-postman-collection/badge.svg)
+
 Deze API is relevant bij uitvoering van de Omgevingswet, i.h.b. bij het opstellen en onderhouden van zgn. toepasbare regels. Het verschaft de toepasbare regelmaker actuele informatie over de juridische regels en bijbehorende werkingsgebieden en actviteiten waarvoor toepasbare regels opgesteld of aangepast gaan worden.  
 De API maakt het mogelijk om gegevens op te vragen, bij een applicatie die invulling geeft aan de Omgevingswetbeleidcomponent, ook wel aangeduid als plansoftware, over (Omgevingswet-)activiteiten en/of (bijbehorende) juridische regels, regelteksten en locaties. Die gegevens maken deel uit van de vastlegging van omgevingsdocumenten, zoals een omgevingsplan, met genoemde applicatie. Het betreft regels en annotaties zoals die op het moment van opvragen vastgelegd (in de plansofware) zijn; er kan dus sprake zijn van nog niet vastgestelde of gepubliceerde gegevens. Het betreft dan bijvoorbeeld een beoogde wijziging van een omgevingsplan.  
 Beoogd gebruik is vooral het inzicht krijgen in activiteiten en bijbehorende regels en locaties door een applicatie die invulling geeft aan de Toepasbare regelscomponent, ook wel aangeduid als toepasbare regelsoftware, t.b.v. het kunnen opstellen en aanpassen van toepasbare regels.  
