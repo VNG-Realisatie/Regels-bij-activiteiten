@@ -7,7 +7,7 @@ info:
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
-  version: 1.0.0
+  version: 1.0.0-rc1
   x-imvertor-generator-version: 1.64.1
   x-yamlCompiler-stylesheets-version: "20210428"
 servers:
