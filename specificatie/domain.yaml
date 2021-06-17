@@ -1,10 +1,10 @@
 openapi: 3.0.0
 info:
-  title: Plan SW - Toepasbare regel SW
+  title: Regels bij activiteiten
   description: ""
   version: "1.0.0"
-  x-imvertor-generator-version: "1.64.1"
-  x-yamlCompiler-stylesheets-version: "20210428"
+  x-imvertor-generator-version: "1.64.2"
+  x-yamlCompiler-stylesheets-version: "20210605"
   contact:
     url: https://github.com/VNG-Realisatie/Regels-bij-activiteiten
     email: robert.melskens@vng.nl
@@ -147,7 +147,6 @@ components:
       required:
       - "identificatie"
       - "type"
-      - "werkpakketCode"
       properties:
         begindatum:
           type: "string"
@@ -163,10 +162,7 @@ components:
           allOf:
             - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/Generieke-Datatypen-Gemeenten.yaml#/components/schemas/GeoJSONGeometrie"
             - description: "<body><p>De geometrische bepaling van het gebied door middel\
-                \ van coördinaten.</p></body><body><p>De geometrische bepaling van de\
-                \ punt door middel van coördinaten.</p></body><body><p>De geometrische\
-                \ bepaling van de lijn door middel van coördinaten.</p></body><body><p>Een\
-                \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+                \ van coördinaten.</p></body>"
         geometrieBron:
           type: "string"
           title: "bron"
@@ -196,19 +192,6 @@ components:
             type: "string"
         type:
           $ref: "#/components/schemas/LocatieType"
-        werkpakketCode:
-          type: "string"
-          title: "werkpakketCode"
-          description: "<body><p>Een unieke aanduiding van de verzameling samenhangende\
-            \ activiteiten gericht op het publiceren van een nieuwe versie van een\
-            \ omgevingsdocument.</p></body><body><p>Er kunnen tegelijkertijd meerdere\
-            \ trajecten gaande zijn waarin bijvoorbeeld een omgevingsplan gewijzigd\
-            \ wordt, die elk leiden tot een apart te publiceren nieuwe versie van\
-            \ het omgevingsplan. De werkpakketcode biedt de mogelijkheid om de regelteksten\
-            \ te markeren die betrokken zijn in zo'n traject. Daarvan kan gebruik gemaakt\
-            \ worden om alleen de regels  met bijhorende annotaties op te vragen voor een\
-            \ specifiek werkpakket. </p></body>"
-          minLength: 1
     Regeltekst:
       type: "object"
       description: "<body><p>Een Regeltekst is de kleinste zelfstandige eenheid van\
@@ -273,7 +256,9 @@ components:
             \ trajecten gaande zijn waarin bijvoorbeeld een omgevingsplan gewijzigd\
             \ wordt, die elk leiden tot een apart te publiceren nieuwe versie van\
             \ het omgevingsplan. De werkpakketcode biedt de mogelijkheid om de regelteksten\
-            \ te m</p></body>"
+            \ te markeren die betrokken zijn in zo'n traject. Daarvan kan gebruik\
+            \ gemaakt worden om alleen de regels met bijhorende annotaties op te vragen\
+            \ voor een specifiek werkpakket.</p></body>"
           minLength: 1
     ActiviteitLocatieaanduiding:
       type: "object"
@@ -433,26 +418,6 @@ components:
           title: "opschrift"
           description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
             \ het informatie-element.</p></body>"
-    Soortregeling:
-      type: "object"
-      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
-        \ informatie-element.</p></body>"
-      required:
-      - "code"
-      - "waarde"
-      properties:
-        code:
-          type: "string"
-          title: "code"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body>"
-          minLength: 1
-        waarde:
-          type: "string"
-          title: "waarde"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body>"
-          minLength: 1
     Omgevingsdocument:
       type: "object"
       description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
@@ -461,6 +426,7 @@ components:
       - "codeBevoegdGezag"
       - "identificatie"
       - "opschrift"
+      - "type"
       properties:
         codeBevoegdGezag:
           type: "string"
@@ -485,11 +451,31 @@ components:
         type:
           allOf:
           - $ref: "#/components/schemas/Soortregeling"
-          - title: "documentType"
+          - title: "type"
             description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
               \ het informatie-element.</p></body><body><p>De verzameling van waarden\
               \ die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen\
               \ het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+    Soortregeling:
+      type: "object"
+      description: "<body><p>Een inhoudelijke toelichting op de toepassing van het\
+        \ informatie-element.</p></body>"
+      required:
+      - "code"
+      - "waarde"
+      properties:
+        code:
+          type: "string"
+          title: "code"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minLength: 1
+        waarde:
+          type: "string"
+          title: "waarde"
+          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
+            \ het informatie-element.</p></body>"
+          minLength: 1
     Thema:
       type: "object"
       description: "<body><p>Een limitatieve lijst met een opsomming van de mogelijke\
