@@ -28,7 +28,10 @@ Deze compliancy-afspraken waarborgen dat een hierboven, als eerste, genoemde bel
 
 
 ## Toelichting op bestandsuitwisseling
-De API kan gebruikt worden om de desbetreffende gegevens in json-formaat als bestand op te vragen. Zonder selectie resulteert dat in alle regelteksten en bijbehorende annotaties (locaties, 'juridische regels voor iedereen', activiteiten e.d. zoals beheerd in de plansoftware) of bijvoorbeeld alle locaties. Selectie van de te verkrijgen gegevens is mogelijk:  
+De API kan gebruikt worden om de desbetreffende gegevens in json-formaat als bestand op te vragen.
+In de bestanden openapi.json en openapi_draft4.json zijn twee (functioneel gelijke) varianten van het json-schema te vinden. Dit kan toegepast worden bij bestandsuitwisseling. In deze bestanden komen de hal-specifieke componenten uit openapi.yaml niet voor. Bij bestandsuitwisseling maken we in tegenstelling tot berichtuitwisseling dus geen gebruik van de hal standaard.
+
+Zonder selectie resulteert het opvragen als bestand in het opnemen van alle regelteksten en bijbehorende annotaties (locaties, 'juridische regels voor iedereen', activiteiten e.d. zoals beheerd in de plansoftware) of bijvoorbeeld alle locaties. Selectie van de te verkrijgen gegevens is echter wel mogelijk:  
 - de regelteksten en bijbehorende annotaties van een specifiek omgevingsdocument;  
 - de regelteksten en bijbehorende annotaties van één of meer activiteiten;  
 - de regelteksten en bijbehorende annotaties van een specifiek werkpakket (element van regeltekst).  
@@ -40,6 +43,8 @@ Voor de inhoud van een dergelijk bestand gelden enkele aanvullende afspraken:
 - Van een activiteit worden wel de Id’s van gerelateerde activiteiten geleverd maar niet de gegevens daarvan (tenzij de gerelateerde activiteit tot de selectie behoort).  
 - Indien één of meer activiteiten geselecteerd zijn, dan worden van de daarbij behorende 'juridische regels voor iedereen' alleen de activiteitlocatieaanduidingen bij die activiteiten (en de bovenliggende activiteiten) geleverd, niet de activiteitlocatieaanduidingen naar andere activiteiten.   
 - De als embedded gespecificeerde gegevens worden in de bestandsuitwisseling niet als embedded opgenomen. Gerelateerde gegevens worden opgenomen in de desbetreffende resources waarnaar m.b.v. de ID verwezen wordt. 
+
+Bij bestandsuitwisseling wordt het RD/Amersfoort(EPSG:28992) coördinatenstelsel gebruikt. 
   
 Zie ter illustratie van één en ander het [voorbeeldbestand](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/tree/main/voorbeelden/bestandsuitwisseling).  
 
