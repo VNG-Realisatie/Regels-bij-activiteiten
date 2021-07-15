@@ -39,7 +39,23 @@ handmatig een description property aan de property 'geometrie' worden toegevoegd
 
 Dit laatste is overigens niet volgens de OAS 3.0 standaard. De OAS 3.1 standaard ondersteund het wel en daar lopen we hiermee op vooruit.
 
-Hetzelfde geldt voor alle identificatie attributes (dus niet alleen die met de naam 'identificatie' maar ook bijv. 'bovenliggendeActiviteitIdentificatie'). Deze moeten zolang deze nog niet worden meegenomen in de gegenereerde openapi.yaml handmatig aangebracht te worden.
+Hetzelfde geldt voor alle identificatie attributes (dus niet alleen die met de naam 'identificatie' maar ook bijv. 'bovenliggendeActiviteitIdentificatie'). Deze 'description' properties moeten zolang deze nog niet worden meegenomen in de gegenereerde openapi.yaml handmatig aangebracht te worden. Ook voor de 'title' properties geldt dat.
+
+Tenslotte moeten alle 'allOf' constructs waarbinnen m.b.v. een '$ref' wordt verwezen naar een ander component worden aangepast aangezien deze bij code generatie problemen geven. Dat betekent dat constructs als:
+
+```yaml
+  allOf:
+    - $ref: "..."
+    - title: "..."
+      description: "..."
+```
+worden omgezet naar:
+
+```yaml
+  title: "..."
+  description: "..."
+  $ref: "..."
+```
 
 ### openapi.yaml
 De openapi.yaml bestaat uit het volgende:
