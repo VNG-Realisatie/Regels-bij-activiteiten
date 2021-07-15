@@ -590,7 +590,7 @@ components:
                 $ref: "#/components/schemas/LocatieHal"
     LocatieHal:
       allOf:
-      - $ref: "#/components/schemas/Locatie"
+      - $ref: "domain.yaml#/components/schemas/Locatie"
       - type: "object"
         properties:
           _links:
