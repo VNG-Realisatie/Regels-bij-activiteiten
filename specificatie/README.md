@@ -39,6 +39,8 @@ handmatig een description property aan de property 'geometrie' worden toegevoegd
 
 Dit laatste is overigens niet volgens de OAS 3.0 standaard. De OAS 3.1 standaard ondersteund het wel en daar lopen we hiermee op vooruit.
 
+Hetzelfde geldt voor alle identificatie attributes (dus niet alleen die met de naam 'identificatie' maar ook bijv. 'bovenliggendeActiviteitIdentificatie'). Deze moeten zolang deze nog niet worden meegenomen in de gegenereerde openapi.yaml handmatig aangebracht te worden.
+
 ### openapi.yaml
 De openapi.yaml bestaat uit het volgende:
 
