@@ -162,11 +162,6 @@ components:
         geometrie:
           allOf:
             - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/Generieke-Datatypen-Gemeenten.yaml#/components/schemas/GeoJSONGeometrie"
-            - description: "<body><p>De geometrische bepaling van het gebied door middel\
-                \ van coördinaten.</p></body><body><p>De geometrische bepaling van de\
-                \ punt door middel van coördinaten.</p></body><body><p>De geometrische\
-                \ bepaling van de lijn door middel van coördinaten.</p></body><body><p>Een\
-                \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
         geometrieBron:
           type: "string"
           title: "bron"
