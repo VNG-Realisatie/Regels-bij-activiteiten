@@ -74,6 +74,7 @@ De openapi.yaml bestaat uit het volgende:
   ```
 
 Tenslotte dienen er aan de openapi.yaml nog de volgende wijzigingen te worden aangebracht:
+* Wijzig in het bericht '/regelteksten' de namen van de query parameters 'inclusiefvervallen', 'omgevingsdocumentidentificatie' en 'werkpakketcode' in resp. 'inclusiefVervallen', 'omgevingsdocumentIdentificatie' en 'werkpakketCode'
 * Doordat de openapi.yaml opgesplitst is moeten de referenties in de openapi.yaml naar componenten die nu in de domain.yaml zo aangepast worden dat er daar 
 voor '#/components/schemas/' de string 'domain.yaml' wordt geplaatst.
 * Aan de parameters sectie van alle berichten moet de parameter Accept-Crs worden toegevoegd d.m.v. de volgende string:
@@ -96,11 +97,34 @@ De openapi.json moet gegenereerd worden als json.
 dat gedefinieerd is op 'https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/Generieke-Datatypen-Gemeenten.yaml#/components/schemas' moet 
 in de JSON variant binnen dit JSON schema gehaald worden als 'GeoJSONGeometrie' (waarover hieronder meer informatie volgt) en de waarde van de $ref property moet 
 gewijzigd worfden in '#/components/schemas/GeoJSONGeometrie'.
-* Binnen Locatie moet, zolang de description die in het SIM bij het attribute 'geometrie' staat nog niet wordt meegenomen in de gegenereerde openapi.yaml, handmatig 
+* Binnen Locatie moet, zolang de description die in het SIM bij het attribute 'geometrie' staat nog niet wordt meegenomen in de gegenereerde openapi.json, handmatig 
 een description property aan de property 'geometrie' worden toegevoegd. Deze dient dan boven de $ref property geplaatst te worden met de volgende inhoud: 
 
-```yaml
+```json
 <body><p>De geometrische bepaling door middel van coördinaten.</p></body>
+```
+
+* Hetzelfde geldt voor alle identificatie attributes (dus niet alleen die met de naam 'identificatie' maar ook bijv. 'bovenliggendeActiviteitIdentificatie'). Deze 'description' properties moeten zolang deze nog niet worden meegenomen in de gegenereerde openapi.yaml handmatig aangebracht te worden. Ook voor de 'title' properties geldt dat.
+
+* Alle 'allOf' constructs waarbinnen m.b.v. een '$ref' wordt verwezen naar een ander component worden aangepast. Dat betekent dat constructs als:
+
+```json
+  "allOf": [
+    {
+      "$ref": "..."
+    },
+    {
+      "title": "...",
+      "description": "..."
+    }
+  ]
+```
+worden omgezet naar:
+
+```json
+  "title": "...",
+  "description": "..."
+  "$ref": "..."
 ```
 
 * Voeg onder het component 'LocatieType' het volgende fragment toe:
