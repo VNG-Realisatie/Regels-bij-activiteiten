@@ -2711,6 +2711,11 @@ components:
         geometrie:
           allOf:
           - $ref: '#/components/schemas/GeoJSONGeometrie'
+          - description: <body><p>De geometrische bepaling van het gebied door middel
+              van coördinaten.</p></body><body><p>De geometrische bepaling van de
+              punt door middel van coördinaten.</p></body><body><p>De geometrische
+              bepaling van de lijn door middel van coördinaten.</p></body><body><p>Een
+              inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>
         geometrieBron:
           title: bron
           type: string
