@@ -61,7 +61,7 @@ Aangezien deze API binnengemeentelijk berichtenverkeer van niet privacygevoelige
 * [Technische specificaties](../specificatie/openapi_draft04.json) (JSON Schema draft 04 versie t.b.v. bestandsuitwisseling)
 * Download [client code](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/tree/master/code)
 
-* Ontwerpkeuzes staan in de [ontwerpbeslissingen](./docs/ontwerpbeslissingen.md)
+* Ontwerpkeuzes staan in de [ontwerpbeslissingen](./ontwerpbeslissingen.md)
   Voor nu: opmerkingen, vragen, verbetervoorstellen e.d. graag als [issues](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/issues) in deze repository.
 
 ## Bronnen
