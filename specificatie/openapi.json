@@ -15,52 +15,44 @@
 					"begindatum": {
 						"type": "string",
 						"title": "begindatum",
-						"description": "",
+						"description": "<body><p>Datum waarop de activiteit relevant werd.</p></body>",
 						"format": "date"
 					},
 					"bovenliggendeActiviteitIdentificatie": {
-						"type": "string",
-						"title": "bovenliggendeActiviteitIdentificatie",
-						"description": "",
-						"minLength": 1
+					    "title": "bovenliggendeActiviteitIdentificatie",
+					    "description": "<body><p>Identificatie van de bovenliggende activiteit.</p></body>",
+						"$ref": "#/components/schemas/Identificatie"
 					},
 					"einddatum": {
 						"type": "string",
 						"title": "einddatum",
-						"description": "",
+						"description": "<body><p>Datum vanaf waarop de activiteit niet meer relevant was.</p></body>",
 						"format": "date"
 					},
 					"gerelateerdeActiviteitIdentificaties": {
 						"type": "array",
-						"title": "gerelateerdeActiviteitIdentificaties",
-						"description": "",
-						"minItems": 0,
+					    "title": "gerelateerdeActiviteitIdentificaties",
+					    "description": "<body><p>Identificatie van de gerelateerde activiteiten.</p></body>",
+					    "minItems": 0,
 						"items": {
-							"type": "string"
+							"$ref": "#/components/schemas/Identificatie"
 						}
 					},
 					"groep": {
-						"allOf": [
-							{
-								"$ref": "#/components/schemas/Activiteitengroep"
-							},
-							{
-								"title": "groep",
-								"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-							}
-						]
+						"title": "groep",
+						"description": "<body><p>Een categorie, of groep, van activiteiten waaronder een activiteit valt.</p></body>",
+						"$ref": "#/components/schemas/Activiteitengroep"
 					},
 					"identificatie": {
 						"$ref": "#/components/schemas/Identificatie"
 					},
 					"juridischeRegelVoorIedereenIdentificaties": {
 						"type": "array",
-						"title": "juridischeRegelVoorIedereenIdentificaties",
-						"description": "",
-						"minItems": 1,
+					    "title": "juridischeRegelVoorIedereenIdentificaties",
+					    "description": "<body><p>Identificatie van de met de activiteit gerelateerde juridischeRegelsVoorIedereen.</p></body>",
+					    "minItems": 1,
 						"items": {
-							"type": "string",
-							"minLength": 1
+							"$ref": "#/components/schemas/Identificatie"
 						}
 					},
 					"laatsteWijzigingsdatum": {
@@ -79,7 +71,7 @@
 			},
 			"JuridischeRegelVoorIedereen": {
 				"type": "object",
-				"description": "<body><p>De beschrijving van een regel met juridische werkingskracht. Een regel betreft binnen de Omgevingswet veelal activiteiten, en/of normen en/of functies en/of beperkingengebieden.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+				"description": "<body><p>De beschrijving van een regel met juridische werkingskracht. Een regel betreft binnen de Omgevingswet veelal activiteiten, en/of normen en/of functies en/of beperkingengebieden.</p></body>",
 				"required": [
 					"gedefinieerdeLocatieIdentificaties",
 					"identificatie",
@@ -90,37 +82,31 @@
 					"begindatum": {
 						"type": "string",
 						"title": "begindatum",
-						"description": "",
+						"description": "<body><p>Datum waarop de juridischeRegelVoorIedereen relevant werd.</p></body>",
 						"format": "date"
 					},
 					"einddatum": {
 						"type": "string",
 						"title": "einddatum",
-						"description": "",
+						"description": "<body><p>Datum vanaf waarop de juridischeRegelVoorIedereen niet meer relevant was.</p></body>",
 						"format": "date"
 					},
 					"gedefinieerdeLocatieIdentificaties": {
 						"type": "array",
-						"title": "gedefinieerdeLocatieIdentificaties",
-						"description": "",
-						"minItems": 1,
+					    "title": "gedefinieerdeLocatieIdentificaties",
+					    "description": "<body><p>Identificatie van de gedefinieerde locaties.</p></body>",
+					    "minItems": 1,
 						"items": {
-							"type": "string",
-							"minLength": 1
+							"$ref": "#/components/schemas/Identificatie"
 						}
 					},
 					"idealisatie": {
-						"allOf": [
-							{
-								"$ref": "#/components/schemas/Idealisatie"
-							},
-							{
-								"title": "idealisatie",
-								"description": "<body><p>Vastlegging van de manier de begrenzing van Locatie voor deze Juridische regel geïnterpreteerd moet worden en door het bevoegd gezag bedoeld is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-							}
-						]
+						"title": "idealisatie",
+						"description": "<body><p>De manier waarop de begrenzing van Locatie voor de Juridische regel ge&#239;nterpreteerd moet worden en door het bevoegd gezag bedoeld is.</p></body>",
+						"$ref": "#/components/schemas/Idealisatie"
 					},
 					"identificatie": {
+						"description": "<body><p>De unieke identificatie van de juridischeRegelVoorIedereen.</p></body>",
 						"$ref": "#/components/schemas/Identificatie"
 					},
 					"normeertActiviteiten": {
@@ -136,10 +122,9 @@
 						"minLength": 1
 					},
 					"regeltekstIdentificatie": {
-						"type": "string",
-						"title": "regeltekstIdentificatie",
-						"description": "",
-						"minLength": 1
+					    "title": "regeltekstIdentificatie",
+					    "description": "<body><p>Identificatie van de overkoepelende regeltekst.</p></body>",
+						"$ref": "#/components/schemas/Identificatie"
 					},
 					"themas": {
 						"type": "array",
@@ -160,31 +145,26 @@
 					"begindatum": {
 						"type": "string",
 						"title": "begindatum",
-						"description": "",
+						"description": "<body><p>Datum waarop de locatie relevant werd.</p></body>",
 						"format": "date"
 					},
 					"einddatum": {
 						"type": "string",
 						"title": "einddatum",
-						"description": "",
+						"description": "<body><p>Datum vanaf waarop de locatie niet meer relevant was.</p></body>",
 						"format": "date"
 					},
 					"geometrie": {
-						"allOf": [
-							{
-								"$ref": "#/components/schemas/GeoJSONGeometrie"
-							},
-							{
-								"description": "<body><p>De geometrische bepaling van het gebied door middel van coördinaten.</p></body><body><p>De geometrische bepaling van de punt door middel van coördinaten.</p></body><body><p>De geometrische bepaling van de lijn door middel van coördinaten.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-							}
-						]
+						"description": "<body><p>De geometrische bepaling door middel van coördinaten.</p></body>",
+						"$ref": "#/components/schemas/GeoJSONGeometrie"
 					},
 					"geometrieBron": {
 						"type": "string",
 						"title": "bron",
-						"description": "<body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+						"description": "<body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body><body><p>De bron die is gebruikt voor, dan wel de wijze van inwinning van de geometrie.</p></body>"
 					},
 					"identificatie": {
+						"description": "<body><p>De unieke identificatie van de locatie.</p></body>",
 						"$ref": "#/components/schemas/Identificatie"
 					},
 					"noemer": {
@@ -194,11 +174,11 @@
 					},
 					"omvattendeLocatieIdentificaties": {
 						"type": "array",
-						"title": "omvattendeLocatieIdentificaties",
-						"description": "",
-						"minItems": 0,
+						"title": "omvattendeLocatieIdentificaties", 
+					    "description": "<body><p>Identificatie van de omvattende locaties.</p></body>", 
+					    "minItems": 0,
 						"items": {
-							"type": "string"
+							"$ref": "#/components/schemas/Identificatie"
 						}
 					},
 					"type": {
@@ -221,7 +201,7 @@
 					"begindatum": {
 						"type": "string",
 						"title": "begindatum",
-						"description": "",
+						"description": "<body><p>Datum waarop de regeltekst relevant werd.</p></body>",
 						"format": "date"
 					},
 					"documentComponent": {
@@ -230,19 +210,20 @@
 					"einddatum": {
 						"type": "string",
 						"title": "einddatum",
-						"description": "",
+						"description": "<body><p>Datum vanaf waarop de regeltekst niet meer relevant was.</p></body>",
 						"format": "date"
 					},
 					"gerelateerdeRegeltekstIdentificaties": {
 						"type": "array",
 						"title": "gerelateerdeRegeltekstIdentificaties",
-						"description": "",
+						"description": "<body><p>Identificaties van de gerelateerde regelteksten.</p></body>",
 						"minItems": 0,
 						"items": {
-							"type": "string"
+							"$ref": "#/components/schemas/Identificatie"
 						}
 					},
 					"identificatie": {
+						"description": "<body><p>De unieke identificatie van de regeltekst in het OW-domein.</p></body>",
 						"$ref": "#/components/schemas/Identificatie"
 					},
 					"laatsteWijzigingsdatum": {
@@ -253,12 +234,11 @@
 					},
 					"locatieIdentificaties": {
 						"type": "array",
-						"title": "locatieIdentificaties",
-						"description": "",
-						"minItems": 1,
+					    "title": "locatieIdentificaties",
+					    "description": "<body><p>Identificaties van de gerelateerde locaties die gezamenlijk het werkingsgebied van de regeltekst vormen.</p></body>",
+					    "minItems": 1,
 						"items": {
-							"type": "string",
-							"minLength": 1
+							"$ref": "#/components/schemas/Identificatie"
 						}
 					},
 					"omschrijving": {
@@ -277,7 +257,7 @@
 			},
 			"ActiviteitLocatieaanduiding": {
 				"type": "object",
-				"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+				"description": "<body><p>Een regel voor iedereen normeert (stelt regels over) een activiteit.</p></body>",
 				"required": [
 					"activiteitIdentificatie",
 					"activiteitLocatieIdentificatie",
@@ -286,43 +266,34 @@
 				],
 				"properties": {
 					"activiteitIdentificatie": {
-						"type": "string",
 						"title": "activiteitIdentificatie",
-						"description": "",
-						"minLength": 1
+						"description": "<body><p>Identificatie van de betreffende activiteit.</p></body>",
+						"$ref": "#/components/schemas/Identificatie"
 					},
 					"activiteitLocatieIdentificatie": {
-						"type": "string",
 						"title": "identificatie",
-						"description": "<body><p>Dit attribute is</p></body><body><p>Dit attribute is</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minLength": 1
+						"description": "<body><p>Identificatie van de gerelateerde activiteitLocatie.</p></body>",
+						"$ref": "#/components/schemas/Identificatie"
 					},
 					"activiteitregelkwalificatie": {
-						"allOf": [
-							{
-								"$ref": "#/components/schemas/Activiteitregelkwalificatie"
-							},
-							{
-								"title": "activiteitregelkwalificatie",
-								"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
-							}
-						]
+						"title": "activiteitregelkwalificatie",
+						"description": "<body><p>De naam van de kwalificatie van de Juridische regel over een activiteit.</p></body>",
+						"$ref": "#/components/schemas/Activiteitregelkwalificatie"
 					},
 					"gekwalificeerdeLocatieIdentificaties": {
 						"type": "array",
 						"title": "gekwalificeerdeLocatieIdentificaties",
-						"description": "",
+						"description": "<body><p>Identificatie van de gekwalificeerde locaties.</p></body>",
 						"minItems": 1,
 						"items": {
-							"type": "string",
-							"minLength": 1
+							"$ref": "#/components/schemas/Identificatie"
 						}
 					}
 				}
 			},
 			"Activiteitengroep": {
 				"type": "object",
-				"description": "<body><p>Een uitbreidbare lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+				"description": "<body><p>Een uitbreidbare lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd.</p></body>",
 				"required": [
 					"code",
 					"waarde"
@@ -331,20 +302,20 @@
 					"code": {
 						"type": "string",
 						"title": "code",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>Combinatie van tekens die de activiteitengoep uniek duidt.</p></body>",
 						"minLength": 1
 					},
 					"waarde": {
 						"type": "string",
 						"title": "waarde",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>De naam van de activiteitengroep.</p></body>",
 						"minLength": 1
 					}
 				}
 			},
 			"Activiteitregelkwalificatie": {
 				"type": "object",
-				"description": "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+				"description": "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd.</p></body>",
 				"required": [
 					"code",
 					"waarde"
@@ -353,20 +324,20 @@
 					"code": {
 						"type": "string",
 						"title": "code",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>Combinatie van tekens die de activiteitregelkwalificatie uniek duidt.</p></body>",
 						"minLength": 1
 					},
 					"waarde": {
 						"type": "string",
 						"title": "waarde",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>De naam van de activiteitregelkwalificatie.</p></body>",
 						"minLength": 1
 					}
 				}
 			},
 			"DocumentComponent": {
 				"type": "object",
-				"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+				"description": "<body><p>Metagegevens, conform de STOP-standaard, van de regeltekst.</p></body>",
 				"required": [
 					"identificatie",
 					"kop",
@@ -377,6 +348,7 @@
 				],
 				"properties": {
 					"identificatie": {
+						"description": "<body><p>De unieke identificatie van het documentComponent cq. de regeltekst conform de STOP-standaard.</p></body>",
 						"$ref": "#/components/schemas/WId"
 					},
 					"kop": {
@@ -388,24 +360,24 @@
 					"type": {
 						"type": "string",
 						"title": "type",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>",
+						"description": "<body><p>De aanduiding van het type regeling van het omgevingsdocument.</p></body>",
 						"minLength": 1
 					},
 					"vervallen": {
 						"type": "boolean",
 						"title": "vervallen",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+						"description": "<body><p>Indicatie dat de regeltekst is vervallen.</p></body>"
 					},
 					"volgordeNummer": {
 						"type": "integer",
 						"title": "volgordeNummer",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+						"description": "<body><p>Het lidnummer indien de regeltekst een lid van een artikel betreft.</p></body>"
 					}
 				}
 			},
 			"Idealisatie": {
 				"type": "object",
-				"description": "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+				"description": "<body><p>Een lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd.</p></body>",
 				"required": [
 					"code",
 					"waarde"
@@ -414,41 +386,41 @@
 					"code": {
 						"type": "string",
 						"title": "code",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>Combinatie van tekens die de wiijze van idealisatie uniek duidt.</p></body>",
 						"minLength": 1
 					},
 					"waarde": {
 						"type": "string",
 						"title": "waarde",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>De naam van de wijze van idealisatie.</p></body>",
 						"minLength": 1
 					}
 				}
 			},
 			"Kop": {
 				"type": "object",
-				"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+				"description": "<body><p>Groepelement dat is bedoeld voor het coderen van koppen (als lopende tekst).</p></body>",
 				"properties": {
 					"label": {
 						"type": "string",
 						"title": "label",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+						"description": "<body><p>Een label voor een kop-structuur, bijvoorbeeld `Artikel`.</p></body>"
 					},
 					"nummer": {
 						"type": "string",
 						"title": "nummer",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+						"description": "<body><p>Identificeert een nummer of andere aanduiding voor een kop-structuur, bijvoorbeeld `3.2`.</p></body>"
 					},
 					"opschrift": {
 						"type": "string",
 						"title": "opschrift",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+						"description": "<body><p>Bevat het opschrift (de titel) binnen een kop-structuur, bijvoorbeeld de naam van het artikel.</p></body>"
 					}
 				}
 			},
 			"Omgevingsdocument": {
 				"type": "object",
-				"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+				"description": "<body><p>Metagegevens, conform de STOP-standaard, van het omgevingsdocument waarvan de regeltekst deel uit maakt.</p></body>",
 				"required": [
 					"codeBevoegdGezag",
 					"identificatie",
@@ -459,37 +431,30 @@
 					"codeBevoegdGezag": {
 						"type": "string",
 						"title": "code",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>Code van het bevoegd gezag dat de regeling vaststelt.</p></body>",
 						"minLength": 1
 					},
 					"identificatie": {
-						"type": "string",
 						"title": "identificatie",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
-						"minLength": 1
+						"description": "<body><p>De unieke identificatie van de versie van het omgevingsdocument.</p></body>",
+						"$ref": "#/components/schemas/Identificatie"
 					},
 					"opschrift": {
 						"type": "string",
 						"title": "opschrift",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>",
+						"description": "<body><p>De intitul&#233; (offici&#235;le titel) van een regeling zijnde het omgevingsdocument.</p></body>",
 						"minLength": 1
 					},
 					"type": {
-						"allOf": [
-							{
-								"$ref": "#/components/schemas/Soortregeling"
-							},
-							{
-								"title": "type",
-								"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
-							}
-						]
+						"title": "type",
+						"description": "<body><p>De aanduiding van het type regeling van het omgevingsdocument.</p></body>",
+						"$ref": "#/components/schemas/Soortregeling"
 					}
 				}
 			},
 			"Soortregeling": {
 				"type": "object",
-				"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+				"description": "<body><p>De aanduiding van het type regeling.</p></body>",
 				"required": [
 					"code",
 					"waarde"
@@ -498,20 +463,20 @@
 					"code": {
 						"type": "string",
 						"title": "code",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>Combinatie van tekens die het type regeling uniek duidt.</p></body>",
 						"minLength": 1
 					},
 					"waarde": {
 						"type": "string",
 						"title": "waarde",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>De naam van het type regeling.</p></body>",
 						"minLength": 1
 					}
 				}
 			},
 			"Thema": {
 				"type": "object",
-				"description": "<body><p>Een limitatieve lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+				"description": "<body><p>Een limitatieve lijst met een opsomming van de mogelijke domeinwaarden van een attribuutsoort, die buiten het model in een externe waardenlijst worden beheerd.</p></body>",
 				"required": [
 					"code",
 					"waarde"
@@ -520,20 +485,20 @@
 					"code": {
 						"type": "string",
 						"title": "code",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>Combinatie van tekens die het thema uniek duidt.</p></body>",
 						"minLength": 1
 					},
 					"waarde": {
 						"type": "string",
 						"title": "waarde",
-						"description": "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>",
+						"description": "<body><p>De naam van het thema.</p></body>",
 						"minLength": 1
 					}
 				}
 			},
 			"LocatieType": {
 				"type": "string",
-				"description": "<body><p>Is dit een definitie?</p></body><body><p>Is dit een definitie?</p></body>",
+				"description": "<body><p>Beschrijft de typering van de locatie, een geometrietypering of een functionele typering.</p></body>",
 				"enum": [
 					"punt",
 					"ambtsgebied",
@@ -543,14 +508,6 @@
 					"lijn",
 					"lijnengroep"
 				]
-			},
-			"Identificatie": {
-				"type": "string",
-				"description": ""
-			},
-			"WId": {
-				"type": "string",
-				"description": ""
 			},
 			"GeoJSONGeometrie": {
 				"title": "GeoJSON Geometrie",
@@ -743,6 +700,16 @@
 						}
 					}
 				}
+			},
+			"Identificatie": {
+				"type": "string",
+				"description": "<body><p>Identificatie datatype van Geonovum.</p></body>",
+				"minLength": 1
+			},
+			"WId": {
+				"type": "string",
+				"description": "<body><p>Identificatie datatype van de KOOP standaard.</p></body>",
+				"minLength": 1
 			}
 		}
 	}

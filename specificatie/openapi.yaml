@@ -6,7 +6,7 @@ servers:
     url: https://www.voorbeeldgemeente.nl/api/regels_bij_activiteiten/v1
 info:
   title: Regels bij activiteiten
-  description: ""
+  description: "<body><p>Deze API maakt het mogelijk om gegevens op te vragen, bij een applicatie die invulling geeft aan de Omgevingswetbeleidcomponent, ook wel aangeduid als plansoftware, over (Omgevingswet-)activiteiten en/of (bijbehorende) juridische regels, regelteksten en locaties.</p></body>"
   version: "1.0.0"
   x-imvertor-generator-version: "1.64.2"
   x-yamlCompiler-stylesheets-version: "20210605"
@@ -100,7 +100,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
-          description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body>"
+          description: "<body><p>De unieke identificatie van de activiteit.</p></body>"
           required: true
           schema:
             $ref: "domain.yaml#/components/schemas/Identificatie"
@@ -222,7 +222,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+          description: "<body><p>De unieke identificatie van de juridischeRegelVoorIedereen.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           required: true
           schema:
             $ref: "domain.yaml#/components/schemas/Identificatie"
@@ -342,7 +342,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
         - in: path
           name: identificatie
-          description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
+          description: "<body><p>De unieke identificatie van de locatie.</p></body><body><p>De verzameling van waarden die gegevens van dit attribuutsoort kunnen hebben, dat wil zeggen het waardenbereik, uitgedrukt in een specifieke structuur.</p></body>"
           required: true
           schema:
             $ref: "domain.yaml#/components/schemas/Identificatie"
@@ -407,20 +407,20 @@ paths:
             minimum: 1
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: query
-          name: inclusiefvervallen
+          name: inclusiefVervallen
           description: "<body><p>Als de parameter 'vanafdatum' een waarde heeft dan moet een evt. waarde van dit attribute worden genegeerd.</p></body>"
           required: false
           schema:
             type: boolean
         - in: query
-          name: omgevingsdocumentidentificatie
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+          name: omgevingsdocumentIdentificatie
+          description: "<body><p>De unieke identificatie van de versie van het omgevingsdocument.</p></body>"
           required: false
           schema:
             type: string
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/parameters/pageSize"
         - in: query
-          name: werkpakketcode
+          name: werkpakketCode
           description: "<body><p>Een unieke aanduiding van de verzameling samenhangende activiteiten gericht op het publiceren van een nieuwe versie van een omgevingsdocument.</p></body><body><p>Er kunnen tegelijkertijd meerdere trajecten gaande zijn waarin bijvoorbeeld een omgevingsplan gewijzigd wordt, die elk leiden tot een apart te publiceren nieuwe versie van het omgevingsplan. De werkpakketcode biedt de mogelijkheid om de regelteksten te markeren die betrokken zijn in zo'n traject. Daarvan kan gebruik gemaakt worden om alleen de regels met bijhorende annotaties op te vragen voor een specifiek werkpakket.</p></body>"
           required: false
           schema:
@@ -482,7 +482,7 @@ paths:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/parameters/expand"
         - in: path
           name: identificatie
-          description: "<body><p>De unieke identificatie waaronder elk object van dit type bekend is.</p></body>"
+          description: "<body><p>De unieke identificatie van de regeltekst in het OW-domein.</p></body>"
           required: true
           schema:
             $ref: "domain.yaml#/components/schemas/Identificatie"
@@ -622,7 +622,7 @@ components:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         gerelateerdeActiviteiten:
-          title: "gerelateerd_lnk"
+          title: "gerelateerd"
           type: "array"
           description: "<body><p>De regels die gelden voor de gerelateerde activiteit(en)\
             \ zijn contextueel relevant voor deze activiteit. Toelichting: Met contextueel\
@@ -637,13 +637,12 @@ components:
             \ gezien, aan dat elke regel die geldt voor de gerelateerde activiteit\
             \ relevant kan zijn voor het uitvoeren van deze activiteit. Gerelateerde\
             \ activiteiten kunnen van hetzelfde type zijn, bijvoorbeeld twee milieubelastende\
-            \ activiteiten, maar dat hoeft niet.</p></body><body><p>Een inhoudelijke\
-            \ toelichting op de toepassing van het informatie-element.</p></body>"
+            \ activiteiten, maar dat hoeft niet.</p></body>"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         bovenliggendeActiviteit:
           allOf:
-          - title: "is_lnk"
+          - title: "is"
             type: "object"
             description: "<body><p>Met `is (een)` wordt een bepaalde activiteit rechtstreeks\
               \ verbonden met een andere activiteit van hetzelfde type (van specifiek\
@@ -656,16 +655,14 @@ components:
               \ die de initiatiefnemer voornemens is om te ontplooien. Als deze hieronder\
               \ vallen, dan geldt voor de voorgenomen (specifieke) activiteit een\
               \ vergunningplicht. In andere gevallen niet, althans niet vanuit deze\
-              \ regels, mogelijk wel vanuit andere regels.</p></body><body><p>Een\
-              \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+              \ regels, mogelijk wel vanuit andere regels.</p></body>"
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         juridischeRegelsVoorIedereen:
-          title: "kent_lnk"
+          title: "kent"
           type: "array"
           description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
             \ relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)\
-            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een\
-            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body>"
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
@@ -675,38 +672,36 @@ components:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         gedefinieerdeLocaties:
-          title: "definieert_lnk"
+          title: "definieert"
           type: "array"
           description: "<body><p>De locatieaanduiding begrenst de juridische werking\
             \ van de regel in juridische zin, te weten dat de regel alleen binnen\
-            \ dit werkingsgebied werkingskracht heeft.</p></body><body><p>Een inhoudelijke\
-            \ toelichting op de toepassing van het informatie-element.</p></body>"
+            \ dit werkingsgebied werkingskracht heeft.</p></body>"
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         regeltekst:
           allOf:
-          - title: "isOpgenomenIn_lnk"
+          - title: "isOpgenomenIn"
             type: "object"
             description: "<body><p>Artikel of lid is waar de Juridische regel onderdeel\
-              \ van is.</p></body><body><p>Een inhoudelijke toelichting op de toepassing\
-              \ van het informatie-element.</p></body>"
+              \ van is.</p></body>"
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         gekwalificeerdeLocaties:
-          title: "kwalificeert_lnk"
+          title: "kwalificeert"
           type: "array"
-          description: "<body><p>Een inhoudelijke toelichting op de toepassing van\
-            \ het informatie-element.</p></body>"
+          description: "<body><p>De locatie die gekwalificeerd wordt door de regel\
+            \ die aangeeft of een activiteit daar plaats mag vinden of niet, en welke\
+            \ voorwaarden hier aan verbonden zijn.</p></body>"
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         activiteiten:
-          title: "betreftEenActiviteit_lnk"
+          title: "betreftEenActiviteit"
           type: "array"
           description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
             \ relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)\
-            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een\
-            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body>"
           minItems: 1
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
@@ -716,16 +711,13 @@ components:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         omvattendeLocaties:
-          title: "omvat_lnk"
+          title: "omvat"
           type: "array"
           description: "<body><p>Een lijn van een lijnengroep.</p></body><body><p>Een\
             \ punt van een puntengroep.</p></body><body><p>Een gebied van een gebiedengroep.</p></body><body><p>Deze\
             \ relatie mag alleen lopen van een locatie van het type:</p><ul><li>puntengroep</li><li>lijnengroep</li><li>gebiedengroep</li></ul><p>in\
             \ dat geval mag deze dan ook alleen lopen naar resp. een punt, een lijn\
-            \ en een gebied.</p></body><body><p>Een inhoudelijke toelichting op de\
-            \ toepassing van het informatie-element.</p></body><body><p>Een inhoudelijke\
-            \ toelichting op de toepassing van het informatie-element.</p></body><body><p>Een\
-            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+            \ en een gebied.</p></body>"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
     Regeltekst_links:
@@ -734,11 +726,10 @@ components:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         gerelateerdeRegelteksten:
-          title: "gerelateerd_lnk"
+          title: "gerelateerd"
           type: "array"
           description: "<body><p>Verwijzing dat aangeeft dat er een bijzondere relatie\
-            \ bestaat tussen twee Regelteksten.</p></body><body><p>Een inhoudelijke\
-            \ toelichting op de toepassing van het informatie-element.</p></body>"
+            \ bestaat tussen twee Regelteksten.</p></body>"
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/schemas/HalLink"
         locaties:
@@ -764,8 +755,7 @@ components:
           type: "array"
           description: "<body><p>Bij een regel die een activiteit vastlegt geeft deze\
             \ relatie aan om welke activiteit het gaat. De bijbehorende locatie(s)\
-            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body><body><p>Een\
-            \ inhoudelijke toelichting op de toepassing van het informatie-element.</p></body>"
+            \ waar het om gaat is/zijn bij de activiteit zelf te vinden.</p></body>"
           minItems: 1
           items:
             $ref: "#/components/schemas/JuridischeRegelVoorIedereenHal"
@@ -777,8 +767,7 @@ components:
           type: "array"
           description: "<body><p>De locatieaanduiding begrenst de juridische werking\
             \ van de regel in juridische zin, te weten dat de regel alleen binnen\
-            \ dit werkingsgebied werkingskracht heeft.</p></body><body><p>Een inhoudelijke\
-            \ toelichting op de toepassing van het informatie-element.</p></body>"
+            \ dit werkingsgebied werkingskracht heeft.</p></body>"
           minItems: 1
           items:
             $ref: "#/components/schemas/LocatieHal"
