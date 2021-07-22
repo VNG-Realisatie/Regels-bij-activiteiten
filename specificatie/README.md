@@ -343,6 +343,6 @@ De openapi_draft04.json moet gegenereerd worden als json.
 Voer dezelfde wijzigingen uit op dit bestand als op openapi.json echter daar waar in de wijzigingsaanwijzingen (dus ook in het GeoJSON fragment) '#/components/schemas' moet hier '#/definitions' staan.
 
 
-De beide OAS3 bestanden zijn is hier te vinden [openapi.yaml](./openapi.yaml),  [domain.yaml](./domain.yaml)
+De beide OAS3 bestanden zijn hier te vinden [openapi.yaml](./openapi.yaml),  [domain.yaml](./domain.yaml)
 Het JSON bestand is hier te vinden [openapi.json](./openapi.json)
 Het OAS3 bestand is hier te vinden [openapi_draft04.json](./openapi_draft04.json)
