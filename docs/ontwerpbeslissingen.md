@@ -33,21 +33,11 @@ Beiden zijn optioneel zodat ook een puntengroep, gebiedengroep en lijnengroep ge
 * Het attribute 'code' uit het objecttype 'BevoegdGezag' is onder naam 'codeBevoegdGezag' platgeslagen in de groep 'omgevingsdocument'.
 * De groep 'Kop' is in het uitwisselingsmodel onder de naam 'kop' en dezelfde inhoud opgenomen en is via het attribute 'kop' opgenomen in de groep 'documentComponent'.
 *	De meervoudige naam van de relatie 'omvat' op het entiteittype 'locatie' heeft de waarde 'omvattendeLocaties' omdat daarmee de rol van de relatie naar een subresource van hetzelfde type duidelijker wordt. Daarnaast voorkomt dit dat we binnen het entiteittype 'locatie' zowel een attribute 'identificatie' als 'locatieIdentificaties' krijgen wat verwarrend kan werken omdat onbekend is welke van de twee gerelateerd is met de relatie 'omvat' en dus fouten in de hand kan werken.
-*	In het entiteitype 'regeltekst' heeft om eenzelfde reden de meervoudige naam van de relatie 'gerelateerd' de waarde 'gerelateerdeRegelteksten' gekregen.
-*	In het entiteitype 'activiteit' heeft om eenzelfde reden de meervoudige naam van de relatie 'gerelateerd' de waarde 'gerelateerdeActiviteiten' en de meervoudige naam van de relatie 'is' de waarde 'bovenliggendeActiviteit' gekregen. Daarnaast was verbijzondering natuurlijk ook noodzakelijk omdat er 2 relaties naar hetzelfde entiteittype verwezen.
+* In het entiteitype 'regeltekst' heeft om eenzelfde reden de meervoudige naam van de relatie 'gerelateerd' de waarde 'gerelateerdeRegelteksten' gekregen.
+* In het entiteitype 'activiteit' heeft om eenzelfde reden de meervoudige naam van de relatie 'gerelateerd' de waarde 'gerelateerdeActiviteiten' en de meervoudige naam van de relatie 'is' de waarde 'bovenliggendeActiviteit' gekregen. Daarnaast was verbijzondering natuurlijk ook noodzakelijk omdat er 2 relaties naar hetzelfde entiteittype verwezen.
 *	In het entiteitype 'juridischeregelsvooriedereen' heeft om eenzelfde reden de meervoudige naam van de relatie 'definieert' de waarde 'gedefinieerdeLocaties' en de meervoudige naam van de relatie 'kwalificeert' de waarde 'gekwalificeerdeLocaties' gekregen. Ook hier geldt dat verbijzondering ook noodzakelijk was omdat er 2 relaties naar hetzelfde entiteittype verwezen.
+* De VNG Realisatie Design Rule DD1.5 (zie [Design Rules VNG Realisatie](https://github.com/VNG-Realisatie/API-Kennisbank/tree/master/Design%20rules)) is ter discussie gesteld. In de OAS specificatie van deze API lopen we daarop vooruit.
 
 E.e.a. leidt tot het volgende uitwisselingsgegevensmodel:
 
 ![UGM](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/blob/main/docs/UGM%20Koppeling%20PlanSW%20en%20TRSW.jpg)
-
-## Vragen
-
-Tijdens het ontwerpproces riepen een aantal zaken de volgende vragen op:
-
-* Er wordt aangegeven dat men het attribute ‘origineel coördinatensysteem’ in de resource ‘locatie’ opgenomen wil hebben. Op dit moment is dat
-nog niet opgenomen omdat het de praktijk is om dit als 'acceptCRS' en ‘contentCRS’ in de header van het berichten op te nemen. De vraag is echter of er
-redenen zijn waarom je dit juist in de content zou willen opnemen?
-* Hier en daar zijn door platslaan attributen elders terecht gekomen waardoor er een noodzaak was de namen te wijzigen. Ook is in de OAS3 specificatie
-bij relaties tussen resources niet de namen van die relaties gebruikt maar van de daaraan gekoppelde resources, echter bij meerdere relaties naar dezelfde andere
-resource zijn de namen gedifferentieerd. Verzoek is om de gekozen naamgeving kritisch tegen het daglicht te houden.
