@@ -62,6 +62,8 @@ Aangezien deze API binnengemeentelijk berichtenverkeer van niet privacygevoelige
 
 * Ontwerpkeuzes staan in de [ontwerpbeslissingen](./docs/ontwerpbeslissingen.md)
   Voor nu: opmerkingen, vragen, verbetervoorstellen e.d. graag als [issues](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/issues) in deze repository.
+* [Conceptueel Informatiemodel Omgevingswet (CIMOW)](https://geonovum.github.io/TPOD/CIMOW/CIMOW_v2.0.0.pdf)
+* [Informatiemodel Officiële Publicaties](https://koop.gitlab.io/STOP/standaard/1.1.0/EA_4D1D7FD517FE4d8dA9A2B905D202C92B.html)
 
 ## Bronnen
 * [API strategie en URI strategie](https://aandeslagmetdeomgevingswet.nl/digitaal-stelsel/documenten/documenten/api-uri-strategie/)
