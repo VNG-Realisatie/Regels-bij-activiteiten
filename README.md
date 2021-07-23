@@ -19,7 +19,7 @@ Tot slot is de VNG tevens belanghebbende als beheerder van de API namens genoemd
 De API ontsluit het register dat beheerd wordt met de (referentiecomponent) [Omgevingswetbeleidcomponent](https://www.gemmaonline.nl/index.php/Omgevingswet/1.5/id-482b112b-dc5e-49b6-879c-a22f22cb6941) v.w.b. activiteiten en daarbij behorende regels. Ofschoon elke applicatie gebruik kan maken van deze API is het gebruik daarvan gericht op de (referentiecomponent) [Toepasbare regelscomponent](https://www.gemmaonline.nl/index.php/Omgevingswet/1.5/id-7f053bcc-9558-41ce-8a17-d3fa81fb7c17). Beide componenten zijn uitgewerkt in de GEMMA-deelarchitectuur '[Gemeentelijke applicatie-architectuur Omgevingswet](https://www.gemmaonline.nl/index.php/GAO_-_De_referentiecomponenten_voor_de_Omgevingswet)'.  
 
 ## Compliancy cq. conformiteit
-Voorliggend is de versie van de standaard als **Release Candidate**. Geïnteresseerden kunnen **tot 12 juni 2021** (eventueel later, afhankelijk van vaststellingsprocedure) vragen stellen over, en wijzigingsvoorstellen indienen voor deze standaard. Na verwerking daarvan wordt de standaard officieel gepubliceerd als versie 1.0 en is zij kaderstellend voor de bedoelde informatie-uitwisseling. Onderkend wordt dat er nog geen ervaring is met het gebruik van deze standaard en het uitvoeren van de Omgevingswet met deze en andere standaarden nog volop in ontwikkeling is. Voortschrijdend inzicht en praktijkervaringen worden in volgende versies verwerkt zoals dat bij het beheer van standaarden gebruikelijk is.  
+Deze standaard is officieel gepubliceerd als versie 1.0 en is kaderstellend voor de bedoelde informatie-uitwisseling. Onderkend wordt dat er nog geen ervaring is met het gebruik van deze standaard en het uitvoeren van de Omgevingswet met deze en andere standaarden nog volop in ontwikkeling is. Voortschrijdend inzicht en praktijkervaringen worden in volgende versies verwerkt zoals dat bij het beheer van standaarden gebruikelijk is.  
 Voor het voldoen van applicaties aan deze versie van de standaard betekent dit het volgende.  
 Een applicatie ('plansoftware') die invulling geeft aan de Omgevingswetbeleidcomponent is in staat om als provider de API te ondersteunen en/of conform de API-specificaties een bestand te exporteren (t.b.v. bestandsuitwisseling) dan wel een daaraan gelijkwaardige leverancierseigen oplossing te bieden voor bestandsexport mits daarbij de software-keuzes van afnemers gerespecteerd worden.  
 Een applicatie ('toepasbare regelsoftware') die invulling geeft aan de Toepasbare regelscomponent is in staat om als consumer de API te ondersteunen en/of een bestand te importeren dat conform de API-specificaties is ingericht (i.v.m. bestandsuitwisseling) dan wel een gelijkwaardige leverancierseigen oplossing te bieden voor bestandsimport mits daarbij de software-keuzes van afnemers gerespecteerd worden.  
@@ -28,7 +28,9 @@ Deze compliancy-afspraken waarborgen dat een hierboven, als eerste, genoemde bel
 
 
 ## Toelichting op bestandsuitwisseling
-De API kan gebruikt worden om de desbetreffende gegevens in json-formaat als bestand op te vragen. Zonder selectie resulteert dat in alle regelteksten en bijbehorende annotaties (locaties, 'juridische regels voor iedereen', activiteiten e.d. zoals beheerd in de plansoftware) of bijvoorbeeld alle locaties. Selectie van de te verkrijgen gegevens is mogelijk:  
+In de bestanden openapi.json en openapi_draft4.json zijn twee (functioneel gelijke) varianten van het json-schema te vinden. Dit kan toegepast worden bij bestandsuitwisseling. In deze bestanden komen de hal-specifieke componenten uit openapi.yaml niet voor. Bij bestandsuitwisseling maken we in tegenstelling tot berichtuitwisseling dus geen gebruik van de hal standaard.
+
+Zonder selectie resulteert het opvragen als bestand in het opnemen van alle regelteksten en bijbehorende annotaties (locaties, 'juridische regels voor iedereen', activiteiten e.d. zoals beheerd in de plansoftware) of bijvoorbeeld alle locaties. Selectie van de te verkrijgen gegevens is echter wel mogelijk:  
 - de regelteksten en bijbehorende annotaties van een specifiek omgevingsdocument;  
 - de regelteksten en bijbehorende annotaties van één of meer activiteiten;  
 - de regelteksten en bijbehorende annotaties van een specifiek werkpakket (element van regeltekst).  
@@ -40,6 +42,8 @@ Voor de inhoud van een dergelijk bestand gelden enkele aanvullende afspraken:
 - Van een activiteit worden wel de Id’s van gerelateerde activiteiten geleverd maar niet de gegevens daarvan (tenzij de gerelateerde activiteit tot de selectie behoort).  
 - Indien één of meer activiteiten geselecteerd zijn, dan worden van de daarbij behorende 'juridische regels voor iedereen' alleen de activiteitlocatieaanduidingen bij die activiteiten (en de bovenliggende activiteiten) geleverd, niet de activiteitlocatieaanduidingen naar andere activiteiten.   
 - De als embedded gespecificeerde gegevens worden in de bestandsuitwisseling niet als embedded opgenomen. Gerelateerde gegevens worden opgenomen in de desbetreffende resources waarnaar m.b.v. de ID verwezen wordt. 
+
+Bij bestandsuitwisseling wordt het RD/Amersfoort(EPSG:28992) coördinatenstelsel gebruikt. 
   
 Zie ter illustratie van één en ander het [voorbeeldbestand](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/tree/main/voorbeelden/bestandsuitwisseling).  
 
@@ -52,12 +56,14 @@ Aangezien deze API binnengemeentelijk berichtenverkeer van niet privacygevoelige
 ## Documentatie
 * [Technische specificaties van de **unresolved** versie](./specificatie/openapi.yaml) (Open API versie)
 * Specificaties van de actuele productie versie (resolved) in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Regels-bij-activiteiten/main/specificatie/genereervariant/openapi.yaml)
-* [Technische specificaties](./specificatie/openapi.json) (JSON Schema versie t.b.v. bestandsuitwisseling)
-* [Technische specificaties](./specificatie/openapi_draft04.json) (JSON Schema draft 04 versie t.b.v. bestandsuitwisseling)
+* Download de [JSON Schema versie van de technische specificatie t.b.v. bestandsuitwisseling](./specificatie/openapi.json) (JSON Schema versie t.b.v. bestandsuitwisseling)
+* Download de [JSON Schema draft 04 versie van de technische specificatie t.b.v. bestandsuitwisseling](./specificatie/openapi_draft04.json) (JSON Schema draft 04 versie t.b.v. bestandsuitwisseling)
 * Download [client code](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/tree/master/code)
 
 * Ontwerpkeuzes staan in de [ontwerpbeslissingen](./docs/ontwerpbeslissingen.md)
   Voor nu: opmerkingen, vragen, verbetervoorstellen e.d. graag als [issues](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/issues) in deze repository.
+* [Conceptueel Informatiemodel Omgevingswet (CIMOW)](https://geonovum.github.io/TPOD/CIMOW/CIMOW_v2.0.0.pdf)
+* [Informatiemodel Officiële Publicaties](https://koop.gitlab.io/STOP/standaard/1.1.0/EA_4D1D7FD517FE4d8dA9A2B905D202C92B.html)
 
 ## Bronnen
 * [API strategie en URI strategie](https://aandeslagmetdeomgevingswet.nl/digitaal-stelsel/documenten/documenten/api-uri-strategie/)

@@ -24,7 +24,7 @@ Tot slot is de VNG tevens belanghebbende als beheerder van de API namens genoemd
 De API ontsluit het register dat beheerd wordt met de (referentiecomponent) [Omgevingswetbeleidcomponent](https://www.gemmaonline.nl/index.php/Omgevingswet/1.5/id-482b112b-dc5e-49b6-879c-a22f22cb6941) v.w.b. activiteiten en daarbij behorende regels. Ofschoon elke applicatie gebruik kan maken van deze API is het gebruik daarvan gericht op de (referentiecomponent) [Toepasbare regelscomponent](https://www.gemmaonline.nl/index.php/Omgevingswet/1.5/id-7f053bcc-9558-41ce-8a17-d3fa81fb7c17). Beide componenten zijn uitgewerkt in de GEMMA-deelarchitectuur '[Gemeenteljke applicatie-architectuur Omgevingswet](https://www.gemmaonline.nl/index.php/GAO_-_De_referentiecomponenten_voor_de_Omgevingswet)'.  
 
 ## Compliancy cq. conformiteit
-Voorliggend is de versie van de standaard als **Release Candidate**. Geinteresseerden kunnen **tot 7 juni 2021** vragen stellen over, en wijzigingsvoorstellen indienen voor deze standaard. Na verwerking daarvan wordt de standaard officieel gepubliceerd als versie 1.0 en is zij kaderstellend voor de bedoelde informatie-uitwisseling. Onderkend wordt dat er nog geen ervaring is met het gebruik van deze standaard en het uitvoeren van de Omgevingswet met deze en andere standaarden nog volop in ontwikkeling is. Voortschrijdend inzicht en praktijkervaringen worden in volgende versies verwerkt zoals dat bij het beheer van standaarden gebruikeljk is.  
+Deze standaard is officieel gepubliceerd als versie 1.0 en is kaderstellend voor de bedoelde informatie-uitwisseling. Onderkend wordt dat er nog geen ervaring is met het gebruik van deze standaard en het uitvoeren van de Omgevingswet met deze en andere standaarden nog volop in ontwikkeling is. Voortschrijdend inzicht en praktijkervaringen worden in volgende versies verwerkt zoals dat bij het beheer van standaarden gebruikeljk is.  
 Voor het voldoen van applicaties aan deze versie van de standaard betekent dit het volgende.  
 Een applicatie ('plansoftware') die invulling geeft aan de Omgevingswetbeleidcomponent is in staat om als provider de API te ondersteunen en/of conform de API-specificaties een bestand te exporteren (t.b.v. bestandsuitwisseling) dan wel een daaraan gelijkwaardige leverancierseigen oplossing te bieden voor bestandsexport mits daarbij de software-keuzes van afnemers gerespecteerd worden.  
 Een applicatie ('toepasbare regelsoftware') die invulling geeft aan de Toepasbare regelscomponent is in staat om als consumer de API te ondersteunen en/of een bestand te importeren dat conform de API-specificaties is ingericht (i.v.m. bestandsuitwisseling) dan wel een gelijkwaardige leverancierseigen oplossing te bieden voor bestandsimport mits daarbij de software-keuzes van afnemers gerespecteerd worden.  
@@ -59,11 +59,11 @@ De gegevens die middels deze API worden uitgewisseld zijn niet privacygevoelig. 
 Aangezien deze API binnengemeentelijk berichtenverkeer van niet privacygevoelige gegevens betreft worden er geen aanvullende security eisen gesteld.
 
 ## Documentatie
-* [Technische specificaties van de **unresolved** versie](../specificatie/openapi.yaml) (Open API versie)
+* [Technische specificaties van de **unresolved** versie](https://github.com/VNG-Realisatie/Regels-bij-Activiteiten/blob/master/specificatie/openapi.yaml){:target="_blank" rel="noopener"} (Open API versie)
 * Specificaties van de actuele productie versie (resolved) in [Swagger-formaat](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/VNG-Realisatie/Regels-bij-activiteiten/main/specificatie/genereervariant/openapi.yaml)
-* [Technische specificaties](../specificatie/openapi.json) (JSON Schema versie t.b.v. bestandsuitwisseling)
-* [Technische specificaties](../specificatie/openapi_draft04.json) (JSON Schema draft 04 versie t.b.v. bestandsuitwisseling)
-* Download [client code](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/tree/master/code)
+* Download de [JSON Schema versie van de technische specificatie t.b.v. bestandsuitwisseling](https://raw.githubusercontent.com/VNG-Realisatie/Regels-bij-activiteiten/main/specificatie/openapi.json){:target="_blank" rel="noopener"}
+* Download de [JSON Schema draft 04 versie van de technische specificatie t.b.v. bestandsuitwisseling](https://raw.githubusercontent.com/VNG-Realisatie/Regels-bij-activiteiten/main/specificatie/openapi_draft04.json){:target="_blank" rel="noopener"}
+* Download [client code](https://github.com/VNG-Realisatie/Regels-bij-Activiteiten/tree/master/code){:target="_blank" rel="noopener"}
 
 * Ontwerpkeuzes staan in de [ontwerpbeslissingen](./ontwerpbeslissingen.md)
   Voor nu: opmerkingen, vragen, verbetervoorstellen e.d. graag als [issues](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/issues) in deze repository.

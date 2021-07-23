@@ -13,7 +13,7 @@ nav:
         path: /
 #      - title: Goals canvas
 #        path: /goals-canvas
-  - title: Specificaties v. 1.0.0-rc1 (Release Candidate)
+  - title: Specificaties v. 1.0.0 
     subnav:
 #      - title: Getting started
 #        path: /getting-started
@@ -25,18 +25,18 @@ nav:
         path: /swagger-ui
       - title: Bevragen API (redoc)
         path: /redoc
-  - title: Specificaties v. 1.0.0-rc2 (In Ontwikkeling)
-    subnav:
+#  - title: Specificaties v. 1.0.0-rc2 (In Ontwikkeling)
+#    subnav:
 #      - title: Getting started
 #        path: /getting-started
 #      - title: User stories
 #        url: https://vng-realisatie.github.io/Haal-Centraal-BRK-bevragen/user-stories-prod
 #        https://github.com/VNG-Realisatie/Haal-Centraal-BRK-bevragen/issues?q=is%3Aissue+label%3A%22user+story%22+label%3A%22BRK+bevragen+v1.2%22
 #        path: /user-stories
-      - title: Bevragen API (swagger-ui)
-        path: /swagger-ui-io
-      - title: Bevragen API (redoc)
-        path: /redoc-io
+#      - title: Bevragen API (swagger-ui)
+#        path: /swagger-ui-io
+#      - title: Bevragen API (redoc)
+#        path: /redoc-io
 
 
 plugins:
