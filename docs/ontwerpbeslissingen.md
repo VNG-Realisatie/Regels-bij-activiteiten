@@ -1,3 +1,8 @@
+---
+layout: page-with-side-nav
+title: Releasecandidate Regels bij activiteiten
+---
+
 # Ontwerpbeslissingen
 
 Het uitwisselingsgegevensmodel is ontworpen op basis van het onderstaande gedeelte van het CIMOW (versie 1.0.4):
