@@ -46,7 +46,11 @@ Voor de inhoud van een dergelijk bestand gelden enkele aanvullende afspraken:
 - Indien één of meer activiteiten geselecteerd zijn, dan worden van de daarbij behorende 'juridische regels voor iedereen' alleen de activiteitlocatieaanduidingen bij die activiteiten (en de bovenliggende activteiten) geleverd, niet de activiteitlocatieaanduidingen naar andere activiteiten.   
 - De als embedded gespecificeerde gegevens worden in de bestandsuitwisseling niet als embedded opgenomen. Gerelateerde gegevens worden opgenomen in de desbetreffende resources waarnaar m.b.v. de ID verwezen wordt.
 
-Zie ter illustratie van één en ander het [voorbeeldbestand](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/tree/main/voorbeelden/bestandsuitwisseling).  
+Zie ter illustratie van één en ander hier onder per resource een voorbeeldbestand:
+* [activiteiten](https://raw.githubusercontent.com/VNG-Realisatie/Regels-bij-activiteiten/main/voorbeelden/bestandsuitwisseling/activiteiten.json).  
+* [juridischeRegelsVoorIedereen](https://raw.githubusercontent.com/VNG-Realisatie/Regels-bij-activiteiten/main/voorbeelden/bestandsuitwisseling/juridischeregelsvooriedereen.json).  
+* [locaties](https://raw.githubusercontent.com/VNG-Realisatie/Regels-bij-activiteiten/main/voorbeelden/bestandsuitwisseling/locaties.json).  
+* [regelteksten](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/blob/main/voorbeelden/bestandsuitwisseling/regelteksten.json).  
 
 ## Privacy en Security
 
@@ -61,7 +65,7 @@ Aangezien deze API binnengemeentelijk berichtenverkeer van niet privacygevoelige
 * Download de [JSON Schema draft 04 versie van de technische specificatie t.b.v. bestandsuitwisseling](https://raw.githubusercontent.com/VNG-Realisatie/Regels-bij-activiteiten/main/specificatie/openapi_draft04.json){:target="_blank" rel="noopener"}
 * Download [client code](https://github.com/VNG-Realisatie/Regels-bij-Activiteiten/tree/master/code){:target="_blank" rel="noopener"}
 
-* Ontwerpkeuzes staan in de [ontwerpbeslissingen](./docs/ontwerpbeslissingen.md)
+* Ontwerpkeuzes staan in de [ontwerpbeslissingen](./ontwerpbeslissingen.md)
   Voor nu: opmerkingen, vragen, verbetervoorstellen e.d. graag als [issues](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/issues) in deze repository.
 
 ## Bronnen
