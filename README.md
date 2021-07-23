@@ -18,6 +18,19 @@ Tot slot is de VNG tevens belanghebbende als beheerder van de API namens genoemd
 ## Positie in GEMMA
 De API ontsluit het register dat beheerd wordt met de (referentiecomponent) [Omgevingswetbeleidcomponent](https://www.gemmaonline.nl/index.php/Omgevingswet/1.5/id-482b112b-dc5e-49b6-879c-a22f22cb6941) v.w.b. activiteiten en daarbij behorende regels. Ofschoon elke applicatie gebruik kan maken van deze API is het gebruik daarvan gericht op de (referentiecomponent) [Toepasbare regelscomponent](https://www.gemmaonline.nl/index.php/Omgevingswet/1.5/id-7f053bcc-9558-41ce-8a17-d3fa81fb7c17). Beide componenten zijn uitgewerkt in de GEMMA-deelarchitectuur '[Gemeentelijke applicatie-architectuur Omgevingswet](https://www.gemmaonline.nl/index.php/GAO_-_De_referentiecomponenten_voor_de_Omgevingswet)'.  
 
+## Interactiepatroon
+Voor het onderhouden van juridische en toepasbare regels is in de GEMMA-uitwerking van de gemeentelijke bedrijfsarchitectuur ter uitvoering van de Omgevingswet één bedrijfsproces voorzien: [Wijzigen Omgevingsplan](https://www.gemmaonline.nl/index.php/BedrijfsprocessenOmgevingswetgemeenten/id-60f1473f). Het onderhouden van juridische regels enerzijds en toepasbare regels anderzijds wordt daarin niet als aparte stromen gezien. De relatie tussen beide typen regels is te nauw om deze los van elkaar op te stellen en te onderhouden. Er is dus sprake van twee activiteiten die parallel en in samenhang binnen één bedrijfsproces worden uitgevoerd. Daarbij is het vooral de activiteit waarin het onderhouden van de toepasbare regels wordt afgehandeld afhankelijk is van de activiteit waarin de juridische regels worden onderhouden.
+
+In de GEMMA-uitwerking van de gemeentelijke informatie-architectuur ter uitvoering van de Omgevingswet zijn twee applicatiereferentiecomponenten onderscheiden ter ondersteuning van dat bedrijfsproces. 
+
+![Informatie-architectuur](docs/Informatie-architectuur.JPG?raw=true)
+
+De Omgevingsbeleidcomponent ondersteunt het onderhouden van (juridische regels en annotaties in) omgevingswetbesluiten, zoals een 
+Omgevingsplan, en het aanleveren van wijzigingen daarop aan LVBB en DSO-lv (i.c. OZON). De Toepasbare-regelscomponent ondersteunt het opstellen en onderhouden 
+van toepasbare regels (vragenbomen) en hun relaties met juridische regels (via activiteiten) en het aanleveren van wijzigingen daarop aan DSO-lv (i.c. RTR).
+
+Wijzigingen die worden aangebracht in de Omgevingsbeleidcomponent kunnen van belang zijn voor het Toepasbare-regelscomponent. Bij het ontwerp van deze API is er voor gekozen het initiatief voorf het opvragen van die wijzigingen bij het Toepasbare-regelscomponent te leggen, deze bevraagt daartoe het Omgevingsbeleidcomponent op een zelf gekozen moment.   
+
 ## Compliancy cq. conformiteit
 Deze standaard is officieel gepubliceerd als versie 1.0 en is kaderstellend voor de bedoelde informatie-uitwisseling. Onderkend wordt dat er nog geen ervaring is met het gebruik van deze standaard en het uitvoeren van de Omgevingswet met deze en andere standaarden nog volop in ontwikkeling is. Voortschrijdend inzicht en praktijkervaringen worden in volgende versies verwerkt zoals dat bij het beheer van standaarden gebruikelijk is.  
 Voor het voldoen van applicaties aan deze versie van de standaard betekent dit het volgende.  
