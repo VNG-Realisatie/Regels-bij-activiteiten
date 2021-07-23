@@ -1,8 +1,13 @@
+---
+layout: page-with-side-nav
+title: Releasecandidate Regels bij activiteiten
+---
+
 # Ontwerpbeslissingen
 
 Het uitwisselingsgegevensmodel is ontworpen op basis van het onderstaande gedeelte van het CIMOW (versie 1.0.4):
 
-![CIM](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/blob/main/docs/CIM%20Koppeling%20PlanSW%20en%20TRSW.jpg)
+![CIM](CIM%20Koppeling%20PlanSW%20en%20TRSW.jpg?raw=true)
 
 
 Bij het ontwerpen van de OAS specificatie op basis van het CIMOW hebben we de volgende besluiten t.o.v. dat CIMOW en de ons aangeleverde specificaties (meerdere notities, zie [deze compilatie](./Voorstel%20JR-TR-koppelvlak%20-%20compilatie%2020201002.pdf)) genomen:
@@ -40,4 +45,4 @@ Beiden zijn optioneel zodat ook een puntengroep, gebiedengroep en lijnengroep ge
 
 E.e.a. leidt tot het volgende uitwisselingsgegevensmodel:
 
-![UGM](https://github.com/VNG-Realisatie/Regels-bij-activiteiten/blob/main/docs/UGM%20Koppeling%20PlanSW%20en%20TRSW.jpg)
+![UGM](UGM%20Koppeling%20PlanSW%20en%20TRSW.jpg?raw=true)
