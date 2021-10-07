@@ -11,8 +11,6 @@ nav:
     subnav:
       - title: Main
         path: /
-#      - title: Goals canvas
-#        path: /goals-canvas
   - title: Specificaties v. 1.0.0 
     subnav:
 #      - title: Getting started
