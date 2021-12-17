@@ -1,6 +1,6 @@
 ---
 layout: page-with-side-nav
-title: Releasecandidate Regels bij activiteiten
+title: Regels bij activiteiten
 ---
 
 # Regels bij activiteiten
