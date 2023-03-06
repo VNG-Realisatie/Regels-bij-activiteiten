@@ -82,7 +82,6 @@ De openapi.yaml bestaat uit het volgende:
   ```
 
 Tenslotte dienen er aan de openapi.yaml nog de volgende wijzigingen te worden aangebracht:
-* Wijzig in het bericht '/regelteksten' de namen van de query parameters 'inclusiefvervallen', 'omgevingsdocumentidentificatie' en 'werkpakketcode' in resp. 'inclusiefVervallen', 'omgevingsdocumentIdentificatie' en 'werkpakketCode'
 * Doordat de openapi.yaml opgesplitst is moeten de referenties in de openapi.yaml naar componenten die nu in de domain.yaml zo aangepast worden dat er daar 
 voor '#/components/schemas/' de string 'domain.yaml' wordt geplaatst.
 * Aan de parameters sectie van alle berichten moet de parameter Accept-Crs worden toegevoegd d.m.v. de volgende string:
