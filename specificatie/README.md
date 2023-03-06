@@ -39,11 +39,13 @@ handmatig een description property aan de property 'geometrie' worden toegevoegd
 
 Dit laatste is overigens niet volgens de OAS 3.0 standaard. De OAS 3.1 standaard ondersteund het wel en daar lopen we hiermee op vooruit.
 
-Hetzelfde geldt voor alle identificatie attributes (dus niet alleen die met de naam 'identificatie' maar ook bijv. 'bovenliggendeActiviteitIdentificatie'). Deze 'description' properties moeten zolang deze nog niet worden meegenomen in de gegenereerde openapi.yaml handmatig aangebracht te worden met de inhoud: 
+Hetzelfde geldt voor alle identificatie attributes (dus niet alleen die met de naam 'identificatie' maar ook bijv. 'bovenliggendeActiviteitIdentificatie'). Deze 'description' properties moeten zolang deze nog niet worden meegenomen in de gegenereerde openapi.yaml handmatig aangebracht te worden met over het algemeen de inhoud: 
 
 ```yaml
 <body><p>Identificatie van de overkoepelende regeltekst.</p></body>
 ```
+
+**LET OP:** Bij sommige componenten wijkt de inhoud van de description hier vanaf.
 
 Ook voor de 'title' properties geldt dat, die krijgen als inhoud de naam van de property zelf.
 
