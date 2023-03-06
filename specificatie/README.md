@@ -87,14 +87,14 @@ voor '#/components/schemas/' de string 'domain.yaml' wordt geplaatst.
 * Aan de parameters sectie van alle berichten moet de parameter Accept-Crs worden toegevoegd d.m.v. de volgende string:
 
 ```yaml
-- $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/parameters/acceptCrs"
+- $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/parameters/acceptCrs"
 ```
 
 * Aan de header sectie van de 200 response van alle berichten moet de header Content-Crs worden toegevoegd d.m.v. de volgende string:
 
 ```yaml
 Content-Crs:
-  $ref: "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/v1.3.0/api-specificatie/common.yaml#/components/headers/contentCrs"'
+  $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/contentCrs"'
 ```
 
 ## Verwerking gegenereerde openapi.json
