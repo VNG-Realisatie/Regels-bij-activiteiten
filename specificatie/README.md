@@ -34,7 +34,7 @@ Binnen Locatie moet, zolang de description die in het SIM bij het attribute 'geo
 handmatig een description property aan de property 'geometrie' worden toegevoegd. Deze dient dan boven de $ref property geplaatst te worden met de volgende inhoud: 
 
 ```yaml
-<body><p>De geometrische bepaling door middel van coördinaten.</p></body>'.
+<body><p>De geometrische bepaling door middel van coördinaten.</p></body>
 ```
 
 Dit laatste is overigens niet volgens de OAS 3.0 standaard. De OAS 3.1 standaard ondersteund het wel en daar lopen we hiermee op vooruit.
