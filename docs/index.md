@@ -79,4 +79,4 @@ Aangezien deze API binnengemeentelijk berichtenverkeer van niet privacygevoelige
 
 ## Licentie
 Copyright &copy; VNG Realisatie 2018
-Licensed under the [EUPL](../LICENCE.md)
+Licensed under the [EUPL](../LICENCE)
