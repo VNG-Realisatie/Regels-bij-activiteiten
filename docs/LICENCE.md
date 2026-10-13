@@ -1,3 +1,8 @@
+---
+layout: page-with-side-nav
+title: Licence
+---
+
 # Licence
 
 Copyright © VNG Realisatie 2018
